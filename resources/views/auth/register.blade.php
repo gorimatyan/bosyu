@@ -79,7 +79,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('写真をアップロード') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required autocomplete="image" autofocus accept="image/png, image/jpeg">
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus accept="image/png, image/jpeg">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
