@@ -25,6 +25,8 @@ class CreateRecruitmentsTable extends Migration
             $table->string('description',1000);
             $table->integer('delete_flag');
             $table->timestamps();
+
+            
         });
     }
 
