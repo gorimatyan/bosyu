@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -61,6 +61,50 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="id" class="col-md-4 col-form-label text-md-right">{{ __('ID') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
+
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('写真をアップロード') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required autocomplete="image" autofocus accept="image/png, image/jpeg">
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="user_description" class="col-md-4 col-form-label text-md-right">{{ __('自己紹介') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user_description" type="text" class="form-control @error('user_description') is-invalid @enderror" name="user_description" value="{{ old('user_description') }}" required autocomplete="user_description" autofocus>
+
+                                @error('user_description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -68,6 +112,10 @@
                                 </button>
                             </div>
                         </div>
+
+
+
+
                     </form>
                 </div>
             </div>

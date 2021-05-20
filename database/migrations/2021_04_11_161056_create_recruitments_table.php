@@ -21,7 +21,7 @@ class CreateRecruitmentsTable extends Migration
             $table->integer('people');
             $table->integer('people_option');
             $table->date('deadline');
-            $table->string('picture');
+            $table->string('image')->nullable();
             $table->string('description',1000);
             $table->integer('delete_flag');
             $table->timestamps();
