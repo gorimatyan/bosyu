@@ -33,6 +33,7 @@ Route::get('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,'sh
 Route::delete('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('/bosyu/users.destroy');
 Route::get('/bosyu/users/create', [App\Http\Controllers\UsersController::class,'create'])->name('/bosyu/users.create'); 
 Route::get('/bosyu/users/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('/bosyu/users.edit');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

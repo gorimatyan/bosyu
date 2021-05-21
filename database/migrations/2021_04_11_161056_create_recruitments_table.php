@@ -15,7 +15,7 @@ class CreateRecruitmentsTable extends Migration
     {
         Schema::create('recruitments', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->string('user_id',12);
+            $table->string('user_id',16);
             $table->string('user_name',12);
             $table->string('title',100);
             $table->integer('people');

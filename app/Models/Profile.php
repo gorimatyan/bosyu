@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UploadImage extends Model
+class Profile extends Model
 {
     use HasFactory;
-    protected $table = "upload_image";
-	protected $fillable = ["file_name","file_path"];
+
+    protected $table = "Profiles";
+	protected $fillable = [
+        "file_name","file_path"
+    ];
 
     public function User(){
         return $this->belongTo('App\Models\User');
-    }    
 }

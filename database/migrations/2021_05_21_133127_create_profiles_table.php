@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUploadImageTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUploadImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('upload_image', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->string("user_id");
             $table->timestamps();
 			$table->string("file_name");
@@ -29,7 +29,6 @@ class CreateUploadImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('upload_image');
-        
+        Schema::dropIfExists('profiles');
     }
 }

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'id',
         'user_description',
+        'image',
     ];
 
     /**
@@ -43,7 +44,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function UploadImage(){
-        return $this->hasOne('App\Models\UploadImage');
+    public function Profile(){
+        return $this->hasOne('App\Models\Profile');
     }
 }

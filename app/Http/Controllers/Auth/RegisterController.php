@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UploadImage;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -65,16 +67,60 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    { 
+    {   
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'id' => $data['id'],
             'user_description' => $data['user_description'],
-
-            // dd($data)
-            
         ]);
+        
+    }
+    
+    protected function ImageCreate(){
+        $user = new User;
+        $request = new Request;
+        // ↓クエリビルダを使わないと例外扱いでエラーがでるっぽい？？
+        // $user->name = $request->input('name');
+        // $user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        // $user->id = $request->id;
+        // $user->user_description = $request->user_description;
+
+            // imageに画像ファイルパスを保存する処理 
+        $originalImg = $request->input('image');
+
+        if(isset($originalImg)){
+            $filePath = $originalImg->store('public');
+
+            return User::create([
+                'image' => str_replace('public/','', $filePath)
+            ]);
+
+            // $filePath = $originalImg->store('public');
+            // $user->image = str_replace('public/','', $filePath);
+            
+        }else{
+            $filePath = '/storage/defaultUserImg.jpg';
+            
+            return User::create([
+                'image' => str_replace('/storage','', $filePath)
+            ]);
+            
+            // $filePath = '/storage/defaultUserImg.jpg';
+            // $user->image = str_replace('/storage','', $filePath);
+        };
+
+            //$user->save();
+
+            
+            
+        
+
+        
+        
+        
+
     }
 }
