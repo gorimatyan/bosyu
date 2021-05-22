@@ -34,6 +34,7 @@ Route::delete('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,
 Route::get('/bosyu/users/create', [App\Http\Controllers\UsersController::class,'create'])->name('/bosyu/users.create'); 
 Route::get('/bosyu/users/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('/bosyu/users.edit');
 
-Auth::routes();
+Auth::routes(['register' => false]);
+Route::post('bosyu/register', [Auth\RegisterController::class,'userRegister']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -49,6 +49,64 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+
+    protected function userRegister(Request $request){
+        $this->validator($request->all())->validate();
+
+        //event(new Registered($user = $this->create($request->all())));
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        //     'id' => $data['id'],
+        //     'user_description' => $data['user_description'],
+        // ]);
+        
+        $user = new User;
+
+        // ↓クエリビルダを使わないと例外扱いでエラーがでるっぽい？？
+        $user->name = $request->input('name');
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->id = $request->id;
+        $user->user_description = $request->user_description;
+
+            // imageに画像ファイルパスを保存する処理 
+        $originalImg = $request->file('image');
+
+        if(isset($originalImg)){
+            // $filePath = $originalImg->store('public');
+
+            // return User::create([
+            //     'image' => str_replace('public/','', $filePath)
+            // ]);
+
+            $filePath = $originalImg->store('public');
+            $user->image = str_replace('public/','', $filePath);
+            
+        }else{
+            // $filePath = '/storage/defaultUserImg.jpg';
+            
+            // return User::create([
+            //     'image' => str_replace('/storage','', $filePath)
+            // ]);
+            
+            $filePath = '/storage/defaultUserImg.jpg';
+            $user->image = str_replace('/storage','', $filePath);
+        };
+          
+          $user->save();
+           
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+
+    }
+    
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -68,6 +126,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
+        // 画像以外をDBに保存する処理
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -76,21 +135,21 @@ class RegisterController extends Controller
             'user_description' => $data['user_description'],
         ]);
         
-    }
-    
-    protected function ImageCreate(){
-        $user = new User;
-        $request = new Request;
-        // ↓クエリビルダを使わないと例外扱いでエラーがでるっぽい？？
+
+
         // $user->name = $request->input('name');
         // $user->email = $request->email;
         // $user->password = Hash::make($request->password);
         // $user->id = $request->id;
         // $user->user_description = $request->user_description;
 
-            // imageに画像ファイルパスを保存する処理 
-        $originalImg = $request->input('image');
-
+            // imageに画像ファイルパスを保存する処理
+            $user = new User;
+            $request = new Request;
+            
+            $originalImg = $request->input('image');
+        
+            // 画像があれば
         if(isset($originalImg)){
             $filePath = $originalImg->store('public');
 
@@ -100,7 +159,8 @@ class RegisterController extends Controller
 
             // $filePath = $originalImg->store('public');
             // $user->image = str_replace('public/','', $filePath);
-            
+
+            // 画像がないなら
         }else{
             $filePath = '/storage/defaultUserImg.jpg';
             
@@ -112,7 +172,7 @@ class RegisterController extends Controller
             // $user->image = str_replace('/storage','', $filePath);
         };
 
-            //$user->save();
+            
 
             
             

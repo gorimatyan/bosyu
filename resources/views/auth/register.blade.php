@@ -80,7 +80,7 @@
                                 <img src="storage/defaultUserImg.jpg" alt="初期アイコン" title="初期アイコン">
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus accept="image/png, image/jpeg">
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus accept=".png, .jpeg, .jpg">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
