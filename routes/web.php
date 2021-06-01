@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\UsersController;
+use App\Http\Controllers\Auth\RegisterController;
+use app\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Request;
 
 /*
@@ -20,11 +22,10 @@ use App\Http\Controllers\Auth\Request;
 // });
 
 // ユーザ認証 
-Auth::routes();
 Route::get('/', function () {return view('welcome');});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Users CRUD
+// Users CRUD ------------------------------------------
 // 見本 Route::get('/users/{id}',[App\Http\Controllers\UsersController::class,'create']);
 Route::get('/bosyu/users', [App\Http\Controllers\UsersController::class,'index'])->name('/bosyu/users.index'); // ユーザの一覧表示はいらんかも
 Route::post('/bosyu/users', [App\Http\Controllers\UsersController::class,'store'])->name('/bosyu/users.store'); 
@@ -34,7 +35,15 @@ Route::delete('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,
 Route::get('/bosyu/users/create', [App\Http\Controllers\UsersController::class,'create'])->name('/bosyu/users.create'); 
 Route::get('/bosyu/users/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('/bosyu/users.edit');
 
-Auth::routes(['register' => false]);
-Route::post('bosyu/register', [Auth\RegisterController::class,'userRegister']);
-
+// Auth::routes(['register' => false]); -------------------------------------
+Route::get('bosyu/login', [App\Http\Controllers\Auth\LoginController::class,'showLoginForm'])->name('login');
+Route::post('bosyu/login', [App\Http\Controllers\Auth\LoginController::class,'login']);
+Route::post('bosyu/logout', [App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
+Route::get('bosyu/register', [App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
+// Route::post('bosyu/register', [Auth\RegisterController::class,'register']);
+Route::get('bosyu/password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
+Route::post('bosyu/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
+Route::get('bosyu/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
+Route::post('bosyu/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class,'reset']);
+Route::post('bosyu/register', [App\Http\Controllers\Auth\RegisterController::class,'userRegister']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

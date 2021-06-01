@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class LoginController extends Controller
 {
@@ -34,7 +37,23 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
+        $request = new Request;
         $this->middleware('guest')->except('logout');
+        
+    
+    }
+
+    public function logout(Request $request){
+        
+    Auth::logout();
+
+    //dd($request);
+    
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/home');
     }
 }

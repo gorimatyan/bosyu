@@ -65,7 +65,6 @@ class RegisterController extends Controller
         
         $user = new User;
 
-        // ↓クエリビルダを使わないと例外扱いでエラーがでるっぽい？？
         $user->name = $request->input('name');
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -92,8 +91,8 @@ class RegisterController extends Controller
             //     'image' => str_replace('/storage','', $filePath)
             // ]);
             
-            $filePath = '/storage/defaultUserImg.jpg';
-            $user->image = str_replace('/storage','', $filePath);
+            $filePath = 'storage/defaultUserImg.jpg';
+            $user->image = str_replace('storage/','', $filePath);
         };
           
           $user->save();
@@ -162,10 +161,11 @@ class RegisterController extends Controller
 
             // 画像がないなら
         }else{
-            $filePath = '/storage/defaultUserImg.jpg';
+            $filePath = 'storage/defaultUserImg.jpg';
+            $data['image'] = str_replace('storage/','', $filePath);
             
             return User::create([
-                'image' => str_replace('/storage','', $filePath)
+                'image' => $data['image'],
             ]);
             
             // $filePath = '/storage/defaultUserImg.jpg';
