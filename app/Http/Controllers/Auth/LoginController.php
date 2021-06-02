@@ -56,4 +56,25 @@ class LoginController extends Controller
 
     return redirect('/home');
     }
+
+    public function login(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $remember = $request->input('remember');
+
+        if (Auth::attempt(['email' => $email, 'password' => $password,'delete_flag' => 1],$remember)) 
+        {  
+            // 認証に成功した
+            // return Auth::user();
+        
+            $request->session()->regenerate();
+
+            return redirect()->route('home');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
 }
