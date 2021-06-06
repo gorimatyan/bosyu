@@ -66,9 +66,10 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password,'delete_flag' => 1],$remember)) 
         {  
             // 認証に成功した
-            // return Auth::user();
-        
+
             $request->session()->regenerate();
+
+            // return Auth::user();
 
             return redirect()->route('home');
         }
