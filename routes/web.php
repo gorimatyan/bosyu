@@ -5,7 +5,8 @@ use app\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\RegisterController;
 use app\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Request;
-
+use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\Auth\AdminRegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,23 +28,42 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Users CRUD ------------------------------------------
 // 見本 Route::get('/users/{id}',[App\Http\Controllers\UsersController::class,'create']);
-Route::get('/bosyu/users', [App\Http\Controllers\UsersController::class,'index'])->name('/bosyu/users.index'); // ユーザの一覧表示はいらんかも
-Route::post('/bosyu/users', [App\Http\Controllers\UsersController::class,'store'])->name('/bosyu/users.store'); 
-Route::put('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,'update'])->name('/bosyu/users.update'); 
-Route::get('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,'show'])->name('/bosyu/users.show'); 
-Route::delete('/bosyu/users/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('/bosyu/users.destroy');
-Route::get('/bosyu/users/create', [App\Http\Controllers\UsersController::class,'create'])->name('/bosyu/users.create'); 
-Route::get('/bosyu/users/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('/bosyu/users.edit');
+Route::prefix('user')->name('user.')->group(function(){
+
+    Route::get('', [App\Http\Controllers\UsersController::class,'index'])->name('index'); // ユーザの一覧表示はいらんかも
+    Route::post('', [App\Http\Controllers\UsersController::class,'store'])->name('store'); 
+    Route::put('/{id}', [App\Http\Controllers\UsersController::class,'update'])->name('update'); 
+    Route::get('/{id}', [App\Http\Controllers\UsersController::class,'show'])->name('show'); 
+    Route::delete('/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('destroy');
+    Route::get('/create', [App\Http\Controllers\UsersController::class,'create'])->name('create'); 
+    Route::get('/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('edit');
+
+});
 
 // Auth::routes(['register' => false]); -------------------------------------
-Route::get('bosyu/login', [App\Http\Controllers\Auth\LoginController::class,'showLoginForm'])->name('login');
-Route::post('bosyu/login', [App\Http\Controllers\Auth\LoginController::class,'login']);
-Route::post('bosyu/logout', [App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
-Route::get('bosyu/register', [App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
-// Route::post('bosyu/register', [Auth\RegisterController::class,'register']);
-Route::get('bosyu/password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
-Route::post('bosyu/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
-Route::get('bosyu/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
-Route::post('bosyu/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class,'reset']);
-Route::post('bosyu/register', [App\Http\Controllers\Auth\RegisterController::class,'userRegister']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class,'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class,'login']);
+    Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
+    Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
+    // Route::post('/register', [Auth\RegisterController::class,'register']);
+    Route::get('/password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
+    Route::post('/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
+    Route::get('/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
+    Route::post('/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class,'reset']);
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'userRegister']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::prefix('admin')->name('admin.')->group(function(){
+
+    Route::get('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'login']);
+    Route::post('/logout', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'logout'])->name('logout');    
+    Route::get('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'showRegistrationForm'])->name('register');
+    Route::post('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'register']);
+    Route::get('/password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
+    Route::post('/password/email', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
+    Route::get('/password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
+    Route::post('/password/reset', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class,'reset']);
+    
+});
