@@ -29,7 +29,7 @@ class AdminLoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::ADMIN_HOME;
 
     /**
      * Create a new controller instance.
@@ -59,23 +59,21 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
-        $email = $request->input('email');
+        $email = $request->input('id');
         $password = $request->input('password');
         $remember = $request->input('remember');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password,'delete_flag' => 1],$remember)) 
+        if (Auth::attempt(['id' => $id, 'password' => $password],$remember)) 
         {  
             // 認証に成功した
 
             $request->session()->regenerate();
 
-            // return Auth::user();
-
             return redirect()->route('home');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'id' => 'The provided credentials do not match our records.',
         ]);
     }
 }

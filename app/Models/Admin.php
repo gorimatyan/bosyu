@@ -20,6 +20,7 @@ class Admin extends Model
         'name',
         'email',
         'password',
+        'id',
     ];
 
     /**
@@ -29,6 +30,7 @@ class Admin extends Model
      */
     protected $hidden = [
         'password',
+        
     ];
 
     /**
