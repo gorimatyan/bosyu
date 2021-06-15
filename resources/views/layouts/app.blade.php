@@ -39,7 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        @guest('admin')
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -54,8 +54,8 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" >
-                                    {{ Auth::user()->name }} 
+                                  
+                                   {{ Auth::guard('admin')->user()->name }} 
                                 
                                 </a>
                                 

@@ -58,7 +58,7 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
+    {   
         $email = $request->input('email');
         $password = $request->input('password');
         $remember = $request->input('remember');

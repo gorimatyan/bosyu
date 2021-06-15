@@ -38,42 +38,48 @@ class AdminLoginController extends Controller
      */
     public function __construct()
     {   
-        $request = new Request;
         $this->middleware('guest')->except('logout');
-        
-    
     }
-
     public function logout(Request $request){
         
-    Auth::logout();
-
-    //dd($request);
+        Auth::guard('admin')->logout();
     
-    $request->session()->invalidate();
-
-    $request->session()->regenerateToken();
-
-    return redirect('/home');
-    }
+        //dd($request);
+        
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('admin.home');
+        }
 
     public function login(Request $request)
-    {
-        $email = $request->input('id');
+    {   
+        
+        $email = $request->input('email');
         $password = $request->input('password');
         $remember = $request->input('remember');
 
-        if (Auth::attempt(['id' => $id, 'password' => $password],$remember)) 
+        if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password],$remember)) 
         {  
             // 認証に成功した
 
             $request->session()->regenerate();
 
-            return redirect()->route('home');
+            // return Auth::user();
+
+            return redirect()->route('admin.home');
         }
 
         return back()->withErrors([
-            'id' => 'The provided credentials do not match our records.',
+            'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    public function showLoginForm(){
+        return view('admin.login');
+    }
+
+    
+
 }

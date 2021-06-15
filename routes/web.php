@@ -7,6 +7,7 @@ use app\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Request;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\Auth\AdminRegisterController;
+use App\Http\Controllers\Admin\AdminControllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,16 +55,27 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+// admin機能
 Route::prefix('admin')->name('admin.')->group(function(){
-
+    // 認証
     Route::get('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'showLoginForm'])->name('login');
-    Route::post('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'login']);
+    Route::post('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'login'])->name('login');
     Route::post('/logout', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'logout'])->name('logout');    
     Route::get('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'showRegistrationForm'])->name('register');
-    Route::post('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'register']);
+    Route::post('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'register'])->name('register');
     Route::get('/password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
     Route::post('/password/email', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
     Route::get('/password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
     Route::post('/password/reset', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class,'reset']);
-    
+
+    // AdminからのUsersデータのCRUD
+    Route::get('/home', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'home'])->name('home');
+    Route::get('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'index'])->name('index'); 
+    Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'store'])->name('store'); // <-/indexでいいのかわからん
+    Route::put('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'update'])->name('update'); 
+    Route::get('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'show'])->name('show'); 
+    Route::delete('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'destroy'])->name('destroy');
+    Route::get('/create', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'create'])->name('create'); 
+    Route::get('/{id}/edit', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'edit'])->name('edit');
 });
+

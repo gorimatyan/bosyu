@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
-use App\Models\UploadImage;
+use App\Models\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminRegisterController extends Controller
 {
@@ -43,6 +43,27 @@ class AdminRegisterController extends Controller
         $this->middleware('guest');
     }
 
+    protected function register(Request $request){
+        
+        $this->validator($request->all());
+        
+        $user = new Admin;
+
+        $user->name = $request->input('name');
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->id = $request->id;
+          
+        $user->save();
+           
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -64,7 +85,7 @@ class AdminRegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Admin
      */
     protected function create(array $data)
     {   
@@ -76,16 +97,14 @@ class AdminRegisterController extends Controller
             'id' => $data['id'],
             
         ]);
+    }
+    
+    protected function guard(){
+        return Auth::guard('admin');
+    }
 
-            
-
-            
-            
-        
-
-        
-        
-        
-
+    public function showRegistrationForm()
+    {
+        return view('admin.register');
     }
 }
