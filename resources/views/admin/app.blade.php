@@ -40,11 +40,11 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
 
-                        @if(Auth::guard('web')->check())
-                            <li class="nav-item dropdown">
+                        @if(Auth::guard('admin')->check())
+                        <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" >
-                                   {{ Auth::guard('web')->user()->name }} 
+                                  
+                                  管理者 {{ Auth::guard('admin')->user()->name }} 
                                 
                                 </a>
                                 
@@ -55,23 +55,12 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                        @else
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @endif
                     </ul>
                 </div>

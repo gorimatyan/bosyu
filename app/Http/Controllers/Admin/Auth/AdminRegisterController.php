@@ -50,9 +50,9 @@ class AdminRegisterController extends Controller
         $user = new Admin;
 
         $user->name = $request->input('name');
-        $user->email = $request->email;
+        $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
-        $user->id = $request->id;
+        $user->id = $request->input('id');
           
         $user->save();
            
@@ -61,7 +61,10 @@ class AdminRegisterController extends Controller
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
-
+    }
+    
+    protected function guard(){
+        return Auth::guard('admin');
     }
 
     /**
@@ -99,9 +102,6 @@ class AdminRegisterController extends Controller
         ]);
     }
     
-    protected function guard(){
-        return Auth::guard('admin');
-    }
 
     public function showRegistrationForm()
     {

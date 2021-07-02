@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\AdminControllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('admin.auth');
     }
     
 
@@ -28,8 +29,13 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function home()
-    {
-        return view('admin.home');
+    {   if(Auth::guard('admin')->check())
+        {
+            return view('admin.home');
+
+        }else{
+            echo 'error';
+        };
     }
     
     /**

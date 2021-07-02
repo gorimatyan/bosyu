@@ -66,10 +66,10 @@ class RegisterController extends Controller
         $user = new User;
 
         $user->name = $request->input('name');
-        $user->email = $request->email;
+        $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
-        $user->id = $request->id;
-        $user->user_description = $request->user_description;
+        $user->id = $request->input('id');
+        $user->user_description = $request->input('user_description');
 
             // imageに画像ファイルパスを保存する処理 
         $originalImg = $request->file('image');

@@ -38,7 +38,7 @@ class AdminLoginController extends Controller
      */
     public function __construct()
     {   
-        $this->middleware('guest')->except('logout');
+        $this->middleware('admin.auth')->except('logout');
     }
     public function logout(Request $request){
         
@@ -50,7 +50,7 @@ class AdminLoginController extends Controller
     
         $request->session()->regenerateToken();
     
-        return redirect('admin.home');
+        return redirect()->route('admin.login');
         }
 
     public function login(Request $request)
