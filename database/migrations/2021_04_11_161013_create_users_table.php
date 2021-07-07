@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->integer('bosyu')->nullable();
             $table->integer('entry')->nullable();
             $table->integer('favorite')->nullable();
-            $table->integer('delete_flag')->default(1);
+            $table->integer('delete_flag')->default(0);
             $table->string('remember_token',100)->nullable();
             $table->timestamps();
         });

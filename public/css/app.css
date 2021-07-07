@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10002,3 +10002,23 @@ h3 {
     border-color: #dee2e6;
   }
 }
+
+/* オリジナルクラス設定 */
+
+.img-icon {
+  border-radius: 50%;
+  border: solid;
+  border-color:white;
+}
+
+.icon-min-size{
+  min-height:70px;
+  min-width:94px;
+}
+
+.db-icon-min-size{
+  height:50px;
+  width:50px;
+}
+
+/* ここまで */

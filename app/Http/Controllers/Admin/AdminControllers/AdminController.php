@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -30,8 +31,14 @@ class AdminController extends Controller
      */
     public function home()
     {   if(Auth::guard('admin')->check())
-        {
-            return view('admin.home');
+        {   
+            $admins = Auth::guard('admin')->user()->all();
+            $users = User::all();
+
+            return view('admin.home')->with([
+                "admins" => $admins,
+                "users" => $users,
+             ]);
 
         }else{
             echo 'error';

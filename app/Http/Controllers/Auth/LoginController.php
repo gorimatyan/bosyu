@@ -63,7 +63,7 @@ class LoginController extends Controller
         $password = $request->input('password');
         $remember = $request->input('remember');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password,'delete_flag' => 1],$remember)) 
+        if (Auth::attempt(['email' => $email, 'password' => $password,'delete_flag' => 0],$remember)) 
         {  
             // 認証に成功した
 
