@@ -71,7 +71,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     // AdminからのUsersデータのCRUD
     Route::get('/home', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'home'])->name('home');
     Route::get('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'index'])->name('index'); 
-    Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'store'])->name('store'); // <-/indexでいいのかわからん
+    Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'store'])->name('store'); 
     Route::put('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'update'])->name('update'); 
     Route::get('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'show'])->name('show'); 
     Route::delete('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'destroy'])->name('destroy');

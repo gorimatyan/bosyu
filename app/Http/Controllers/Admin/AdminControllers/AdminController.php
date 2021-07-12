@@ -33,12 +33,10 @@ class AdminController extends Controller
     {   if(Auth::guard('admin')->check())
         {   
             $admins = Auth::guard('admin')->user()->all();
-            $users = User::all();
 
             return view('admin.home')->with([
                 "admins" => $admins,
-                "users" => $users,
-             ]);
+            ]);
 
         }else{
             echo 'error';
@@ -51,8 +49,11 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $users = User::all();
+        return view('admin.index')->with([
+            "users" => $users,
+         ]);
     }
 
     /**
@@ -84,7 +85,11 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.show')->with([
+            "user" => $user,
+         ]);
+    
     }
 
     /**
