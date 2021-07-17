@@ -100,7 +100,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.edit')->with([
+            "user" => $user,
+         ]);
     }
 
     /**
@@ -111,8 +114,20 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $user = User::find($id);
+        $user->id = $request->input('id');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->delete_flag = $request->input('delete_flag');
+        $user->user_description = $request->input('user_description');
+        $user->bosyu = $request->input('bosyu');
+        $user->entry = $request->input('entry');
+        $user->gender = $request->input('gender');
+        
+        $user->save();
+
+        return redirect("/admin/$user->id");
     }
 
     /**
@@ -123,6 +138,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user ->delete();
     }
 }

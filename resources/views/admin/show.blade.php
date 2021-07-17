@@ -17,7 +17,26 @@
 
         <div class="col-md-9">
             <div class="card mb-4">
-                <div class="card-header">{{ __('ユーザー詳細') }}<a href="{{ route('admin.index')}}" class="mx-4">一覧に戻る</a></div>
+                <div class="card-header">ユーザ詳細</div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 ml-2 bg-white">
+                            <li class="breadcrumb-item  mr-2"><a href="/admin/{{ $user->id }}/edit">
+                            <button class="btn btn-primary">編集</button>
+                        </a>
+                    </li>
+                            <form action="/admin/{{ $user->id }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            {!! csrf_field() !!}
+                                <li class="breadcrumb-item"><button type="submit" class="btn btn-danger">削除</button></li>
+                            </form>
+                        </ol>
+                    </nav>
+
+                    <!-- <ul class="row" >
+                        <li>{{ __('ユーザー詳細') }}</li>
+                        <li><a href="{{ route('admin.index')}}" class="border-left mx-3 px-2">一覧に戻る</a></li>
+                    </ul> -->
+                
 
                 <div class="card-body">
                     @if (session('status'))
