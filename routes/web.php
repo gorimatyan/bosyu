@@ -56,7 +56,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
 
 // admin機能
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function(){
     // 認証
     Route::get('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'showLoginForm'])->name('login');
     Route::post('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'login'])->name('login');

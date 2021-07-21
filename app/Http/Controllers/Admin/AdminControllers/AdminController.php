@@ -19,10 +19,11 @@ class AdminController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
         $this->middleware('admin.auth');
+        
     }
-    
+
 
     /**
      * Show the application dashboard.
@@ -30,30 +31,29 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function home()
-    {   if(Auth::guard('admin')->check())
-        {   
+    {
+        if (Auth::guard('admin')->check()) {
             $admins = Auth::guard('admin')->user()->all();
 
             return view('admin.home')->with([
                 "admins" => $admins,
             ]);
-
-        }else{
+        } else {
             echo 'error';
         };
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $users = User::all();
         return view('admin.index')->with([
             "users" => $users,
-         ]);
+        ]);
     }
 
     /**
@@ -88,8 +88,7 @@ class AdminController extends Controller
         $user = User::find($id);
         return view('admin.show')->with([
             "user" => $user,
-         ]);
-    
+        ]);
     }
 
     /**
@@ -103,7 +102,7 @@ class AdminController extends Controller
         $user = User::find($id);
         return view('admin.edit')->with([
             "user" => $user,
-         ]);
+        ]);
     }
 
     /**
@@ -114,7 +113,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $user = User::find($id);
         $user->id = $request->input('id');
         $user->name = $request->input('name');
@@ -124,7 +123,7 @@ class AdminController extends Controller
         $user->bosyu = $request->input('bosyu');
         $user->entry = $request->input('entry');
         $user->gender = $request->input('gender');
-        
+
         $user->save();
 
         return redirect("/admin/$user->id");
@@ -139,6 +138,6 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user ->delete();
+        $user->delete();
     }
 }

@@ -45,7 +45,7 @@
                         @if(Auth::guard('web')->check())
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" >
+                                <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" class="img-icon">
                                    {{ Auth::guard('web')->user()->name }} 
                                 
                                 </a>

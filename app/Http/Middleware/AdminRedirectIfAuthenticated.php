@@ -17,17 +17,36 @@ class AdminRedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(
+        Request $request, Closure $next, ...$guards
+    )
     {
-        $guards = empty($guards) ? [null] : $guards;
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                if(! strstr($_SERVER['REQUEST_URI'], 'admin/home')){
-                return redirect(RouteServiceProvider::ADMIN_HOME);
+        // $guards = empty($guards) ? [null] : $guards;
+        // foreach ($guards as $guard) {
+            
+            if (!Auth::guard('admin')->check()) {
+                if(! strstr($_SERVER['REQUEST_URI'], 'admin/login')){
+                return redirect('admin/login');
                 }
             }
-        }
+        // }
 
         return $next($request);
     }
-}
+
+        // if (Auth::guard('admin')->check())
+        // {
+        //     $admins = Auth::guard('admin')->user()->all();
+
+        //     return view('admin.home')->with([
+        //         "admins" => $admins,
+        //     ]);
+        // }else{
+        //     if (strstr($_SERVER['REQUEST_URI'], 'admin/login')) {
+                
+        //     }else{
+        //         echo'waaa';
+        //         return redirect('admin/login');
+        //     };
+        // };
+    }
