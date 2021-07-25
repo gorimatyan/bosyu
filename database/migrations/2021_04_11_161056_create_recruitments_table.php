@@ -16,13 +16,11 @@ class CreateRecruitmentsTable extends Migration
         Schema::create('recruitments', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('user_id',16);
-            $table->string('user_name',12);
             $table->string('title',100);
+            $table->string('body',1000);
+            $table->integer('status');
             $table->integer('people');
-            $table->integer('people_option');
             $table->date('deadline');
-            $table->string('image')->nullable();
-            $table->string('description',1000);
             $table->integer('delete_flag');
             $table->timestamps();
 
