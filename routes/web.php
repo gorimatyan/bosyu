@@ -61,8 +61,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function
     Route::get('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'showLoginForm'])->name('login');
     Route::post('/login', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'login'])->name('login');
     Route::post('/logout', [App\Http\Controllers\Admin\Auth\AdminLoginController::class,'logout'])->name('logout');    
-    Route::get('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'showRegistrationForm'])->name('register'); // admin登録機能は不要
-    Route::post('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'register'])->name('register');
+    // Route::get('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'showRegistrationForm'])->name('register'); // admin登録機能は不要
+    // Route::post('/register', [App\Http\Controllers\Admin\Auth\AdminRegisterController::class,'register'])->name('register');
     Route::get('/password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
     Route::post('/password/email', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
     Route::get('/password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
@@ -71,11 +71,21 @@ Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function
     // AdminからのUsersデータのCRUD
     Route::get('/home', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'home'])->name('home');
     Route::get('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'index'])->name('index'); 
-    Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'store'])->name('store'); 
-    Route::put('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'update'])->name('update'); 
+    // Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'store'])->name('store'); 
+    Route::put('/{id}
+    ', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'update'])->name('update'); 
     Route::get('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'show'])->name('show'); 
     Route::delete('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'destroy'])->name('destroy');
     Route::get('/create', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'create'])->name('create'); 
     Route::get('/{id}/edit', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'edit'])->name('edit');
 });
 
+Route::prefix('recruitment')->name('recruitment.')->group(function(){
+    Route::get('/create',[App\Http\Controllers\RecruitmentController::class,'create'])->name('create');
+    Route::post('/create',[App\Http\Controllers\RecruitmentController::class,'store'])->name('store');
+    Route::get('',[App\Http\Controllers\RecruitmentController::class,'index'])->name('index');// 募集の一覧表示 ここで募集の検索もする
+    Route::get('/{recruitment_id}',[App\Http\Controllers\RecruitmentController::class,'show'])->name('show');
+    Route::get('/{recruitment_id}/edit',[App\Http\Controllers\RecruitmentController::class,'edit'])->name('edit');
+    Route::put('/{recruitment_id}',[App\Http\Controllers\RecruitmentController::class,'update'])->name('update');
+
+});

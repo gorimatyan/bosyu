@@ -45,7 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Profile(){
-        return $this->hasOne('App\Models\Profile');
+    public function comments_recruitments(){
+        return $this->belongsToMany(Recruiment::class,'comments');
+    }
+
+    public function user_entry_recruitments(){
+        return $this->belongsToMany(Recruiment::class,'user_entry');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class RecruitmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('recruitment.create');
     }
 
     /**
@@ -45,9 +45,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('user.show',[
-           // id=>$id,
-        ]);
+        //
     }
 
     /**
