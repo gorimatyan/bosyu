@@ -18,6 +18,8 @@ class Admin extends Authenticatable
      */
     protected $keyType = 'string';
 
+    protected $primaryKey = 'id';   //これいる？？
+
     protected $guard = 'admin';
     
     protected $fillable = [

@@ -16,14 +16,14 @@ class CreateCommentsTable extends Migration
         // コメント機能用データベース
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('recruitment_id');
-            $table->string('user_id');
+            $table->integer('recruitment_id')->unique();
+            $table->string('user_id')->unique();
             $table->string('comments',255);
             $table->integer('delete_flag')->default(0);
             $table->timestamps();
 
-            $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+          //  $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
+          //  $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

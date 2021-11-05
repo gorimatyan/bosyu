@@ -9,11 +9,27 @@ class Recruitment extends Model
 {
     use HasFactory;
 
+    protected $keyType = 'string';
+
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'id',
+        'people',
+        'title',
+        'number_of_people',
+    ] ;
+
+    // User：Recruimentの1：多のリレーション
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function comments_users(){
-        return $this->belongsToMany(Users::class,'comments');
+        return $this->belongsToMany(User::class,'comments');
     }
 
     public function entry_users_users(){
-        return $this->belongsToMany(Users::class,'entry_users');
+        return $this->belongsToMany(User::class,'entry_users');
     }
 }

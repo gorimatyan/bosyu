@@ -13,10 +13,11 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
+        // 管理者アカウントのテーブル
         Schema::create('admins', function (Blueprint $table) {
             
             $table->string('name',12);
-            $table->string('id',16);
+            $table->string('id',16)->primary()->unique();
             $table->string('password',255);
             $table->string('email');
             $table->timestamps();

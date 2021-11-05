@@ -13,19 +13,24 @@ class CreateRecruitmentsTable extends Migration
      */
     public function up()
     {
+        //　投稿（募集）のテーブル
         Schema::create('recruitments', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->unique();
+            $table->string('id',13)->primary();
             $table->string('user_id',16);
             $table->string('title',100);
             $table->string('body',1000);
-            $table->integer('status');
-            $table->integer('people');
+            $table->integer('status')->default(0);
+            $table->integer('number_of_people');
             $table->date('deadline');
-            $table->integer('delete_flag');
+            $table->integer('delete_flag')->default(0);
             $table->timestamps();
 
+
+            $table->foreign('user_id',16)->references('id')->on('users')->onDelete('cascade');
             
         });
+
+
     }
 
     /**
@@ -34,7 +39,8 @@ class CreateRecruitmentsTable extends Migration
      * @return void
      */
     public function down()
-    {
+    {   
         Schema::dropIfExists('recruitments');
+
     }
 }

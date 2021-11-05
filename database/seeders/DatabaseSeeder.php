@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'gorimasan',
             'email' => 'test@test.com',
             'password' => Hash::make('hogehoge'),
-            'user_description' => 'こんにちゃーすごりまでぇーす',
+            'self_introduction' => 'こんにちゃーすごりまでぇーす',
             'image' => 'defaultUserImg.jpg',
         ]);
     }

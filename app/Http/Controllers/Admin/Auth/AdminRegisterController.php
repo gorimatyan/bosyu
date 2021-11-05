@@ -60,7 +60,7 @@ class AdminRegisterController extends Controller
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            ?: redirect($this->redirectPath());         // ?:は三項演算子　trueかfalseか ? trueの場合の出力 : falseの場合の出力
     }
     
     protected function guard(){

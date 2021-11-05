@@ -45,6 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function recruitments(){
+        return $this->hasMany(Recruitment::class);
+    }
+
     public function comments_recruitments(){
         return $this->belongsToMany(Recruiment::class,'comments');
     }

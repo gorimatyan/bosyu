@@ -13,6 +13,7 @@ class CreateUserEntryTable extends Migration
      */
     public function up()
     {
+        // ユーザーが参加している募集
         Schema::create('user_entry', function (Blueprint $table) {
             $table->id();
             $table->integer('recruitment_id');
@@ -20,8 +21,8 @@ class CreateUserEntryTable extends Migration
             $table->integer('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

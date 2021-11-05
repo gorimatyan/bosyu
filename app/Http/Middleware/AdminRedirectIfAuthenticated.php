@@ -25,8 +25,10 @@ class AdminRedirectIfAuthenticated
         // foreach ($guards as $guard) {
             
             if (!Auth::guard('admin')->check()) {
-                if(! strstr($_SERVER['REQUEST_URI'], 'admin/login')){
-                return redirect('admin/login');
+                if(! strstr($_SERVER['REQUEST_URI'], 'admin/register')){
+                    if(! strstr($_SERVER['REQUEST_URI'], 'admin/login')){
+                        return redirect('admin/login');
+                    }
                 }
             }
         // }

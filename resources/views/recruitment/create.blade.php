@@ -5,21 +5,25 @@
         <form action="{{ route('recruitment.store') }}" method="POST">
             @csrf
             <p>
-            <label for="recruitment_name">募集名</label>
-            <input type="text" name="recruitment_name" id="recruitment_name">
+            <label for="title">募集名</label>
+            <input type="text" name="title" id="title">
             </p>
             <p>
             <label for="number_of_people">人数</label>
             <input type="text" name="number_of_people" id="number_of_people">
             </p>
             <p>
-            <label for="discription">説明</label>
-            <input type="text" name="discription" id="discription">
+            <label for="body">説明</label>
+            <input type="text" name="body" id="body">
             </p>
             <p>
+            <label for="deadline">募集〆切日</label>
+            <input type="date" name="deadline" id="deadline">
+            </p>
+            <!-- <p>
             <label for="tag">タグ</label>
             <input type="text" name="tag" id="tag">
-            </p>
+            </p> -->
             <input type="submit" value="送信">
         </form>
         
