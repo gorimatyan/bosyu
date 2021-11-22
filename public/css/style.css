@@ -40,6 +40,10 @@ nav ul {
     list-style:none;
 }
 
+li {
+    list-style: none;
+}
+
 blockquote, q {
     quotes:none;
 }
@@ -103,23 +107,27 @@ input, select {
 
 /* 以下オリジナル */
 
+
+        /*ここからheaderのCSS */
+
+
 header {
     background-color: #cccccc;
+    height: 64px;
+    padding: 0px 16px;
+    display: flex;
+    justify-content: space-between;
 }
 
-header > div.container {
+/* .header-container {
     display: flex;
     justify-content: space-between;
     padding: 0px 16px 0px;
-}
-
-.container > div {
-    display: flex;
-    align-items: center;
-}
+} */
 
 .header-start {
     display: flex;
+    align-items: center;
 }
 
 .header-start > a > h1 {
@@ -128,19 +136,57 @@ header > div.container {
 
 .header-end {
     display: flex;
+    align-items: center;
 }
 
-.header-end > a {
-    margin: 16px;
+.header-end > li {
+    margin: 0px 8px;
 }
 
-.img-icon {
+.header-end__user-info {
+    display: flex;
+    align-items: center;
+}
+
+        /* recruitment show.blade.phpのcss */
+
+.user-profile {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-profile__user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile__self-introduction {
+    padding: 8px 0px;
+}
+
+.recruitment-details {
+    margin: 32px 0px;
+}
+
+            /* 親クラスが関係ないCSS */
+
+        /* ユーザー小アイコン */
+.img-icon-size-small {
     width: 32px;
     border-radius: 50%;
     margin: 0 8px 0;
 }
 
-.user {
-    display: flex;
-    align-items: center;
+
+.img-icon-size-medium {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 0 8px 0;
+}
+
+        /* ユーザーネーム */
+.user-name {
+    font-size: 18px;
 }

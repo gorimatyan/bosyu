@@ -2,19 +2,22 @@
 @section('content')
     <body>
         
-        <div class="user_information">
-            <div class="user">
-
+        <div class="user-profile">
+            <div class="user-profile__user">
+                <img src="http://localhost:8000/storage/{{ $user->image }}" class="img-icon-size-medium">
+                <a href="#" class="user-id">@ {{ $user->id }}</a>
+                <a href="#" class="user-name">{{ $user->name }}</a>
             </div>
-            <div class="self-introduction">
-                {{ $user->name }}
+
+            <div class="user-profile__self-introduction">
+                {{ $user->self_introduction }}
             </div>
         </div>
 
-        <article class="details_of_recruitment">
-            <div class="recruitment_title">{{ $recruitment->title }}</div>
-            <div class="discription"></div>
-            <div class="comment_space"></div>
+        <article class="recruitment-details">
+            <div class="recruitment-details__recruitment-title">{{ $recruitment->title }}</div>
+            <div class="recruitment-details__discription">{{ $recruitment->body }}</div>
+            <div class="recruitment-details__comment_space"></div>
         </article>
 
     </body>

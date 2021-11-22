@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-
+use PhpParser\Node\Expr\FuncCall;
 
 class RecruitmentController extends Controller
 {
@@ -113,4 +113,32 @@ class RecruitmentController extends Controller
     {
         //
     }
+
+
+    public function search(Request $request)
+    {   
+        $keyword = $request->keyword;
+
+        //1.全角スペースを半角スペースに変換
+        $keyword = str_replace('　', ' ', $keyword);
+        //2.前後のスペース削除（trimの対象半角スペースのみなので半角スペースに変換後行う）
+        $keyword = trim($keyword);
+        //3.連続する半角スペースを半角スペースひとつに変換
+        $keyword = preg_replace('/\s+/', ' ', $keyword);
+        //分割
+        $keywords = explode(' ',$keyword);
+
+        foreach($keywords as $keyword)
+        {
+            $recruitments = Recruitment::where('title' ,'like', "%{$keyword}%")
+                            ->orWhere('body' ,'like', "%{$keyword}%")
+                            ->get();
+        };
+                    
+
+        return view('recruitment.search')->with([
+            "recruitments" => $recruitments,
+        ]);
+    }
+
 }

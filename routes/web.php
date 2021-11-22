@@ -27,19 +27,7 @@ use App\Http\Controllers\Admin\AdminControllers\AdminController;
 Route::get('/', function () {return view('welcome');});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Users CRUD ------------------------------------------
-// 見本 Route::get('/users/{id}',[App\Http\Controllers\UsersController::class,'create']);
-Route::prefix('user')->name('user.')->group(function(){
 
-    Route::get('', [App\Http\Controllers\UsersController::class,'index'])->name('index'); // ユーザの一覧表示はいらんかも
-    Route::post('', [App\Http\Controllers\UsersController::class,'store'])->name('store'); 
-    Route::put('/{id}', [App\Http\Controllers\UsersController::class,'update'])->name('update'); 
-    Route::get('/{id}', [App\Http\Controllers\UsersController::class,'show'])->name('show'); 
-    Route::delete('/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('destroy');
-    Route::get('/create', [App\Http\Controllers\UsersController::class,'create'])->name('create'); 
-    Route::get('/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('edit');
-
-});
 
 // Auth::routes(['register' => false]); -------------------------------------
     Route::get('/login', [App\Http\Controllers\Auth\LoginController::class,'showLoginForm'])->name('login');
@@ -87,5 +75,19 @@ Route::prefix('recruitment')->name('recruitment.')->group(function(){
     Route::get('/{recruitment_id}',[App\Http\Controllers\RecruitmentController::class,'show'])->name('show');
     Route::get('/{recruitment_id}/edit',[App\Http\Controllers\RecruitmentController::class,'edit'])->name('edit');
     Route::put('/{recruitment_id}',[App\Http\Controllers\RecruitmentController::class,'update'])->name('update');
+    Route::get('/search/result',[App\Http\Controllers\RecruitmentController::class,'search'])->name('search');
+});
+
+// Users CRUD ------------------------------------------
+// 見本 Route::get('/users/{id}',[App\Http\Controllers\UsersController::class,'create']);
+Route::prefix('user')->name('user.')->group(function(){
+
+    Route::get('', [App\Http\Controllers\UsersController::class,'index'])->name('index'); // ユーザの一覧表示はいらんかも
+    Route::post('', [App\Http\Controllers\UsersController::class,'store'])->name('store'); 
+    Route::put('/{id}', [App\Http\Controllers\UsersController::class,'update'])->name('update'); 
+    Route::get('/{id}', [App\Http\Controllers\UsersController::class,'show'])->name('show'); 
+    Route::delete('/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('destroy');
+    Route::get('/create', [App\Http\Controllers\UsersController::class,'create'])->name('create'); 
+    Route::get('/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('edit');
 
 });

@@ -11,40 +11,52 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        
             <div class='header-start'>
                 <a href="#"><h1>サービス名</h1></a>
-                <form action="#" method="get">
-                    <input type="search" placeholder="募集を検索">
+                <form action="{{ route('recruitment.search') }}" method="GET">
+                    @csrf
+                    <input type="search" name='keyword' placeholder="募集を検索">
+                    <input type="submit" value="検索">
                 </form>
             </div>
 
-            <div class='header-end'>
+            <ul class='header-end'>
                 @if(Auth::guard('web')->check())
-                                <a class="user" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" class="img-icon">
-                                    <div class="user-name">{{ Auth::guard('web')->user()->name }}</div> 
-                                
-                                </a>
-                                
-                                <div class="logout" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        ログアウト
+
+                                <li>
+                                    <a class="header-end__user-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" class="img-icon-size-small">
+                                        <div class="user-name">{{ Auth::guard('web')->user()->name }}</div> 
+                                    
                                     </a>
+                                </li>
+                                <li>
+                                    <div class="header-end__logout" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            ログアウト
+                                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
                 @else
-                    <a href="{{ route('register') }}">ユーザー登録</a>
-
-                    <a href="{{ route('login') }}">ログイン</a>
+                
+                    <li>
+                         <a href="{{ route('register') }}">ユーザー登録</a>
+                    </li>
+                    <li>
+                         <a href="{{ route('login') }}">ログイン</a>
+                    </li>
+                </ul>
                 @endif
             </div>
-        </div>
+        
 
 
     </header>
