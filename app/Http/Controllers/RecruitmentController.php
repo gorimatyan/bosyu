@@ -86,7 +86,7 @@ class RecruitmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($recruitment_id)
     {
         //
     }
@@ -127,14 +127,42 @@ class RecruitmentController extends Controller
         $keyword = preg_replace('/\s+/', ' ', $keyword);
         //分割
         $keywords = explode(' ',$keyword);
-
+        
+        $recruitments = Recruitment::paginate(20);
+        $query = Recruitment::query();
+        // まず検索に引っかかる募集のコレクションクラスを取得
         foreach($keywords as $keyword)
         {
-            $recruitments = Recruitment::where('title' ,'like', "%{$keyword}%")
-                            ->orWhere('body' ,'like', "%{$keyword}%")
-                            ->get();
+            $query->where(function($query) use($keyword)
+            {
+                $query->where('title' ,'like', "%{$keyword}%")
+                      ->orwhere('body' ,'like', "%{$keyword}%");
+            });
+                            //get()だと動かないけど、first()なら何故か動く。なんで？
+                            //->コレクションクラスだから。
+        // dump($recruitments_collection);
+        // array:2 [▼
+        //         0 => Illuminate\Database\Eloquent\Collection {#1263 ▶}
+        //         1 => Illuminate\Database\Eloquent\Collection {#1173 ▶}
+        //         ]
         };
-                    
+        
+        //コレクションクラスのままではforeachでまわせないので、一旦first()を使ってモデルクラスに直す。
+        
+        // foreach($recruitments_collection as $recruitment)
+        // {
+        //     $recruitments[] = $recruitment->all();
+        // }
+        dump($query);
+        // dump($recruitments_collection);
+        $recruitments = $query->paginate(20);
+        dump($recruitments);
+        // array:2 [▼
+        //         0 => App\Models\Recruitment {#1105 ▶}
+        //         1 => App\Models\Recruitment {#700 ▶}
+        //         ]
+
+        
 
         return view('recruitment.search')->with([
             "recruitments" => $recruitments,

@@ -33,5 +33,29 @@ class DatabaseSeeder extends Seeder
             'self_introduction' => 'こんにちゃーすごりまでぇーす',
             'image' => 'defaultUserImg.jpg',
         ]);
+
+        DB::table('recruitments')->insert(
+        [
+            'id' => uniqid(),
+            'user_id' => 'hogehoge',
+            'title' => 'ゲームしよう',
+            'body' => 'Among usしましょう',
+            'status' => 0,
+            'number_of_people' => 10,
+            'deadline' => '2022-10-21',
+            'delete_flag' => 0,
+        ]);
+
+        DB::table('recruitments')->insert(
+        [
+            'id' => uniqid(),
+            'user_id' => 'hogehoge',
+            'title' => 'ZOOMで会議！',
+            'body' => 'いっぱい案出してください。',
+            'status' => 0,
+            'number_of_people' => 5,
+            'deadline' => '2022-10-22',
+            'delete_flag' => 0,
+        ]);
     }
 }
