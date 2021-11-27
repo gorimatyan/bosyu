@@ -117,7 +117,8 @@ class RecruitmentController extends Controller
 
     public function search(Request $request)
     {   
-        $keyword = $request->keyword;
+        $keyword = $request->input('keyword');
+        $search = $request->input('keyword');
 
         //1.全角スペースを半角スペースに変換
         $keyword = str_replace('　', ' ', $keyword);
@@ -153,10 +154,10 @@ class RecruitmentController extends Controller
         // {
         //     $recruitments[] = $recruitment->all();
         // }
-        dump($query);
+        
         // dump($recruitments_collection);
         $recruitments = $query->paginate(20);
-        dump($recruitments);
+        
         // array:2 [▼
         //         0 => App\Models\Recruitment {#1105 ▶}
         //         1 => App\Models\Recruitment {#700 ▶}
@@ -166,6 +167,7 @@ class RecruitmentController extends Controller
 
         return view('recruitment.search')->with([
             "recruitments" => $recruitments,
+            "search" => $search,
         ]);
     }
 
