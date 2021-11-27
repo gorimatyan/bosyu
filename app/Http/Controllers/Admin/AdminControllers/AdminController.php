@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Admin;
 
 class AdminController extends Controller
 {
@@ -30,11 +31,11 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function home()
+    public function home(Request $request)
     {
         if (Auth::guard('admin')->check()) {
-            $admins = Auth::guard('admin')->user()->all();
-
+            $admins = Admin::all();
+            // dd($admins);
             return view('admin.home')->with([
                 "admins" => $admins,
             ]);

@@ -6,7 +6,7 @@
             @foreach ($recruitments as $recruitment)
             <li class="search__recruitment">
                 <div class="search__recruitment__title">
-                    {{ $recruitment -> title }}
+                    <a href="{{ route('recruitment.show',['recruitment_id'=>$recruitment -> id]) }}" >{{ $recruitment -> title }}</a>
                 </div>
                 <div class="search__recruitment__body">
                     {{ $recruitment -> body }}

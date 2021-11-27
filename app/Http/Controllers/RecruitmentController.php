@@ -88,7 +88,13 @@ class RecruitmentController extends Controller
      */
     public function edit($recruitment_id)
     {
-        //
+        $recruitment = Recruitment::find($recruitment_id);
+        $user = $recruitment -> user;
+
+        return view('recruitment.edit')->with([
+            "recruitment" => $recruitment,
+            "user" => $user,
+        ]);
     }
 
     /**
@@ -98,9 +104,19 @@ class RecruitmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $recruitment_id)
+    {   
+        $recruitment = Recruitment::find($recruitment_id);
+        // dd($recruitment);
+
+        $recruitment->title = $request->input('title');
+        $recruitment->number_of_people = $request->input('number_of_people');
+        $recruitment->body = $request->input('body');
+        $recruitment->deadline = $request->input('deadline');
+
+        $recruitment->save();
+
+        return redirect()->route('recruitment.show',[ "recruitment_id" => $recruitment -> id]);
     }
 
     /**

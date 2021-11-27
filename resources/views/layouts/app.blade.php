@@ -16,7 +16,7 @@
                 <a href="#"><h1>サービス名</h1></a>
                 <form action="{{ route('recruitment.search') }}" method="GET">
                     @csrf
-                    <input type="search" name='keyword' placeholder="募集を検索" value="@if (isset($search)){{$search}} @endif">
+                    <input type="search" name='keyword' placeholder="募集を検索" value="@if (isset($search)){{$search}}@endif">
                     <input type="submit" value="検索">
                 </form>
             </div>
