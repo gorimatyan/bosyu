@@ -34,6 +34,24 @@ class DatabaseSeeder extends Seeder
             'image' => 'defaultUserImg.jpg',
         ]);
 
+        DB::table('users')->insert([
+            'id' => 'gorimatyan',
+            'name' => 'ごりまちゃん',
+            'email' => 'test@test.co.jp',
+            'password' => Hash::make('hogehoge'),
+            'self_introduction' => 'idがgorimatyanです',
+            'image' => 'defaultUserImg.jpg',
+        ]);
+
+        DB::table('users')->insert([
+            'id' => 'testtest',
+            'name' => 'テストテスト',
+            'email' => 'test@test.ne.jp',
+            'password' => Hash::make('hogehoge'),
+            'self_introduction' => 'idがtesttestです',
+            'image' => 'defaultUserImg.jpg',
+        ]);
+
         DB::table('recruitments')->insert(
         [
             'id' => uniqid(),
@@ -56,6 +74,23 @@ class DatabaseSeeder extends Seeder
             'number_of_people' => 5,
             'deadline' => '2022-10-22',
             'delete_flag' => 0,
+        ]);
+
+        DB::table('recruitments')->insert(
+        [
+            'id' => uniqid(),
+            'user_id' => 'gorimatyan',
+            'title' => 'idがgorimatyanの投稿だよ',
+            'body' => 'ごりまです',
+            'status' => 0,
+            'number_of_people' => 5,
+            'deadline' => '2022-10-22',
+            'delete_flag' => 0,
+        ]);
+
+        DB::table('comments')->insert(
+        [
+            
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recruitment;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -71,12 +72,16 @@ class RecruitmentController extends Controller
     public function show($recruitment_id)
     {   
         $recruitment = Recruitment::find($recruitment_id);
+        // 投稿のユーザーを呼び出す
         $user = $recruitment->user;
+        // 投稿に関連するコメント（userとrecruitmentの中間テーブル）を呼び出す
+        $comments = $recruitment->users;
 
         //　募集詳細のviewにルートパラメータから得た募集とそれに紐づくユーザー情報を取得
         return view('recruitment.show')->with([
             "recruitment" => $recruitment,
             "user" => $user,
+            "comments" => $comments,
         ]);
     }
 
@@ -185,6 +190,24 @@ class RecruitmentController extends Controller
             "recruitments" => $recruitments,
             "search" => $search,
         ]);
+    }
+
+    public function postComment(Request $request,$recruitment_id)
+    {   // コメントを取得
+        $comment = $request->comment;
+        // dd($comment); -> OK
+        //　Commentテーブルにデータを保存
+        $comment = new Comment;
+		$comment->comment = $request->input('comment');
+		$comment->user_id = Auth::user()->id;
+		$comment->recruitment_id = $recruitment_id;
+        
+        // $comment->save();
+
+        $user = User::find(Auth::user()->id);
+        dd($user->recruitments->where('id',"$recruitment_id")->pivot->comment);
+
+
     }
 
 }

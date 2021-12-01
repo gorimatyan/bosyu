@@ -27,7 +27,16 @@ class CreateRecruitmentsTable extends Migration
 
 
             $table->foreign('user_id',16)->references('id')->on('users')->onDelete('cascade');
-            
+        //     $table->id();
+        //     $table->integer('recruitment_id');
+        //     $table->string('user_id');
+        //     $table->string('comment',255);
+        //     $table->integer('delete_flag')->default(0);
+        //     $table->timestamps();
+
+        //    $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
+        //    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
 
 

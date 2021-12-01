@@ -25,8 +25,10 @@ class Recruitment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comments_users(){
-        return $this->belongsToMany(User::class,'comments');
+    public function users(){
+        return $this->belongsToMany(User::class,'comments','recruitment_id','user_id')
+                    ->withPivot('comment')
+                    ->withTimestamps();
     }
 
     public function entry_users_users(){

@@ -45,15 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function recruitments(){
-        return $this->hasMany(Recruitment::class);
-    }
+    // public function recruitments(){
+    //     return $this->hasMany(Recruitment::class);
+    // }
 
-    public function comments_recruitments(){
-        return $this->belongsToMany(Recruiment::class,'comments');
+    public function recruitments(){
+        return $this->belongsToMany(Recruitment::class,'comments','user_id','recruitment_id')
+                    ->withPivot('comment')
+                    ->withTimestamps();
     }
 
     public function user_entry_recruitments(){
-        return $this->belongsToMany(Recruiment::class,'user_entry');
+        return $this->belongsToMany(Recruitment::class,'user_entry');
     }
 }

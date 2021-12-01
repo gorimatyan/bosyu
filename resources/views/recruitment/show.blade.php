@@ -15,6 +15,7 @@
         </div>
 
         <article class="recruitment-details">
+        <div class="recruitment-details__recruitment-title">{{ $recruitment->id }}</div>
             <div class="recruitment-details__recruitment-title">{{ $recruitment->title }}</div>
             <div class="recruitment-details__discription">{{ $recruitment->body }}</div>
             <div class="recruitment-details__comment_space"></div>
@@ -28,6 +29,16 @@
                 <a href=""></a>
             </li>
         </ul>
-
+        
+        <div class="comments">
+        @foreach($comments as $comment)
+        {{ $comment->pivot->comment }}
+        @endforeach 
+            <form action="{{ route('recruitment.postComment',['recruitment_id' => $recruitment -> id]) }}" method="POST">
+            @csrf
+            <input type="text" name="comment" placeholder="コメントを書き込む">
+            <input type="submit" value="送信">
+            </form>
+        </div>
     </body>
 @endsection

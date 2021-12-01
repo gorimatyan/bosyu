@@ -35,7 +35,7 @@ class AdminController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $admins = Admin::all();
-            // dd($admins);
+            // dd($request->session());
             return view('admin.home')->with([
                 "admins" => $admins,
             ]);
@@ -51,7 +51,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(20);
+        // dd($users ->links());
         return view('admin.index')->with([
             "users" => $users,
         ]);

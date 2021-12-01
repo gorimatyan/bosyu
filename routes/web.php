@@ -75,6 +75,7 @@ Route::prefix('recruitment')->name('recruitment.')->group(function(){
     Route::get('/{recruitment_id}/edit',[App\Http\Controllers\RecruitmentController::class,'edit'])->name('edit');
     Route::put('/{recruitment_id}',[App\Http\Controllers\RecruitmentController::class,'update'])->name('update');
     Route::get('/search/result',[App\Http\Controllers\RecruitmentController::class,'search'])->name('search');
+    Route::post('/{recruitment_id}/comment/post',[App\Http\Controllers\RecruitmentController::class,'postComment'])->name('postComment');
 });
 
 // Users CRUD ------------------------------------------
