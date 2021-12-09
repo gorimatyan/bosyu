@@ -76,6 +76,7 @@ class RecruitmentController extends Controller
         $user = $recruitment->user;
         // 投稿に関連するコメント（userとrecruitmentの中間テーブル）を呼び出す
         $comments = $recruitment->users;
+        // dd($user);
 
         //　募集詳細のviewにルートパラメータから得た募集とそれに紐づくユーザー情報を取得
         return view('recruitment.show')->with([
@@ -130,9 +131,14 @@ class RecruitmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($recruitment_id)
     {
-        //
+        $recruitment = Recruitment::query()->where('id' ,"$recruitment_id")->first();
+        $recruitment->delete_flag = 1;
+        // dd($recruitment);
+        $recruitment->save();
+
+        return redirect()->route('home');
     }
 
 
@@ -157,9 +163,9 @@ class RecruitmentController extends Controller
         {
             $query->where(function($query) use($keyword)
             {
-                $query->where('title' ,'like', "%{$keyword}%")
+                $query->where('title' ,'like', "%{$keyword}%") 
                       ->orwhere('body' ,'like', "%{$keyword}%");
-            });
+            })->where('delete_flag',0) ;
                             //get()だと動かないけど、first()なら何故か動く。なんで？
                             //->コレクションクラスだから。
         // dump($recruitments_collection);
@@ -202,10 +208,13 @@ class RecruitmentController extends Controller
 		$comment->user_id = Auth::user()->id;
 		$comment->recruitment_id = $recruitment_id;
         
-        // $comment->save();
+        $comment->save();
+        //--------以上でコメント投稿処理は終わりでよさそう
 
-        $user = User::find(Auth::user()->id);
-        dd($user->recruitments->where('id',"$recruitment_id")->pivot->comment);
+        // $user = User::find(Auth::user()->id);
+        // dd($user->recruitments);
+
+        
 
 
     }

@@ -21,18 +21,26 @@
             <div class="recruitment-details__comment_space"></div>
         </article>
         
+        @if(Auth::user()->id === $user->id )
         <ul class="button-edit-delete">
             <li class="button-edit-delete__edit">
                 <a href="{{ route('recruitment.edit' ,['recruitment_id' => $recruitment -> id]) }}">編集</a>
             </li>
             <li class="button-edit-delete__delete">
-                <a href=""></a>
+                <form action="{{ route('recruitment.destroy',['recruitment_id' => $recruitment->id]) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    @csrf
+                
+                    <button type="submit">投稿削除</button>
+                </form>
             </li>
         </ul>
+        @endif
         
         <div class="comments">
         @foreach($comments as $comment)
-        {{ $comment->pivot->comment }}
+        {{ $comment->pivot->user_id }} 
+        {{ $comment->pivot->comment }} <br>
         @endforeach 
             <form action="{{ route('recruitment.postComment',['recruitment_id' => $recruitment -> id]) }}" method="POST">
             @csrf

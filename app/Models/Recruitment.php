@@ -15,6 +15,7 @@ class Recruitment extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
         'people',
         'title',
         'number_of_people',
@@ -24,7 +25,7 @@ class Recruitment extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-
+    // Commentテーブルを中間テーブルとする多対多のリレーション
     public function users(){
         return $this->belongsToMany(User::class,'comments','recruitment_id','user_id')
                     ->withPivot('comment')

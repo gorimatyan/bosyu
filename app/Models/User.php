@@ -45,10 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function recruitments(){
-    //     return $this->hasMany(Recruitment::class);
-    // }
+    public function hasRecruitments(){
+        return $this->hasMany(Recruitment::class);
+    }
 
+    // // Commentテーブルを中間テーブルとする多対多のリレーション
     public function recruitments(){
         return $this->belongsToMany(Recruitment::class,'comments','user_id','recruitment_id')
                     ->withPivot('comment')

@@ -21,8 +21,8 @@ class CreateCommentsTable extends Migration
             $table->integer('delete_flag')->default(0);
             $table->timestamps();
 
-           $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
-           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+           $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade')->onUpdate('cascade');
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

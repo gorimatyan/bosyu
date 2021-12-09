@@ -65,7 +65,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        // AdminRegisterControllerに登録処理を記述している。
     }
 
     /**
@@ -76,7 +76,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //　同上　
     }
 
     /**
@@ -140,6 +140,9 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
+        $user->delete_flag = 1;
+        $user->save();
+
+        return redirect()->route('admin.index');
     }
 }
