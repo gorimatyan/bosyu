@@ -42,7 +42,7 @@
                             @foreach ($users as $user)
                             <tr>
                                 <th scope="row"><img src="http://localhost:8000/storage/{{ $user->image }}" class='db-icon-min-size img-icon'></th>
-                                <td><a href="/admin/{{ $user->id }}">{{ $user->id }}</a></td>
+                                <td><a href="{{ route('admin.show' , ['id' => $user->id]) }}">{{ $user->id }}</a></td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->delete_flag }}</td>

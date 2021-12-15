@@ -57,14 +57,18 @@ Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function
     Route::post('/password/reset', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class,'reset']);
 
     // AdminからのUsersデータのCRUD
-    Route::get('/home', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'home'])->name('home');
-    Route::get('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'index'])->name('index'); 
-    // Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'store'])->name('store'); 
-    Route::put('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'update'])->name('update'); 
-    Route::get('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'show'])->name('show'); 
-    Route::delete('/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'destroy'])->name('destroy');
-    Route::get('/create', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'create'])->name('create'); 
-    Route::get('/{id}/edit', [App\Http\Controllers\Admin\AdminControllers\AdminController::class,'edit'])->name('edit');
+    Route::get('user/home', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'home'])->name('home');
+    Route::get('user/index', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'index'])->name('index'); 
+    // Route::post('/index', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'store'])->name('store'); 
+    Route::put('user/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'update'])->name('update'); 
+    Route::get('user/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'show'])->name('show'); 
+    Route::delete('user/{id}', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'destroy'])->name('destroy');
+    // Route::get('/create', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'create'])->name('create'); 
+    Route::get('user/{id}/edit', [App\Http\Controllers\Admin\AdminControllers\AdminUserController::class,'edit'])->name('edit');
+    
+    // AdminからのRecruitmentsデータのCRUD
+    Route::get('user/{id}/recruitment/{recruitment_id}', [App\Http\Controllers\Admin\AdminControllers\AdminRecruitmentController::class,'show'])->name('recruitment.show');
+
 });
 
 Route::prefix('recruitment')->name('recruitment.')->group(function(){

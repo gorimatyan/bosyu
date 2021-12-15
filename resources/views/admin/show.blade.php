@@ -20,11 +20,11 @@
                 <div class="card-header">ユーザ詳細</div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 ml-2 bg-white">
-                            <li class="breadcrumb-item  mr-2"><a href="/admin/{{ $user->id }}/edit">
+                            <li class="breadcrumb-item  mr-2"><a href="{{ route('admin.edit' , ['id' => $user->id]) }}">
                             <button class="btn btn-primary">編集</button>
                         </a>
                     </li>
-                            <form action="/admin/{{ $user->id }}" method="post">
+                            <form action="{{ route('admin.show' , ['id' => $user->id]) }}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             {!! csrf_field() !!}
                                 <li class="breadcrumb-item"><button type="submit" class="btn btn-danger">削除</button></li>
@@ -76,7 +76,20 @@
                         </tr>
                         <tr>
                             <td>募集中のBOSYU</td>
-                            <td>{{ $user->bosyu }}</td>
+                            
+                                @foreach($recruitments as $recruitment)
+                                    <td>
+                                    <a href="{{ route('admin.recruitment.show' , ['id' => $user->id, 'recruitment_id' => $recruitment->id ]) }}">
+                                        {{ $recruitment->title }}
+                                    </a>
+                                    </td>
+                                
+                                
+                                @endforeach
+                            <div>
+                                
+                            </div>
+
                         </tr>
                         <tr>
                             <td>参加したBOSYU</td>
@@ -112,7 +125,7 @@
 
                             <tr>
                                 <th scope="row"><img src="http://localhost:8000/storage/{{ $user->image }}" class='db-icon-min-size img-icon'></th>
-                                <td><a href="/{{ $user->id }}">{{ $user->id }}</a></td>
+                                <td><a href="{{ route('admin.edit' , ['id' => $user->id]) }}">{{ $user->id }}</a></td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->delete_flag }}</td>
@@ -123,9 +136,9 @@
 
 
 
-                        </tbody> -->
+                        </tbody>
 
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>

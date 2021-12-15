@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Admin;
 
-class AdminController extends Controller
+class AdminUserController extends Controller
 {
 
     protected $redirectTo = RouteServiceProvider::ADMIN_HOME;
@@ -32,7 +32,8 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function home(Request $request)
-    {
+    {   
+            //　このif文はここに書かんでいいやろ
         if (Auth::guard('admin')->check()) {
             $admins = Admin::all();
             // dd($request->session());
@@ -88,8 +89,12 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+
+        $recruitments = $user->hasRecruitments;
+
         return view('admin.show')->with([
             "user" => $user,
+            "recruitments" => $recruitments,
         ]);
     }
 
@@ -102,8 +107,11 @@ class AdminController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $recruitments = $user->hasRecruitments;
+
         return view('admin.edit')->with([
             "user" => $user,
+            "recruitments" => $recruitments
         ]);
     }
 
@@ -121,7 +129,7 @@ class AdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->delete_flag = $request->input('delete_flag');
-        $user->user_description = $request->input('user_description');
+        $user->self_introduction = $request->input('self_introduction');
         $user->bosyu = $request->input('bosyu');
         $user->entry = $request->input('entry');
         $user->gender = $request->input('gender');
