@@ -15,7 +15,8 @@ class CreateRecruitmentsTable extends Migration
     {
         //　投稿（募集）のテーブル
         Schema::create('recruitments', function (Blueprint $table) {
-            $table->string('id',13)->primary();
+            $table->integer('number');
+            $table->string('id',13)->unique();
             $table->string('user_id',16);
             $table->string('title',100);
             $table->string('body',1000);

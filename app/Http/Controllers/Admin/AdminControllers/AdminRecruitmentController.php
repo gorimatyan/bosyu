@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\AdminControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Recruitment;
 
 class AdminRecruitmentController extends Controller
 {
@@ -14,7 +16,11 @@ class AdminRecruitmentController extends Controller
      */
     public function index()
     {
-        //
+        $recruitments = Recruitment::with('user')->get();
+
+        return view('admin.recruitment.index')->with([
+            'recruitments' => $recruitments
+        ]);
     }
 
     /**
@@ -46,7 +52,13 @@ class AdminRecruitmentController extends Controller
      */
     public function show($user_id, $recruitment_id)
     {   
-        return view('admin.recruitment.show');
+        $user = User::find($user_id);
+        $recruitment = Recruitment::find($recruitment_id);
+        dd($recruitment);
+        return view('admin.recruitment.show')->with([
+            'user' => $user,
+            'recruitment' => $recruitment,
+        ]);
     }
 
     /**

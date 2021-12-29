@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [
+            'number' => 1,
             'id' => uniqid(),
             'user_id' => 'hogehoge',
             'title' => 'ゲームしよう',
@@ -65,7 +66,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('recruitments')->insert(
-        [
+        [   
+            'number' => 2,
             'id' => uniqid(),
             'user_id' => 'hogehoge',
             'title' => 'ZOOMで会議！',
@@ -78,6 +80,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [
+            'number' => 3,
             'id' => uniqid(),
             'user_id' => 'gorimatyan',
             'title' => 'idがgorimatyanの投稿だよ',

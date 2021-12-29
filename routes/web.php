@@ -68,6 +68,7 @@ Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function
     
     // AdminからのRecruitmentsデータのCRUD
     Route::get('user/{id}/recruitment/{recruitment_id}', [App\Http\Controllers\Admin\AdminControllers\AdminRecruitmentController::class,'show'])->name('recruitment.show');
+    Route::get('recruitments/index', [App\Http\Controllers\Admin\AdminControllers\AdminRecruitmentController::class,'index'])->name('recruitment.index');
 
 });
 

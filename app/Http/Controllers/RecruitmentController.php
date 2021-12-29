@@ -51,8 +51,14 @@ class RecruitmentController extends Controller
         $recruitment->number_of_people = $request->input('number_of_people');
         $recruitment->body = $request->input('body');
         $recruitment->deadline = $request->input('deadline');
+        
+        //　登録番号を取得
+        $number = DB::table('recruitments')
+                  ->count('*') +1;
 
-        // ユニークな募集IDをDBと照らし合わせて取得
+        $recruitment->number = $number;
+
+        // ユニークな募集IDをDBと照らし合わせて被りが出ないように取得
         for($id = uniqid(); DB::table('recruitments')->where('id', $id)->exists();)
         {
             $id = uniqid();

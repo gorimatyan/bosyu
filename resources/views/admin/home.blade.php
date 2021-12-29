@@ -3,19 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-end">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active">
                     ホーム
                 </button>
-                <a href="{{ route('admin.index')}}"><button type="button" class="list-group-item list-group-item-action">ユーザ編集</button></a>
-                <a href='#'><button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button></a>
+                <a href="{{ route('admin.index')}}"><button type="button" class="list-group-item list-group-item-action">ユーザーの編集</button></a>
+                <a href="{{ route('admin.recruitment.index')}}"><button type="button" class="list-group-item list-group-item-action">募集の編集</button></a>
                 <a href='#'><button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button></a>
                 <a href='#'><button type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button></a>
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="card mb-4">
                 <div class="card-header">{{ __('管理者一覧') }}</div>
 

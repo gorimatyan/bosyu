@@ -91,7 +91,7 @@ class AdminUserController extends Controller
         $user = User::find($id);
 
         $recruitments = $user->hasRecruitments;
-
+        // dd($recruitments);
         return view('admin.show')->with([
             "user" => $user,
             "recruitments" => $recruitments,
