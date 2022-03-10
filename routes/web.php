@@ -95,5 +95,6 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::delete('/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('destroy');
     Route::get('/create', [App\Http\Controllers\UsersController::class,'create'])->name('create'); 
     Route::get('/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('edit');
+    Route::get('settings/MyPage', [App\Http\Controllers\UsersController::class,'showMyPage'])->name('showMyPage');
 
 });

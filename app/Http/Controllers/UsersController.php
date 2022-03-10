@@ -176,4 +176,17 @@ class UsersController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function showMyPage()
+    {   
+        // これはshowメソッドでええ
+        // showメソッドで返したviewの中で「 if(ログインユーザーID＝開いているマイページのユーザーID) ]で作れば問題なさそう。
+        $login_user = Auth::user();
+        
+        return view('showMyPage')->with([
+            "user" => $login_user,
+        ]);
+
+    }
+
 }

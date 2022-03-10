@@ -6,6 +6,9 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
+/* F3でファイル名またはクラス名を検索して編集していけば楽かも
+Ctrl+Pでどのファイルにそのクラス名が使われているかを検索もできる */
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -23,12 +26,14 @@ time, mark, audio, video {
     border:0;
     outline:0;
     font-size:100%;
+    font-family: "メイリオ","Meiryo";
     vertical-align:baseline;
     background:transparent;
 }
 
 body {
     line-height:1;
+    background-color: #FFEEDC;
 }
 
 article,aside,details,figcaption,figure,
@@ -60,6 +65,7 @@ a {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
+    text-decoration:none; 
 }
 
 /* change colours to suit your needs */
@@ -105,11 +111,10 @@ input, select {
     vertical-align:middle;
 }
 
-/* 以下オリジナル */
+/* -------------------------------------以下オリジナル------------------------------------- */
 
 
-        /*ここからheaderのCSS */
-
+        /*layouts app.blade.php */
 
 header {
     background-color: #cccccc;
@@ -128,11 +133,9 @@ header {
 .header-start {
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 }
 
-.header-start > a > h1 {
-    margin-right: 16px;
-}
 
 .header-end {
     display: flex;
@@ -169,31 +172,333 @@ header {
     margin: 32px 0px;
 }
 
-            /* 親クラスが関係ないCSS */
 
-        /* ユーザー小アイコン */
+        /* layouts/login.blade.php */
+
+#login-header{
+  background:linear-gradient(#FF9F3E, #FFEEDC);
+}
+
+.login-frame{
+  max-width: 771px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-forms{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.login-form{
+  display: flex;
+}
+
+.login-form > label{
+  margin-bottom: 10px;
+  margin-top: 12px;
+  margin-right: 15px;
+}
+
+.textbox-password{
+  margin-left: 32px;
+}
+
+.login-error{
+  margin: 10px 0px;
+}
+
+.login-btn{
+  border-radius: 10px;
+  border: 0px solid;
+  width: 281px;
+  border-color: #686868;
+  background-color: #FF9F3E;
+  padding: 8px;
+  margin-right: 50px;
+  box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  margin: 0 0 20 auto;
+}
+
+.login-btn-wrapper{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
+}
+
+.login-btn:hover{
+  opacity: 0.7;
+}
+
+.login-help{
+  margin-left: 128px;
+}
+
+.login-help > p{
+  margin-bottom: 10px;
+}
+
+.sns-login{
+  display: flex;
+  justify-content: center;
+}
+
+.LINE-login{
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #06C755;
+  padding: 10px 25px;
+  border-radius: 20px;
+  margin-right: 25px;
+}
+
+.Twitter-login{
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #00ACEE;
+  padding: 10px 25px;
+  border-radius: 20px;
+}
+
+.LINE-login:hover{
+  opacity: 0.7;
+}
+.Twitter-login:hover{
+  opacity: 0.7;
+}
+
+              /* 汎用CSS */
+.container{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+            
+/* ユーザー小アイコン */
 .img-icon-size-small {
     width: 32px;
     border-radius: 50%;
     margin: 0 8px 0;
 }
 
-
+/* ユーザー中アイコン */
 .img-icon-size-medium {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    margin: 0 8px 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 8px 0;
 }
 
-        /* ユーザーネーム */
+/* ユーザーネーム */
 .user-name {
-    font-size: 18px;
+  font-size: 18px;
 }
+
+/* サービス名　logo */
+#service-logo{
+  margin-right: 16px;
+}
+
+/* 枠 */
+.frame{
+  border-radius: 38px;
+  border:2px solid;
+  border-color: #EB8117;
+  background-color: white;
+  padding: 26px 26px;
+  box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+}
+
+/* 太字 */
+.bold{
+  font-weight: bold;
+}
+
+/* 内容の中央ぞろえ */
+.content-center{
+  display: flex;
+  justify-content: center;
+}
+
+.card-header{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+.textbox{
+  border-radius: 10px;
+  border: 1px solid;
+  border-color: #686868;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 12px;
+  box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+}
+
+.textbox > input{
+  outline: none;
+  border: none;
+  width: 256px;
+}
+
+.fontsize-36px{
+  font-size: 36px;
+  color: #686868;
+}
+
+.fontsize-16px{
+  font-size: 16px;
+  color: #686868;
+}
+
+.border-line{
+  width: 457px;
+  border: 1px solid;
+  border-color: #EB8117;
+  margin-bottom: 16px;
+}
+
+/*
+@media以外の所は全てのサイズで読み込まれます。
+
+トップページのレスポンシブ
+*/
+
+@media screen and (min-width:744px) and (max-width:1024px) {
+  /*　画面サイズが744pxから1024pxまではここを読み込む　*/
+  
+}
+ @media screen and (min-width:1025px) and (max-width:1198px) {
+  /*　画面サイズが1025pxから1198pxまではここを読み込む　*/
+
+ }
+ @media screen and (min-width:1199px) and (max-width:1635px){
+  /*　画面サイズが1199px ~ 1635pxからはここを読み込む　*/
+  
+ }
+ @media screen and (min-width:1636px) {
+  /*　画面サイズが1636pxからはここを読み込む　*/
+
+}
+
+/*
+@media以外の所は全てのサイズで読み込まれます。
+
+他ページのレスポンシブ
+*/
+
+ @media screen and (max-width:480px) {
+  /*　画面サイズが480px以下はここを読み込む　*/
+  .container{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 10px;
+  }
+
+  .login-form{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .textbox-password{
+    margin-left: 0px;
+  }
+  .login-forms{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .login-btn{
+    border-radius: 10px;
+    border: 0px solid;
+    width: 100%;
+    border-color: #686868;
+    background-color: #FF9F3E;
+    padding: 8px;
+    margin-right: 0px;
+    box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    margin: 0 0 20 auto;
+  }
+  .card{
+    width:100%;
+  }
+  .login-help{
+    margin-left: 0px;
+  }
+  .sns-login{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .LINE-login{
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 15px; 
+  }
+  .textbox > input {
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+}
+
+
+
+ @media screen and (min-width:481px) and (max-width:770px) {
+  /*　画面サイズが481pxから770pxまではここを読み込む　*/
+  .container{
+    /* max-width: 1300px; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 16px;
+  }
+
+ }
+ @media screen and (min-width:771px) and (max-width:959px){
+  /*　画面サイズが771px ~ 959pxからはここを読み込む　*/
+  .container{
+    /* max-width: 1300px; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 32px;
+  }
+ }
+ @media screen and (min-width:960px) {
+  /*　画面サイズが960pxからはここを読み込む　*/
+  .container{
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 32px;
+  }
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------- */
+
+
+
+
 
 
 /* bootstrap4　グリッドシステム（cotainer系、col系） */
-
+/* 
 .container,
 .container-fluid,
 .container-xl,
@@ -205,9 +510,10 @@ header {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-}
+} */
 
-@media (min-width: 576px) {
+/* 
+ @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
   }
@@ -226,7 +532,10 @@ header {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1540px;
   }
-}
+} */
+
+
+ 
 .row {
   display: flex;
   flex-wrap: wrap;

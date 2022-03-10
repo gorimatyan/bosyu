@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('image');
             $table->integer('gender')->nullable();
+            $table->integer('login_days')->default(0);
+            $table->date('created_day')->default(now());
             $table->string('self_introduction',1000);
             $table->integer('delete_flag')->default(0);
             $table->string('remember_token',100)->nullable();
@@ -49,6 +51,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {   
         Schema::dropIfExists('comments');
