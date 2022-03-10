@@ -20,14 +20,12 @@
                                     <div class="textbox">
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     </div>
-                                        @error('email')
+                                </div>
+                                @error('email')
                                             <span class="login-error fontsize-16px" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-
-                                </div>
-
                                 <div class="login-form">
                                     <label for="password" class="textbox-password fontsize-16px bold">パスワード</label>
                                         <div class="textbox">
@@ -55,14 +53,14 @@
                                             </p>
                                     @endif
                                         <p>新規登録は
-                                            <a href="" class="bold">
+                                            <a href="{{ route('register') }}" class="bold">
                                                 こちら
                                             </a>
                                         </p>
                                     </div>
 
                             <div class="content-center">
-                                <div class="border-line"> </div>
+                                <div class="login-border-line"> </div>
                             </div>
 
                             <div class="sns-login">

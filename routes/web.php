@@ -39,7 +39,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::post('/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class,'endResetLinkEmail'])->name('password.email');
     Route::get('/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
     Route::post('/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class,'reset']);
-    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'userRegister']);
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'userRegister'])->name('userReginster');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
