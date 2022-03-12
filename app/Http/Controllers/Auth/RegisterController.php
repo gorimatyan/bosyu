@@ -64,15 +64,12 @@ class RegisterController extends Controller
         // ]);
         
         $user = new User;
-
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
         $user->id = $request->input('id');
-        $user->user_description = $request->input('user_description');
 
             // imageに画像ファイルパスを保存する処理 
-        $originalImg = $request->file('image');
+        // $originalImg = $request->file('image');
 
         if(isset($originalImg)){
             // $filePath = $originalImg->store('public');
@@ -109,11 +106,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'id' => ['required','string','min:8','max:16','unique:users'],
-            'user_description' => ['required','string','max:1000'],
+            // 'user_description' => ['required','string','max:1000'],
         ]);
     }
 
