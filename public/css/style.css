@@ -149,7 +149,7 @@ input, select {
 .lists-header__top{
   display: flex;
   justify-content: space-between;
-  padding: 8px 0px;
+  height: 56px;
 }
 .lists-header__start {
   display: flex;
@@ -171,7 +171,20 @@ input, select {
 }
 .lists-header__bottom{
   display: flex;
+  padding-top: 8px;
+  flex-wrap: nowrap;
+}
+.header-list{
+  color: #959595;
+  margin-right: 35px;
 
+}
+.header-list__is-active{
+  color: #2B2B2B;
+  margin-right: 35px;
+  padding-bottom: 8px;
+  border-bottom: 5px solid;
+  border-color: #E57300;
 }
 
 
@@ -1718,6 +1731,9 @@ input, select {
     margin-left: 91.6666666667%;
   }
 
+
+
+      /* JavaScriptを使った部分のCSS */
 }
 .dropdown {
   margin: 0 0 0 auto;
@@ -1729,6 +1745,7 @@ input, select {
   padding: 0.2em;
   background: none; /* デフォルトスタイル リセット */
   border: 0; /* デフォルトスタイル リセット */
+  -webkit-user-drag: none;
 }
 .dropdown__body {
   width: 250px;
@@ -1753,9 +1770,10 @@ input, select {
   font-size: 0.95em;
   text-decoration: none;
   color: #444;
+  cursor: pointer;
 }
 .dropdown__item-link:hover {
-  background: #fbfbfb;
+  background: #cccccc;
 }
 .dropdown__body {
   display: none;
@@ -1763,4 +1781,14 @@ input, select {
 .dropdown__btn.is-open + .dropdown__body {
   display: block;
   z-index: 4;
+}
+.dropdown__btn.is-open::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  cursor: default; /* カーソルはデフォルトに戻しておく */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
 }

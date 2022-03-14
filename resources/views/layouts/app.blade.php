@@ -34,13 +34,13 @@
                         <div class="dropdown__body">
                             <ul class="dropdown__list">
                                 <li class="dropdown__item">
-                                    <a class="dropdown__item-link dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown__item-link" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                                         ログアウト
                                     </a>
                                 </li>
-                                <li class="dropdown__item"><a href="https://www.yahoo.co.jp/" class="dropdown__item-link">Yahoo! JAPAN</a></li>
+                                <li class="dropdown__item"><a href="#" class="dropdown__item-link">Yahoo! JAPAN</a></li>
                                 <li class="dropdown__item"><a href="https://www.bing.com/" class="dropdown__item-link">Bing</a></li>
                             </ul>
                         </div>
@@ -66,7 +66,12 @@
                 @endif
         </div>
 
-        <div class="lists-header__bottom">
+        <div class="lists-header__bottom bold">
+            <a href="" class="header-list__is-active">おすすめ</a>
+            <a href="" class="header-list">最新の募集</a>
+            <a href="" class="header-list">最新の待ち人</a>
+            <a href="" class="header-list">タグランキング</a>
+            <a href="" class="header-list">マイページ</a>
 
         </div>
 
@@ -83,7 +88,7 @@
 </script>
 
 
-    </header>
+</header>
     @yield('content')   
 </body>
 </html>
