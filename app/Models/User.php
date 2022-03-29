@@ -56,7 +56,16 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
-    public function user_entry_recruitments(){
-        return $this->belongsToMany(Recruitment::class,'user_entry');
+    public function userEntries(){
+        return $this->belongsToMany(Recruitment::class,'user_entry','user_id','recruitment_id')
+                    ->withPivot('message');
+    }
+
+    public function newNotices(){
+        return $this->hasMany(NewNotice::class);
+    }
+
+    public function favortiteTags(){
+        return $this->belongsToMany(Tag::class,'favorite_tag','user_id','tag_id');
     }
 }

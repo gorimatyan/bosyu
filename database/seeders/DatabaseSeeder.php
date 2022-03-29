@@ -95,5 +95,86 @@ class DatabaseSeeder extends Seeder
         [
             
         ]);
+
+        DB::table('tags')->insert(
+        [
+            'id' => 1,
+            'tag' => 'Laravel',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ]);
+
+        DB::table('tags')->insert(
+        [
+            'id' => 2,
+            'tag' => 'Zoom',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ]);
+
+        DB::table('waiting_people')->insert(
+            [
+                'number' => 1,
+                'id' => uniqid(),
+                'user_id' => 'gorimatyan',
+                'title' => '今宿で鬼ごっこしましょう',
+                'body' => '市営住宅で暴れまくりましょう。
+                            柴田歯科前に集合しましょう。
+                            あああああああああああああああああああああああ',
+                'status' => 0,
+                'created_at' =>now(),
+                'updated_at' =>now(),
+            ]);
+        
+        DB::table('waiting_people')->insert(
+            [
+                'number' => 2,
+                'id' => uniqid(),
+                'user_id' => 'hogehoge',
+                'title' => '誰か勉強しましょう',
+                'body' => '司法試験のお勉強しようぜー',
+                'status' => 0,
+                'created_at' =>now(),
+                'updated_at' =>now(),
+            ]);
+
+        DB::table('waiting_people')->insert(
+            [
+                'number' => 3,
+                'id' => uniqid(),
+                'user_id' => 'gorimatyan',
+                'title' => 'NBA観に行きましょう',
+                'body' => 'ハチ公前で一旦集合お願いシャス。とりあえずウォリアーズファン集まれ。',
+                'status' => 0,
+                'created_at' =>now(),
+                'updated_at' =>now(),
+            ]);
+        
+        DB::table('management_notices')->insert(
+            [
+                'id' => 1,
+                'title' =>'当ウェブサイトが公開されました',
+                'body' => 'やったねついに公開だ。ユーザー10億人目指すぞ～～～～～～',
+                'created_at' =>now(),
+                'updated_at' =>now(),
+            ]);
+
+        DB::table('favorite_tags')->insert(
+            [
+                'id' => 1,
+                'user_id' =>'hogehoge',
+                'tag_id' => 2,
+                'created_at' =>now(),
+                'updated_at' =>now(),
+            ]);
+    
+        DB::table('favorite_tags')->insert(
+            [
+                'id' => 2,
+                'user_id' =>'gorimatyan',
+                'tag_id' => 2,
+                'created_at' =>now(),
+                'updated_at' =>now(),
+            ]);
     }
 }

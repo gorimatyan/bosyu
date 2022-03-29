@@ -174,29 +174,10 @@ class RecruitmentController extends Controller
             })->where('delete_flag',0) ;
                             //get()だと動かないけど、first()なら何故か動く。なんで？
                             //->コレクションクラスだから。
-        // dump($recruitments_collection);
-        // array:2 [▼
-        //         0 => Illuminate\Database\Eloquent\Collection {#1263 ▶}
-        //         1 => Illuminate\Database\Eloquent\Collection {#1173 ▶}
-        //         ]
+
         };
         
-        //コレクションクラスのままではforeachでまわせないので、一旦first()を使ってモデルクラスに直す。
-        
-        // foreach($recruitments_collection as $recruitment)
-        // {
-        //     $recruitments[] = $recruitment->all();
-        // }
-        
-        // dump($recruitments_collection);
-        $recruitments = $query->paginate(20);
-        
-        // array:2 [▼
-        //         0 => App\Models\Recruitment {#1105 ▶}
-        //         1 => App\Models\Recruitment {#700 ▶}
-        //         ]
-
-        
+        $recruitments = $query->paginate(20);        
 
         return view('recruitment.search')->with([
             "recruitments" => $recruitments,

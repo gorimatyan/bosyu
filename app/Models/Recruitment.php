@@ -32,7 +32,13 @@ class Recruitment extends Model
                     ->withTimestamps();
     }
 
-    public function entry_users_users(){
-        return $this->belongsToMany(User::class,'entry_users');
+    public function userEntries(){
+        return $this->belongsToMany(User::class,'user_entry','recruitment_id','user_id')
+                    ->withPivot('message');
+    }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class)
+                     ->withPivot('user_id');
     }
 }

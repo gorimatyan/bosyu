@@ -66,6 +66,7 @@ a {
     vertical-align:baseline;
     background:transparent;
     text-decoration:none; 
+    color: #686868;
 }
 
 /* change colours to suit your needs */
@@ -143,7 +144,7 @@ input, select {
 /* リスト付きのヘッダー（トップページなど） */
 #lists-header{
   background:linear-gradient(#FF9F3E, #FFEEDC);
-  height: 90px;
+  height: 135px;
   padding: 0px 32px;
 }
 .lists-header__top{
@@ -169,7 +170,7 @@ input, select {
   display: flex;
   align-items: center;
 }
-.lists-header__bottom{
+.lists-header__middle{
   display: flex;
   padding-top: 8px;
   flex-wrap: nowrap;
@@ -182,11 +183,29 @@ input, select {
 .header-list__is-active{
   color: #2B2B2B;
   margin-right: 35px;
-  padding-bottom: 8px;
-  border-bottom: 5px solid;
+  margin-bottom: 8px;
+  padding-bottom: 3px;
+  border-bottom: 4px solid;
   border-color: #E57300;
 }
+.lists-header__bottom{
+  padding: 0 16px;
+}
+.header-border-line{
+  width: 100%;
+  height: 1px;
+  /* border: 1px solid; */
+  /* border-color: #ffb871; */
+  margin-bottom: 10px;
+  background: linear-gradient(to right,#FFD2A4,#df7f20 50%,#FFD2A4 100%)
+  /* background: radial-gradient(#E57300,#FFD2A4) */
+}
 
+#no-lists-header{
+  background:linear-gradient(#FF9F3E, #FFEEDC);
+  height: 64px;
+  padding: 0px 16px;
+}
 
 
         /* recruitment show.blade.php */
@@ -207,6 +226,111 @@ input, select {
     margin: 32px 0px;
 }
 
+
+        /* recruitment search.blade.php */
+.recruitment-src__wrapper{
+  display: flex;
+}
+.recruitment-src__mainbar{
+  width: 73%;
+}
+.search-input{
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.search-border-line{
+  width: 100%;
+  height: 1px;
+  /* border: 1px solid; */
+  /* border-color: #ffb871; */
+  background: linear-gradient(to right,#FFD2A4,#ffb56b 50%,#FFD2A4 100%)
+  /* background: radial-gradient(#E57300,#FFD2A4) */
+}
+.search-button{
+  height: 35px;
+  width: 65px;
+  border-radius: 15px;
+  border:1px solid;
+  border-color: #686868;
+  background-color: #A25200;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.search-main__textbox{
+  width: 60%;
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: #686868;
+  font-size: 16px;
+  padding: 8px 16px; 
+}
+.search-selector{
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+.selector-recruitment{
+  margin:5px 15px;
+}
+.selector-active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:solid 1px #A25200;
+  border-radius: 14px 14px;
+  height: 20px;
+  width: 50px;
+  padding: 4px 3px 3px 3px;
+  background-color: #FF9F3E;
+  color: white;
+}
+.selector-active > a{
+  color: white;
+}
+
+.recruitment-src__sidebar{
+  width: 300px;
+  margin-left: 40px;
+}
+.recruitments-src__lists{
+  max-width: 960px;
+  margin-bottom: 20px;
+}
+.recruitment-src__top__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.recruitment-src__title{
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.recruitment-src__body{
+  color: #959595;
+  margin-bottom: 10px;
+}
+.recruitmen-src__bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recruitment-src__content-left{
+  display: flex;
+  align-items: center;
+  
+}
+.recruitment-src__content-left a{
+  padding-top: 4px;
+}
+.recruitment-src__content-right{
+  color: #959595;
+}
 
         /* auth/login.blade.php */
 
@@ -352,11 +476,18 @@ input, select {
   margin-left: auto;
   margin-right: auto;
 }
+/* ユーザー極小アイコン */
+.img-icon-size-mini{
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-left: 4px;
+}
 /* ユーザー小アイコン */
 .img-icon-size-small {
-    width: 32px;
-    border-radius: 50%;
-    margin: 0 8px 0;
+  width: 32px;
+  border-radius: 50%;
+  margin: 0 8px 0;
 }
 /* ユーザー中アイコン */
 .img-icon-size-medium {
@@ -369,6 +500,11 @@ input, select {
 .user-name {
   font-size: 18px;
 }
+/* タグアイコン */
+.tag-icon-small{
+  height: 26px;
+  width: 26px;
+}
 /* サービス名　logo */
 #service-logo{
   margin-right: 16px;
@@ -379,7 +515,14 @@ input, select {
   border:2px solid;
   border-color: #EB8117;
   background-color: white;
-  padding: 26px 26px;
+  padding: 16px 26px;
+  box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+}
+.grayframe{
+  border-radius: 15px;
+  border:1px solid;
+  border-color: #686868;
+  background-color: white;
   box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
 }
 /* 太字 */
@@ -430,6 +573,27 @@ input, select {
   font-size: 16px;
   color: #686868;
 }
+.fontsize-14px{
+  font-size: 14px;
+}
+.fontsize-12px{
+  font-size: 12px;
+}
+/* 募集状態 募集中 */
+.recruitment-status{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border:solid 1px #A25200;
+  border-radius: 14px 14px;
+  height: 20px;
+  width: 50px;
+  padding: 4px 3px 3px 3px;
+  background-color: #FF9F3E;
+  color: white;
+  margin-left: 15px;
+}
 .invalid-feedback {
   width: 100%;
   margin-top: 0.15rem;
@@ -476,13 +640,18 @@ input, select {
   padding: 32px 10px;
 }
 
-          /* layouts/app.blade.php */
+/* layouts/app.blade.php */
 #lists-header{
   padding: 0px 16px;
 }
-
-
-          /* auth/login.blade.php */
+/* recruitment/search.blade.php */
+.recruitment-src__mainbar{
+  width: 100%;
+}
+.recruitment-src__sidebar{
+  display: none;
+}
+/* auth/login.blade.php */
 .login-form{
   display: flex;
   flex-direction: column;
@@ -565,6 +734,13 @@ input, select {
   margin-right: auto;
   padding: 32px 16px;
 }
+/* recruitment/search.blade.php */
+.recruitment-src__mainbar{
+  width: 100%;
+}
+.recruitment-src__sidebar{
+  display: none;
+}
 /* Auth/register.blade.php */
 .form-group > label{
   font-weight: bold;
@@ -580,6 +756,7 @@ input, select {
   flex-wrap: wrap;
   align-items: flex-end;
 }
+
  }
 
  @media screen and (min-width:771px) and (max-width:959px){
@@ -1773,7 +1950,7 @@ input, select {
   cursor: pointer;
 }
 .dropdown__item-link:hover {
-  background: #cccccc;
+  background: #e4e4e4;
 }
 .dropdown__body {
   display: none;

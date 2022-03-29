@@ -15,8 +15,8 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('recruitment_id');
-            $table->string('user_id');
+            $table->string('recruitment_id',13);
+            $table->string('user_id',16);
             $table->string('comment',255);
             $table->integer('delete_flag')->default(0);
             $table->timestamps();
@@ -34,6 +34,13 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign('user_id');
+            $table->dropForeign('recruitment_id');
+            $table->dropIfExists('comments');
+        });
+        // Schema::dropForeign('user_id');
+        // Schema::dropForeign('recruitment_id');
+        // Schema::dropIfExists('comments');
     }
 }

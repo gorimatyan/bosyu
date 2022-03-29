@@ -13,7 +13,7 @@
     <header id="lists-header">
         <div class="lists-header__top">
             <div class='lists-header__start'>
-                <a href="#"><h1 id="service-logo">サービス名</h1></a>
+                <a href="{{ route('home') }}"><h1 id="service-logo">サービス名</h1></a>
                 <form action="{{ route('recruitment.search') }}" method="GET">
                     @csrf
                     <input class="search-textbox" type="search" name='keyword' placeholder="募集を検索" value="@if (isset($search)){{$search}}@endif">
@@ -66,7 +66,7 @@
                 @endif
         </div>
 
-        <div class="lists-header__bottom bold">
+        <div class="lists-header__middle bold">
             <a href="" class="header-list__is-active">おすすめ</a>
             <a href="" class="header-list">最新の募集</a>
             <a href="" class="header-list">最新の待ち人</a>
@@ -74,6 +74,12 @@
             <a href="" class="header-list">マイページ</a>
 
         </div>
+        <div class="header-border-line"></div>
+        <div class="lists-header__bottom bold">
+            <a href="" class="header-list__is-active">募集</a>
+            <a href="" class="header-list">待ち人</a>
+        </div>
+
 
 <script>
 

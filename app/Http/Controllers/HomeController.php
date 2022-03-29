@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tag;
+use App\Models\Recruitment;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        return view('home');
+        $tags = Tag::all();
+        // $users = []; 
+        // ↑collectionを取り出すときは配列に入れたくなるけど入れてはいけない！！！
+        foreach($tags as $tag){
+            $users = $tag->users;
+            //　↑のように変数に入れよう
+        };
+
+        return view('home',[
+            "users" => $users,
+        ]);
     }
 }
