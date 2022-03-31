@@ -28,7 +28,7 @@
                                 <a href="#" class="recruitment-src__user-name">＠{{ $recruitment->user->id }}</a>
                                 <div class="recruitment-status bold">募集中</div>
                             </header>
-                            <h1 class="recruitment-src__title bold"><a href="#">{{ $recruitment->title }}</a></h1>
+                            <h1 class="recruitment-src__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>
                             <div class="recruitment-src__body">{{ $recruitment->body }}</div>
                         </div>
 

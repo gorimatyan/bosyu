@@ -209,23 +209,109 @@ input, select {
 
 
         /* recruitment show.blade.php */
-
-.user-profile {
-    display: flex;
-    flex-direction: row;
+.recruitment-details{
+  display: flex;
+}
+.recruitment-details__main{
+  width: 73%;
+}
+.recruitment-details__sidebar{
+  width: 300px;
+  margin-left: 40px;
+}
+.recruitment-details__header{
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.recruitment-details__user-profile{
+  display: flex;
+  margin-bottom: 32px;
+}
+.recruitment-details__user-profile__id{
+  display: flex;
+  flex-direction: column;
 }
 .user-profile__user {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.user-profile__self-introduction {
-    padding: 8px 0px;
+.recruitment-details__recruitment-title{
+  font-size: 32px;
+  font-weight: bold;
+  color: #686868;
+  margin-bottom: 8px;
+  padding-left: 10px;
 }
-.recruitment-details {
-    margin: 32px 0px;
+.recruitment-details__tags{
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
 }
+.recruitment-details__details {
 
+}
+.recruitment-details__body__title{
+  background-color: #FFEEDC;
+  font-size: 26px;
+  color: #686868;
+  padding: 12px 15px 8px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+.recruitment-details__requirements__title{
+  background-color: #FFD2A4;
+  font-size: 26px;
+  color: #686868;
+  padding: 12px 15px 8px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+.recruitment-details__text{
+  margin-bottom: 50px;
+  padding: 0px 10px;
+}
+.comments{
+  padding-left: 20px;
+  margin-top: 30px;
+  width: 92.5%;
+}
+.comments-title{
+  font-size: 26px;
+  color: #686868;
+}
+/* コメント部分の濃いオレンジライン */
+.comments__border-line{
+  width: 100%;
+  border: 1px solid;
+  border-color: #EB8117;
+  margin-bottom: 16px;
+}
+/* コメント部分の薄いオレンジライン */
+.comments__border-line__light{
+  width: 100%;
+  border: 1px solid;
+  border-color: #FFD2A4;
+  margin-bottom: 16px;
+}
+.comment-user{
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+.comments > ol{
+}
+ol > li{
+  list-style-position: inside;
+  list-style:decimal;
+  position: relative;
+  left: 30px;
+}
+ol > .comment{
+  padding-top: 25px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+}
 
         /* recruitment search.blade.php */
 .recruitment-src__wrapper{
@@ -651,6 +737,13 @@ input, select {
 .recruitment-src__sidebar{
   display: none;
 }
+/* recruitment/show.blade.php */
+.recruitment-details__main{
+  width: 100%;
+}
+.recruitment-details__sidebar{
+  display: none;
+}
 /* auth/login.blade.php */
 .login-form{
   display: flex;
@@ -739,6 +832,13 @@ input, select {
   width: 100%;
 }
 .recruitment-src__sidebar{
+  display: none;
+}
+/* recruitment/show.blade.php */
+.recruitment-details__main{
+  width: 100%;
+}
+.recruitment-details__sidebar{
   display: none;
 }
 /* Auth/register.blade.php */
@@ -1931,7 +2031,7 @@ input, select {
   border-radius: 4px;
   overflow: hidden;
   position: absolute; /* メニュー部分は絶対配置させます */
-  top: 32px;
+  top: 60px;
   left: 0;
 }
 .dropdown__list { /* デフォルトスタイル リセット */
