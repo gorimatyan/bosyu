@@ -867,6 +867,20 @@ ol > .comment{
     margin-right: auto;
     padding: 32px 32px;
   }
+  /* recruitment/search.blade.php */
+.recruitment-src__mainbar{
+  width: 100%;
+}
+.recruitment-src__sidebar{
+  display: none;
+}
+/* recruitment/show.blade.php */
+.recruitment-details__main{
+  width: 100%;
+}
+.recruitment-details__sidebar{
+  display: none;
+}
  }
 
  @media screen and (min-width:960px) {
