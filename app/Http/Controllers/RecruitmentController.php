@@ -206,4 +206,9 @@ class RecruitmentController extends Controller
 
     }
 
+    public function entry(Request $request,$recruitment_id)
+    {
+        
+    }
+
 }
