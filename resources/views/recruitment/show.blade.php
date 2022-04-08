@@ -66,10 +66,10 @@
                             <div class="comments__border-line__light"></div>
                         @endforeach 
                     </ol>
-                    <form action="{{ route('recruitment.postComment',['recruitment_id' => $recruitment -> id]) }}" method="POST">
+                    <form action="{{ route('recruitment.postComment',['recruitment_id' => $recruitment -> id]) }}" class="comment-to-recruitment" method="POST">
                         @csrf
-                        <input type="text" name="comment" placeholder="コメントを書き込む">
-                        <input type="submit" value="送信">
+                        <textarea type="text" class="grayframe" name="comment" placeholder="コメントを書き込む"></textarea>
+                        <input type="submit" class="submit-button" value="送信">
                     </form>
                 </div>
             </main>
@@ -88,10 +88,14 @@
         </label>
 
         <div class="message-form__input">
-            <div class="message-form__header">募集者へのメッセージ</div>
+            <div class="message-form__header">
+                <h4>募集者へのメッセージ</h4>
+                <label for="entry" class="fontsize-24px">×</label>
+            </div>
+
             <div class="comments__border-line"></div>
             <form action="#" class="message-form__textarea" method="POST">
-                <textarea name="message" class="grayframe" placeholder="コメントを書き込む"></textarea>
+                <textarea name="message" class="grayframe" placeholder="よろしくお願いします！"></textarea>
                 <input type="submit" class="submit-button" value="申請する">
             </form>
         </div>
