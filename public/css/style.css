@@ -115,6 +115,9 @@ input, select {
 label {
   cursor: pointer;
 }
+button, input, select, textarea {
+  font-family : inherit;
+}
 
 /* -------------------------------------以下オリジナル------------------------------------- */
 /* フォルダ名/ファイル名で検索すればそのページのCSSがでできます */
