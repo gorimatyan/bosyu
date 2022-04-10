@@ -57,8 +57,9 @@ class User extends Authenticatable
     }
 
     public function userEntries(){
-        return $this->belongsToMany(Recruitment::class,'user_entry','user_id','recruitment_id')
-                    ->withPivot('message');
+        return $this->belongsToMany(Recruitment::class,'user_entries','user_id','recruitment_id')
+                    ->withPivot('message')
+                    ->withTimestamps();
     }
 
     public function newNotices(){

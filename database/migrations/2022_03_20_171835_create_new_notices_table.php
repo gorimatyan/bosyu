@@ -17,6 +17,8 @@ class CreateNewNoticesTable extends Migration
             $table->id();
             $table->string('from_user',16);
             $table->string('to_user',16);
+            $table->string('recruitment_id')->nullable();
+            $table->string('waiting_people_id')->nullable();
             $table->integer('status')->default(0);
             $table->integer('notice_type');
             $table->string('message')->nullable();

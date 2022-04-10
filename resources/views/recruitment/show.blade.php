@@ -94,7 +94,8 @@
             </div>
 
             <div class="comments__border-line"></div>
-            <form action="#" class="message-form__textarea" method="POST">
+            <form action="{{ route('recruitment.entry', ['recruitment_id' => $recruitment -> id]) }}" class="message-form__textarea" method="POST">
+                @csrf
                 <textarea name="message" class="grayframe" placeholder="よろしくお願いします！"></textarea>
                 <input type="submit" class="submit-button" value="申請する">
             </form>

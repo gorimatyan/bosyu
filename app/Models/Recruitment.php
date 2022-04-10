@@ -23,7 +23,7 @@ class Recruitment extends Model
 
     // User：Recruimentの1：多のリレーション
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
     // Commentテーブルを中間テーブルとする多対多のリレーション
     public function users(){

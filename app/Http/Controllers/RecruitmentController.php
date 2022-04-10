@@ -6,10 +6,12 @@ use App\Models\Recruitment;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\NewNotice;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\UserEntry;
 use PhpParser\Node\Expr\FuncCall;
 
 class RecruitmentController extends Controller
@@ -208,6 +210,35 @@ class RecruitmentController extends Controller
 
     public function entry(Request $request,$recruitment_id)
     {
+        //user_entriesテーブルのuse_idに参加者ID、recruitment_idに募集idを入れ、
+        //同時にuser_entriesテーブルのmessageカラムにメッセージを保存
+        $login_user = Auth::user();
+        $entry = UserEntry::where('user_id',$login_user->id)
+                ->where('recruitment_id',$recruitment_id)
+                ->first();
+
+        if(empty($entry))
+        {
+            User::find($login_user->id)
+                ->userEntries()
+                ->attach($recruitment_id,['message' => $request->message]);
+
+                //new_noticesテーブルのto_userに募集者ID、from_userに参加者のidを入れる
+            $new_notice = new NewNotice; 
+            $recruiting_user = Recruitment::find($recruitment_id);
+
+            $new_notice->to_user = $recruiting_user->user->id;
+            $new_notice->from_user = $login_user->id;
+            $new_notice->notice_type = 0; //0は募集の新規参加者のお知らせ
+            $new_notice->recruitment_id = $recruitment_id;
+            $new_notice->save();
+
+            return redirect()->route('recruitment.show',[ "recruitment_id" => $recruitment_id]);
+            
+        }else{
+            echo '既に参加申請をしています';
+        }
+        
         
     }
 

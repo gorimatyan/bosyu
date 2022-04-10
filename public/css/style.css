@@ -353,7 +353,7 @@ button, input, select, textarea {
     position: fixed;
     top: 15%;
     width: 70%;
-    height: 450px;
+    height: 50%;
     
     border-radius: 38px;
     border:2px solid;
@@ -385,7 +385,7 @@ button, input, select, textarea {
   top: 15%;
   width: 70%;
   max-width: 650px;
-  height: 450px;
+  height: 50%;
   
   border-radius: 38px;
   border:2px solid;
@@ -407,9 +407,10 @@ button, input, select, textarea {
 .message-form__textarea{
   display: flex;
   flex-direction: column;
+  height: 70%;
 }
 .message-form__textarea textarea{
-  height: 200px;
+  height: 80%;
   padding: 16px;
   margin-bottom: 20px;
   color: #686868;

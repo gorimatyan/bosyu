@@ -17,7 +17,7 @@ class CreateUserEntriesTable extends Migration
             $table->id();
             $table->string('user_id',16);
             $table->string('recruitment_id',13);
-            $table->string('comment');
+            $table->string('message');
             $table->integer('status')->default(0);
             $table->timestamps();
 
