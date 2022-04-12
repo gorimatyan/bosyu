@@ -23,38 +23,43 @@
 
             <ul class='lists-header__end'>
                 @if(Auth::guard('web')->check())
-                <li>
-                    <div class="dropdown">
-                        <a id="dropdown__btn" class="dropdown__btn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <div class="current-login-user">                        
-                                <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" class="img-icon-size-small">
-                                <div class="user-name">{{ Auth::guard('web')->user()->name }}</div>
-                            </div>                               
-                        </a>
-                        <div class="dropdown__body">
-                            <ul class="dropdown__list">
-                                <li class="dropdown__item">
-                                    <a class="dropdown__item-link" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        ログアウト
-                                    </a>
-                                </li>
-                                <li class="dropdown__item"><a href="#" class="dropdown__item-link">Yahoo! JAPAN</a></li>
-                                <li class="dropdown__item"><a href="https://www.bing.com/" class="dropdown__item-link">Bing</a></li>
-                            </ul>
+                    
+                    <li>
+                        <div class="dropdown">
+                            <a id="dropdown__btn" class="dropdown__btn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <div class="current-login-user">                        
+                                    <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" class="img-icon-size-small">
+                                    @if(isset(Auth::guard('web')->user()->name))
+                                    <div class="user-name">{{ Auth::guard('web')->user()->name }}</div>
+                                    @else
+                                    <div class="user-name">{{ Auth::guard('web')->user()->id }}</div>
+                                    @endif
+                                </div>                               
+                            </a>
+                            <div class="dropdown__body">
+                                <ul class="dropdown__list">
+                                    <li class="dropdown__item">
+                                        <a class="dropdown__item-link" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            ログアウト
+                                        </a>
+                                    </li>
+                                    <li class="dropdown__item"><a href="#" class="dropdown__item-link">Yahoo! JAPAN</a></li>
+                                    <li class="dropdown__item"><a href="https://www.bing.com/" class="dropdown__item-link">Bing</a></li>
+                                </ul>
+                            </div>
+                        </div>  
+                    </li>
+                    <li>
+                        <div class="header-end__logout" aria-labelledby="navbarDropdown">
+
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
-                    </div>  
-                </li>
-                <li>
-                    <div class="header-end__logout" aria-labelledby="navbarDropdown">
-
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
+                    </li>
                 @else
                 <li>
                         <a href="{{ route('register') }}">ユーザー登録</a>

@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\AdminControllers\AdminController;
 
 // ユーザ認証 
 Route::get('/', function () {return view('welcome');});
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controller\HomeController::class, 'index'])->name('home');
 
 
 
@@ -40,7 +40,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class,'showResetForm'])->name('password.reset');
     Route::post('/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class,'reset']);
     Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'userRegister'])->name('userRegister');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('new_notice_for_user');
 
 
 // admin機能

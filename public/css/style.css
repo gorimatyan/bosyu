@@ -210,7 +210,11 @@ button, input, select, textarea {
   height: 64px;
   padding: 0px 16px;
 }
+/* home.blade.php */
+.home__container{
+  display: flex;
 
+}
 
         /* recruitment show.blade.php */
 .recrutiment-show__container{

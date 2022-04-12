@@ -28,7 +28,11 @@
                         <a id="dropdown__btn" class="dropdown__btn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <div class="current-login-user">                        
                                 <img src="http://localhost:8000/storage/{{ Auth::user()->image }}" class="img-icon-size-small">
-                                <div class="user-name">{{ Auth::guard('web')->user()->name }}</div>
+                                @if(isset(Auth::guard('web')->user()->name))
+                                    <div class="user-name">{{ Auth::guard('web')->user()->name }}</div>
+                                @else
+                                    <div class="user-name">{{ Auth::guard('web')->user()->id }}</div>
+                                @endif
                             </div>                               
                         </a>
                         <div class="dropdown__body">

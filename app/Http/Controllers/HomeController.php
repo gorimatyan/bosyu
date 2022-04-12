@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {   
         $tags = Tag::all();
         // $users = []; 
@@ -34,8 +34,13 @@ class HomeController extends Controller
             //　↑のように変数に入れよう
         };
 
+        // dd(isset($request->new_notices));
+
         return view('home',[
             "users" => $users,
+            "new_notices" => $request->new_notices,
+            "count_new_notices" => $request->count_new_notices,
+            "management_notices" => $request->management_notices,
         ]);
     }
 }
