@@ -10,7 +10,9 @@ class Tag extends Model
     use HasFactory;
 
     public function recruitments(){
-        return $this->belongsToMany(Recruitment::class);
+        return $this->belongsToMany(Recruitment::class)
+                    ->withPivot('tag')
+                    ->withTimestamps();
     }
 
     public function users(){

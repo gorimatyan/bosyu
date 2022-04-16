@@ -52,13 +52,8 @@ class RecruitmentController extends Controller
         $recruitment->title = $request->input('title');
         $recruitment->number_of_people = $request->input('number_of_people');
         $recruitment->body = $request->input('body');
+        $recruitment->require = $request->input('require');
         $recruitment->deadline = $request->input('deadline');
-        
-        //　登録番号を取得
-        $number = DB::table('recruitments')
-                  ->count('*') +1;
-
-        $recruitment->number = $number;
 
         // ユニークな募集IDをDBと照らし合わせて被りが出ないように取得
         for($id = uniqid(); DB::table('recruitments')->where('id', $id)->exists();)
@@ -84,6 +79,7 @@ class RecruitmentController extends Controller
         $user = $recruitment->user;
         // 投稿に関連するコメント（userとrecruitmentの中間テーブル）を呼び出す
         $comments = $recruitment->users;
+        $count_comments = $recruitment->users->count();
         // dd($user);
 
         //　募集詳細のviewにルートパラメータから得た募集とそれに紐づくユーザー情報を取得
@@ -91,6 +87,7 @@ class RecruitmentController extends Controller
             "recruitment" => $recruitment,
             "user" => $user,
             "comments" => $comments,
+            "count_comments" => $count_comments
         ]);
     }
 
@@ -203,7 +200,7 @@ class RecruitmentController extends Controller
         // $user = User::find(Auth::user()->id);
         // dd($user->recruitments);
 
-        
+        return redirect()->route('recruitment.show',[ "recruitment_id" => $recruitment_id]);
 
 
     }

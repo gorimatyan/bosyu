@@ -54,7 +54,6 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [
-            'number' => 1,
             'id' => uniqid(),
             'user_id' => 'hogehoge',
             'title' => 'ゲームしよう',
@@ -67,7 +66,6 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [   
-            'number' => 2,
             'id' => uniqid(),
             'user_id' => 'hogehoge',
             'title' => 'ZOOMで会議！',
@@ -80,7 +78,6 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [
-            'number' => 3,
             'id' => uniqid(),
             'user_id' => 'gorimatyan',
             'title' => 'idがgorimatyanの投稿だよ',
@@ -114,7 +111,6 @@ class DatabaseSeeder extends Seeder
 
         DB::table('waiting_people')->insert(
             [
-                'number' => 1,
                 'id' => uniqid(),
                 'user_id' => 'gorimatyan',
                 'title' => '今宿で鬼ごっこしましょう',
@@ -128,7 +124,6 @@ class DatabaseSeeder extends Seeder
         
         DB::table('waiting_people')->insert(
             [
-                'number' => 2,
                 'id' => uniqid(),
                 'user_id' => 'hogehoge',
                 'title' => '誰か勉強しましょう',
@@ -140,7 +135,6 @@ class DatabaseSeeder extends Seeder
 
         DB::table('waiting_people')->insert(
             [
-                'number' => 3,
                 'id' => uniqid(),
                 'user_id' => 'gorimatyan',
                 'title' => 'NBA観に行きましょう',

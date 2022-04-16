@@ -213,7 +213,6 @@ button, input, select, textarea {
 /* home.blade.php */
 .home__container{
   display: flex;
-
 }
 
         /* recruitment show.blade.php */
@@ -571,6 +570,58 @@ ol > .comment{
   color: #959595;
 }
 
+/* recruitment/create.blade.php */
+.recruitment-create__container__frame{
+  /* border-radius: 38px;
+  border:2px solid;
+  border-color: #EB8117;
+  background-color: white; */
+  padding: 30px 30px;
+  /* box-shadow: 2px 4px 6px rgb(195, 195, 195) ; */
+}
+.recruitment-create__border-line{
+  width: 100%;
+  border: 2px solid;
+  border-color: #EB8117;
+  margin-top: 12px;
+  margin-bottom:24px;
+}
+.recruitment-create__input{
+  /* display: flex;
+  flex-direction: column; */
+  margin-bottom: 20px;
+}
+.recruitment-create__input p{
+  font-size: 16px;
+  font-weight: bold;
+  color: #686868;
+  margin-left: 6px;
+  margin-bottom: 10px;
+}
+.recruitment-create__input textarea{
+  height: 150px;
+  padding: 16px;
+  margin-bottom: 20px;
+  color: #686868;
+  font-size: 14px;
+  outline: none;
+}
+.recruitment-create__input input{
+  height: 80%;
+  padding: 16px;
+  margin-bottom: 20px;
+  color: #686868;
+  font-size: 14px;
+  outline: none;
+}
+.width-max{
+  width: 95%;
+}
+.width-half{
+  width: 50%;
+}
+
+
         /* auth/login.blade.php */
 
 .login-frame{
@@ -760,7 +811,15 @@ ol > .comment{
 .grayframe{
   border-radius: 15px;
   border:1px solid;
-  border-color: #686868;
+  border-color: #959595;
+  background-color: white;
+  box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+}
+.grayframe-small{
+  width: 90px;
+  border-radius: 15px;
+  border:1px solid;
+  border-color: #959595;
   background-color: white;
   box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
 }
@@ -802,6 +861,30 @@ ol > .comment{
   background-color: white;
   padding: 10px;
 }
+/* 送信ボタン */
+.submit-button{
+  height: 40px;
+  width: 100px;
+  border-radius: 25px;
+  border:1px solid;
+  border-color: #686868;
+  background-color: #A25200;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* 送信ボタン　オレンジ */
+.submit-button__orange{
+  height: 40px;
+  width: 100px;
+  border-radius: 25px;
+  border:1px solid;
+  border-color: #686868;
+  background-color: #E57300;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 /* フォント36px */
 .fontsize-36px{
   font-size: 36px;
@@ -809,6 +892,10 @@ ol > .comment{
 }
 .fontsize-32px{
   font-size: 32px;
+  color: #686868;
+}
+.fontsize-26px{
+  font-size: 26px;
   color: #686868;
 }
 .fontsize-24px{
@@ -989,6 +1076,13 @@ ol > .comment{
   text-align: left;
   width: 100%;
 }
+/* recruitment/create.blade.php */
+.recruitment-create__container__frame{
+  padding: 30px 16px;
+}
+.width-max{
+  width: 90%;
+}
 }
 
 
@@ -1030,6 +1124,10 @@ ol > .comment{
   flex-wrap: wrap;
   align-items: flex-end;
 }
+/* recruitment/create.blade.php */
+.recruitment-create__container__frame{
+  padding: 30px 16px;
+}
 
  }
 
@@ -1055,6 +1153,7 @@ ol > .comment{
 .recruitment-details__sidebar{
   display: none;
 }
+
  }
 
  @media screen and (min-width:960px) {

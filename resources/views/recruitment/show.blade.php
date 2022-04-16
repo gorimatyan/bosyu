@@ -24,11 +24,11 @@
                     <section class="recruitment-details__details">
                         <div class="recruitment-details__body">
                             <div class="recruitment-details__body__title bold">概要</div>
-                            <div class="recruitment-details__text">ふにゃふにゃ</div>
+                            <div class="recruitment-details__text">{{ $recruitment->body }}</div>
                         </div>
                         <div class="recruitment-details__requirements">
                             <div class="recruitment-details__requirements__title bold">募集要件</div>
-                            <div class="recruitment-details__text">あああああああああ</div>
+                            <div class="recruitment-details__text">ふにゃふにゃ</div>
                         </div>
                     </section>
                 </div>
@@ -49,7 +49,7 @@
                 @endif
                 
                 <div class="comments">
-                    <div class="comments-title bold">3件のコメント</div>
+                    <div class="comments-title bold">{{ $count_comments }}件のコメント</div>
                     <div class="comments__border-line"></div>
                     <ol>
                         @foreach($comments as $comment)

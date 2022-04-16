@@ -34,11 +34,13 @@ class Recruitment extends Model
 
     public function userEntries(){
         return $this->belongsToMany(User::class,'user_entry','recruitment_id','user_id')
-                    ->withPivot('message');
+                    ->withPivot('message')
+                    ->withTimestamps();
     }
 
     public function tags(){
         return $this->belongsToMany(Tag::class)
-                     ->withPivot('user_id');
+                    ->withTimestamps()
+                    ->withPivot('tag');
     }
 }

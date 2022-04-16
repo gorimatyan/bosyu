@@ -44,7 +44,7 @@
                                         ログアウト
                                     </a>
                                 </li>
-                                <li class="dropdown__item"><a href="#" class="dropdown__item-link">Yahoo! JAPAN</a></li>
+                                <li class="dropdown__item"><a href="{{ route('recruitment.create') }}" class="dropdown__item-link">募集をする</a></li>
                                 <li class="dropdown__item"><a href="https://www.bing.com/" class="dropdown__item-link">Bing</a></li>
                             </ul>
                         </div>
