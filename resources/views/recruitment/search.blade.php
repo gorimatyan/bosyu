@@ -35,7 +35,9 @@
                         <div class="recruitmen-src__bottom">
                             <div class="recruitment-src__content-left">
                                 <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
-                                <a href="#" class="fontsize-14px bold">タグ名</a>
+                                    @foreach($recruitment->tags as $tags)
+                                        <a href="#" class="fontsize-14px bold">{{ $tags->tag }}</a>&nbsp;
+                                    @endforeach
                             </div>
                             <div class="recruitment-src__content-right fontsize-12px">
                                 投稿日：{{ $recruitment->created_at}}

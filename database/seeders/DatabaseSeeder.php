@@ -54,7 +54,8 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [
-            'id' => uniqid(),
+            // 'id' => uniqid(),
+            'id' => '1',
             'user_id' => 'hogehoge',
             'title' => 'ゲームしよう',
             'body' => 'Among usしましょう',
@@ -66,7 +67,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [   
-            'id' => uniqid(),
+            'id' => '2',
             'user_id' => 'hogehoge',
             'title' => 'ZOOMで会議！',
             'body' => 'いっぱい案出してください。',
@@ -78,7 +79,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('recruitments')->insert(
         [
-            'id' => uniqid(),
+            'id' => '3',
             'user_id' => 'gorimatyan',
             'title' => 'idがgorimatyanの投稿だよ',
             'body' => 'ごりまです',
@@ -88,15 +89,10 @@ class DatabaseSeeder extends Seeder
             'delete_flag' => 0,
         ]);
 
-        DB::table('comments')->insert(
-        [
-            
-        ]);
-
         DB::table('tags')->insert(
         [
             'id' => 1,
-            'tag' => 'Laravel',
+            'tag' => 'ゲーム',
             'created_at' =>now(),
             'updated_at' =>now(),
         ]);
@@ -104,7 +100,40 @@ class DatabaseSeeder extends Seeder
         DB::table('tags')->insert(
         [
             'id' => 2,
+            'tag' => 'Laravel',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ]);
+
+        DB::table('tags')->insert(
+        [
+            'id' => 3,
             'tag' => 'Zoom',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ]);
+        
+        DB::table('recruitment_tags')->insert(
+        [
+            'id' => 1,
+            'tag_id' => 1,
+            'recruitment_id' => '1',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ]);
+        DB::table('recruitment_tags')->insert(
+        [
+            'id' => 2,
+            'tag_id' => 2,
+            'recruitment_id' => '2',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ]);
+        DB::table('recruitment_tags')->insert(
+        [
+            'id' => 3,
+            'tag_id' => 3,
+            'recruitment_id' => '3',
             'created_at' =>now(),
             'updated_at' =>now(),
         ]);

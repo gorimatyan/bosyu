@@ -11,7 +11,6 @@ class Tag extends Model
 
     public function recruitments(){
         return $this->belongsToMany(Recruitment::class)
-                    ->withPivot('tag')
                     ->withTimestamps();
     }
 

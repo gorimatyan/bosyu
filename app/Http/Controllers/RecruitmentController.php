@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Tag;
 use App\Models\UserEntry;
 use PhpParser\Node\Expr\FuncCall;
 
@@ -49,10 +50,11 @@ class RecruitmentController extends Controller
         // ログイン中のユーザー情報の取得が必要
         $recruitment->user_id = Auth::user()->id;
 
+
         $recruitment->title = $request->input('title');
         $recruitment->number_of_people = $request->input('number_of_people');
         $recruitment->body = $request->input('body');
-        $recruitment->require = $request->input('require');
+        $recruitment->requirement = $request->input('requirement');
         $recruitment->deadline = $request->input('deadline');
 
         // ユニークな募集IDをDBと照らし合わせて被りが出ないように取得
@@ -61,7 +63,42 @@ class RecruitmentController extends Controller
             $id = uniqid();
         }
             $recruitment->id = $id;
+            $related_recruitment_id = $id; //下のif文で使用する募集idをsave前に取得（saveするとその後のidがなぜかid=0になるから)
             $recruitment->save();
+            
+            // タグ欄に入力されたタグを取得して配列にする
+            $entered_tag = $request->input('tag');
+            //1.全角スペースを半角スペースに変換
+            $entered_tag = str_replace('　', ' ', $entered_tag);
+            //2.前後のスペース削除（trimの対象は半角スペースのみなので半角スペースに変換後行う）
+            $entered_tag = trim($entered_tag);
+            //3.連続する半角スペースを半角スペースひとつに変換
+            $entered_tag = preg_replace('/\s+/', ' ', $entered_tag);
+            //半角スペースで分割して配列にする
+            $tags = explode(' ',$entered_tag);
+
+            
+            $related_recruitment = Recruitment::where('id',$related_recruitment_id)
+                                                ->first();
+            foreach($tags as $tag)
+            {   $checked_tag = Tag::where('tag',$tag)->first();
+
+            // タグテーブルに入力されたタグが存在するならタグIDのみを取得しattach
+            // 存在しないならタグを作成してからattach
+                if(empty($checked_tag)){
+                    // タグが保存されていない時
+                    $new_tag = new Tag;
+                    $new_tag->tag = $tag;
+                    $new_tag->save();
+                    
+                    $related_recruitment->tags()->attach($new_tag->id);
+                }
+                else{
+                    // 既にタグが保存されている時
+                    $related_recruitment->tags()->attach($checked_tag->id);
+                };
+            };
+            
 
         return redirect()->route('recruitment.create');
     }
@@ -80,7 +117,7 @@ class RecruitmentController extends Controller
         // 投稿に関連するコメント（userとrecruitmentの中間テーブル）を呼び出す
         $comments = $recruitment->users;
         $count_comments = $recruitment->users->count();
-        // dd($user);
+        
 
         //　募集詳細のviewにルートパラメータから得た募集とそれに紐づくユーザー情報を取得
         return view('recruitment.show')->with([
@@ -158,10 +195,10 @@ class RecruitmentController extends Controller
         $keyword = trim($keyword);
         //3.連続する半角スペースを半角スペースひとつに変換
         $keyword = preg_replace('/\s+/', ' ', $keyword);
-        //分割
+        //分割して配列にする
         $keywords = explode(' ',$keyword);
         
-        $recruitments = Recruitment::paginate(20);
+        // $recruitments = Recruitment::paginate(20);
         $query = Recruitment::query();
         // まず検索に引っかかる募集のコレクションクラスを取得
         foreach($keywords as $keyword)
@@ -176,7 +213,7 @@ class RecruitmentController extends Controller
 
         };
         
-        $recruitments = $query->paginate(20);        
+        $recruitments = $query->with('tags')->paginate(20);        
 
         return view('recruitment.search')->with([
             "recruitments" => $recruitments,
