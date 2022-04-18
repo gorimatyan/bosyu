@@ -29,11 +29,12 @@ class HomeController extends Controller
     public function index(Request $request)
     {   
         $tags = Tag::with('users')->get();
-        // $users = []; 
-        // ↑collectionを取り出すときは配列に入れたくなるけど入れてはいけない！！！
+
         foreach($tags as $tag){
             $users = $tag->users;
             //　↑のように変数に入れよう
+            // $users = []; 
+            // ↑collectionを取り出すときは配列に入れたくなるけど入れてはいけない！！！
         };
 
         // 月間トレンドの取得

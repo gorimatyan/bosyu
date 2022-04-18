@@ -473,8 +473,8 @@ ol > .comment{
   width: 73%;
 }
 .search-input{
-  margin-left: 20px;
-  margin-bottom: 15px;
+
+  margin-bottom: 40px;
 }
 .search-border-line{
   width: 100%;
@@ -511,7 +511,6 @@ ol > .comment{
   font-size: 14px;
   margin-top: 20px;
   margin-bottom: 10px;
-  margin-left: 20px;
 }
 .selector-recruitment{
   margin:5px 15px;
@@ -814,6 +813,12 @@ ol > .comment{
   border-color: #959595;
   background-color: white;
   box-shadow: 2px 4px 6px rgb(195, 195, 195) ;
+}
+.grayframe-shadow-none{
+  border-radius: 25px;
+  border:1px solid;
+  border-color: #959595;
+  background-color: white;
 }
 .grayframe-small{
   width: 90px;

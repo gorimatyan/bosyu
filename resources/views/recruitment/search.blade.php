@@ -14,7 +14,7 @@
 
                 <!-- <div class="search-border-line"></div> -->
 
-                <ul class="search-selector grayframe bold">
+                <ul class="search-selector grayframe-shadow-none bold">
                     <li class="selector-recruitment selector-active"><a href="#">募集</a></li>
                     <li class="selector-waiting-people"><a href="#">待ち人</a></li>
                 </ul>

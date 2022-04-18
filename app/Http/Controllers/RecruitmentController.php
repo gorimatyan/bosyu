@@ -197,23 +197,60 @@ class RecruitmentController extends Controller
         $keyword = preg_replace('/\s+/', ' ', $keyword);
         //分割して配列にする
         $keywords = explode(' ',$keyword);
-        
-        // $recruitments = Recruitment::paginate(20);
-        $query = Recruitment::query();
-        // まず検索に引っかかる募集のコレクションクラスを取得
+
+        // タイトル本文検索とタグ検索をするためのキーワードをそれぞれ配列にする
+        // $diff_tags[] = #付きのタグ検索キーワードの配列
+        // $trimed_keyword = #を切り取ったキーワード
+        // $tag_keywords[] = #を切り取ったキーワードの配列
+
+        $diff_tags = [];
         foreach($keywords as $keyword)
         {
-            $query->where(function($query) use($keyword)
+            if(str_starts_with($keyword,'#'))
+            {   
+                $diff_tags[] = $keyword;
+
+                $trimed_keyword = trim($keyword,'#');
+                $tag_keywords[] = $trimed_keyword;
+            }
+        }
+
+        // $keywords配列からタグ検索に使用したキーワードを削除
+        $search_keywords = array_diff($keywords,$diff_tags);
+
+        // $recruitments = Recruitment::paginate(20);
+        $recruitment_query = Recruitment::query();
+        // まず検索に引っかかる募集のコレクションクラスを取得
+        foreach($search_keywords as $keyword)
+        {
+            $recruitment_query->where(function($query) use($keyword)
             {
                 $query->where('title' ,'like', "%{$keyword}%") 
                       ->orwhere('body' ,'like', "%{$keyword}%");
-            })->where('delete_flag',0) ;
-                            //get()だと動かないけど、first()なら何故か動く。なんで？
-                            //->コレクションクラスだから。
+            })->where('delete_flag',0);
+                            //サブクエリの中にはget()は要らん
 
         };
         
-        $recruitments = $query->with('tags')->paginate(20);        
+        if(!empty($tag_keywords))
+        {   
+            // whereHasを使って$recruitment_queryにタグの検索のクエリを追加する
+            foreach($tag_keywords as $tag_keyword){
+                $recruitments = $recruitment_query
+                                ->whereHas('tags',function($query) use($tag_keyword)
+                                {
+                                    $query->where('tag',$tag_keyword);
+                                })
+                                ->with('tags')->get();
+                                // dd($recruitment_query->toSql(),$recruitment_query->getBindings());
+                                // dd($tag_keyword);
+            };
+            
+        }else{
+            
+            $recruitments = $recruitment_query->with('tags')->get();
+            // dd($recruitments);
+        }
 
         return view('recruitment.search')->with([
             "recruitments" => $recruitments,
