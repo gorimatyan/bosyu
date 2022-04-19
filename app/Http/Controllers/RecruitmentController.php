@@ -229,7 +229,6 @@ class RecruitmentController extends Controller
                       ->orwhere('body' ,'like', "%{$keyword}%");
             })->where('delete_flag',0);
                             //サブクエリの中にはget()は要らん
-
         };
         
         if(!empty($tag_keywords))

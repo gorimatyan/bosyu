@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Recruitment extends Model
 {
     use HasFactory;
@@ -20,6 +20,8 @@ class Recruitment extends Model
         'title',
         'number_of_people',
     ] ;
+
+
 
     // User：Recruimentの1：多のリレーション
     public function user(){

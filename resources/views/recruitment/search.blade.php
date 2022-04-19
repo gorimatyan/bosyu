@@ -40,7 +40,7 @@
                                     @endforeach
                             </div>
                             <div class="recruitment-src__content-right fontsize-12px">
-                                投稿日：{{ $recruitment->created_at}}
+                                投稿日：{{\Carbon\Carbon::parse($recruitment->created_at)->format('Y/m/d')}}
                             </div>
                         </div>
 
