@@ -50,7 +50,7 @@
                 
                 <div class="comments">
                     <div class="comments-title bold">{{ $count_comments }}件のコメント</div>
-                    <div class="comments__border-line"></div>
+                    <div class="border-line__max"></div>
                     <ol>
                         @foreach($comments as $comment)
                             <li>
@@ -63,7 +63,7 @@
                             
                             <p class="comment">{{ $comment->pivot->comment }}</p>
 
-                            <div class="comments__border-line__light"></div>
+                            <div class="border-line__max__light"></div>
                         @endforeach 
                     </ol>
                     <form action="{{ route('recruitment.postComment',['recruitment_id' => $recruitment -> id]) }}" class="comment-to-recruitment" method="POST">
@@ -93,7 +93,7 @@
                 <label for="entry" class="fontsize-24px">×</label>
             </div>
 
-            <div class="comments__border-line"></div>
+            <div class="border-line__max"></div>
             <form action="{{ route('recruitment.entry', ['recruitment_id' => $recruitment -> id]) }}" class="message-form__textarea" method="POST">
                 @csrf
                 <textarea name="message" class="grayframe" placeholder="よろしくお願いします！"></textarea>

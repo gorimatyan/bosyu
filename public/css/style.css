@@ -29,6 +29,7 @@ time, mark, audio, video {
     font-family: "メイリオ","Meiryo";
     vertical-align:baseline;
     background:transparent;
+    font-weight: 400;
 }
 
 body {
@@ -214,8 +215,53 @@ button, input, select, textarea {
 .home__container{
   display: flex;
 }
+/* user/show.blade.php */
+.user-show__container{
+  display: flex;
+  justify-content: center;
+}
+.user-show__left-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 356px;
+  margin-right: 12px;
+  color:#686868;
+}
+.user-show__right-container{
+  min-width: 356px;
+  width: 65%;
+}
+.user-profile{
+  margin-bottom: 50px;
+}
+.user-profile__column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-profile__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.user-profile__header p{
+  font-weight: bold;
+  color: #686868;
+  padding-top: 4px;
+}
+.user-profile__items{
+  padding: 2px 27px;
+}
+.user-profile__items__user-info{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: #959595;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}
 
-        /* recruitment show.blade.php */
+        /* recruitment/show.blade.php */
 .recrutiment-show__container{
   margin-bottom: 80px;
 }
@@ -420,32 +466,7 @@ button, input, select, textarea {
   font-size: 16px;
   outline: none;
 }
-.submit-button{
-  height: 40px;
-  width: 100px;
-  border-radius: 25px;
-  border:1px solid;
-  border-color: #686868;
-  background-color: #A25200;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
 
-/* コメント部分の濃いオレンジライン */
-.comments__border-line{
-  width: 100%;
-  border: 1px solid;
-  border-color: #EB8117;
-  margin-bottom: 16px;
-}
-/* コメント部分の薄いオレンジライン */
-.comments__border-line__light{
-  width: 100%;
-  border: 1px solid;
-  border-color: #FFD2A4;
-  margin-bottom: 16px;
-}
 .comment-user{
   display: flex;
   align-items: center;
@@ -465,15 +486,45 @@ ol > .comment{
   padding-left: 10px;
 }
 
-        /* recruitment search.blade.php */
+        /* recruitment/search.blade.php */
 .recruitment-src__wrapper{
   display: flex;
 }
 .recruitment-src__mainbar{
   width: 73%;
 }
-.search-input{
+.recruitments-col__lists{
+  max-width: 960px;
+  margin-bottom: 20px;
+}
+.recruitment-col__top__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.recruitment-col__title{
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.recruitment-col__body{
+  color: #959595;
+  margin-bottom: 10px;
+}
+.recruitmen-col__bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recruitment-col__content-left{
+  display: flex;
+  align-items: center;
+  
+}
+.recruitment-col__content-right{
+  color: #959595;
+}
 
+.search-input{
   margin-bottom: 40px;
 }
 .search-border-line{
@@ -534,39 +585,6 @@ ol > .comment{
 .recruitment-src__sidebar{
   width: 300px;
   margin-left: 40px;
-}
-.recruitments-src__lists{
-  max-width: 960px;
-  margin-bottom: 20px;
-}
-.recruitment-src__top__header{
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-.recruitment-src__title{
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-.recruitment-src__body{
-  color: #959595;
-  margin-bottom: 10px;
-}
-.recruitmen-src__bottom{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.recruitment-src__content-left{
-  display: flex;
-  align-items: center;
-  
-}
-.recruitment-src__content-left a{
-  padding-top: 4px;
-}
-.recruitment-src__content-right{
-  color: #959595;
 }
 
 /* recruitment/create.blade.php */
@@ -889,6 +907,96 @@ ol > .comment{
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+.submit-button{
+  height: 40px;
+  width: 100px;
+  border-radius: 25px;
+  border:1px solid;
+  border-color: #686868;
+  background-color: #A25200;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* ラベル付きのセレクター（以下4つ） */
+.label-selector{
+  display: flex;
+  font-weight: bold;
+}
+.label-selector li{
+  width: 64px;
+  text-align: center;
+}
+.label-selector__item{
+  padding: 12px 24px 12px;
+  margin-top: 3px;
+  color: #979797;
+  font-weight: bold;
+}
+.label-selector__item-active{
+  padding: 12px 23px 12px;
+  border-radius: 10px 10px 0px 0px;
+  border: solid 2px white;
+  color: white;
+  font-weight: bold;
+}
+/* 茶色いライン */
+.border-line__brown__max{
+  width: 100%;
+  border: 2px solid;
+  border-color: #A25200;
+}
+/* 濃いオレンジライン */
+.border-line__max{
+  width: 100%;
+  border: 1px solid;
+  border-color: #EB8117;
+}
+/* 濃いオレンジライン */
+.border-line__max__2px{
+  width: 100%;
+  border: 2px solid;
+  border-color: #EB8117;
+}
+/* 薄いオレンジライン */
+.border-line__max__light{
+  width: 100%;
+  border: 1px solid;
+  border-color: #FFD2A4;
+}
+/* 背景色 */
+.bg-color__brown{
+  background-color: #A25200;
+}
+.bg-color__orange{
+  background-color: #FF9F3E;
+}
+/* margin */
+.mg-top-12px{
+  margin-top: 12px;
+}
+.mg-bt-50px{
+  margin-bottom: 50px;
+}
+.mg-bt-25px{
+  margin-bottom: 25px;
+}
+.mg-bt-20px{
+  margin-bottom: 20px;
+}
+.mg-bt-16px{
+  margin-bottom: 16px;
+}
+.mg-bt-12px{
+  margin-bottom: 12px;
+}
+.mg-bt-8px{
+  margin-bottom: 8px;
+}
+/* 文字色 */
+.color-gray{
+  color: #686868;
 }
 /* フォント36px */
 .fontsize-36px{

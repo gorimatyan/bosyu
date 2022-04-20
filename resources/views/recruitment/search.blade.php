@@ -20,31 +20,28 @@
                 </ul>
 
                 @foreach($recruitments as $recruitment)
-                <div class="recruitments-src__lists frame">
-                    <section class="recruitment-src">
-                        <div class="recruitment-src__top">
-                            <header class="recruitment-src__top__header">
-                                <a href="#"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
-                                <a href="#" class="recruitment-src__user-name">＠{{ $recruitment->user->id }}</a>
-                                <div class="recruitment-status bold">募集中</div>
-                            </header>
-                            <h1 class="recruitment-src__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>
-                            <div class="recruitment-src__body">{{ $recruitment->body }}</div>
-                        </div>
+                <div class="recruitments-col__lists frame">
+                    <div class="recruitment-col__top">
+                        <header class="recruitment-col__top__header">
+                            <a href="{{ route('user.show',['id' => $recruitment->user->id ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
+                            <a href="{{ route('user.show',['id' => $recruitment->user->id ]) }}">＠{{ $recruitment->user->id }}</a>
+                            <div class="recruitment-status bold">募集中</div>
+                        </header>
+                        <h1 class="recruitment-col__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>
+                        <h2 class="recruitment-col__body">{{ $recruitment->body }}</h2>
+                    </div>
 
-                        <div class="recruitmen-src__bottom">
-                            <div class="recruitment-src__content-left">
-                                <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
-                                    @foreach($recruitment->tags as $tags)
-                                        <a href="#" class="fontsize-14px bold">{{ $tags->tag }}</a>&nbsp;
-                                    @endforeach
-                            </div>
-                            <div class="recruitment-src__content-right fontsize-12px">
-                                投稿日：{{\Carbon\Carbon::parse($recruitment->created_at)->format('Y/m/d')}}
-                            </div>
+                    <div class="recruitmen-col__bottom">
+                        <div class="recruitment-col__content-left">
+                            <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
+                            @foreach($recruitment->tags as $tags)
+                            <a href="#" class="fontsize-14px bold">{{ $tags->tag }}</a>&nbsp;
+                            @endforeach
                         </div>
-
-                    </section>
+                        <div class="recruitment-col__content-right fontsize-12px">
+                            投稿日：{{\Carbon\Carbon::parse($recruitment->created_at)->format('Y/m/d')}}
+                        </div>
+                    </div>
                 </div>
                 @endforeach
             </main>
