@@ -38,8 +38,8 @@
 
                     <div class="user-profile__column mg-bt-50px mg-top-12px">
                         <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="ユーザー画像" class="mg-bt-12px img-icon-size-medium">
-                        <p class="mg-bt-8px fontsize-14px">＠ユーザーID</p>
-                        <p class="bold">ユーザー名</p>
+                        <p class="mg-bt-8px fontsize-14px">＠{{ $user->id }}</p>
+                        <p class="bold">{{ $user->name }}</p>
                     </div>
 
 
@@ -50,7 +50,7 @@
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>
                         <div class="user-profile__items">
-                            <p class="color-gray">プロフィールですオラオラオラオラオラオラオラオラオラオラオラオラオラウオァーァーオラオラオラ</p>
+                            <p class="color-gray">{{ $user->self_introduction }}</p>
                         </div>
                     </section>
 
@@ -90,7 +90,7 @@
                         <div class="border-line__max mg-bt-20px"></div>
                         <div class="user-profile__items">
                         <!-- @foreach($recruitment->tags as $tags) -->
-                                <a href="#" class="fontsize-12px bold">プログラミング</a>&nbsp;
+                                <a href="#" class="fontsize-12px bold">＃{{ $tags->tag }}</a>&nbsp;
                         <!-- @endforeach -->    
                         </div>
                     </section>
