@@ -54,16 +54,13 @@ class UsersController extends Controller
         $user = User::query()
                 ->where('id' , $id)
                 ->first();
-        // dd($user);
         $recruitments = $user->hasRecruitments;
-        // dd($recruitments);
+        
         $tags = $user->favoriteTags;
-        // dd($favorite_tags_id);
         foreach($tags as $tag)
         {   
             $favorite_tag_id = $tag->pivot->tag_id;
             $favorite_tags[] = Tag::find($favorite_tag_id);
-            
         }
         return view('user.show',[
            "user" => $user,

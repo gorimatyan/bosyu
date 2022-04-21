@@ -1,4 +1,4 @@
-@extends('layouts.no_lists')
+@extends('layouts.no_list')
 @section('content')
 <body>
     <div class="container recrutiment-show__container">

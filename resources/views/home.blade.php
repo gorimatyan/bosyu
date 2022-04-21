@@ -7,7 +7,7 @@
             <div class="sidebar-trend frame">
                 <header class="bold">月間トレンド</header>
                 @foreach($trend_tags as $trend_tag)
-                    {{ $trend_tag->tag }}
+                    #{{ $trend_tag->tag }}
                 @endforeach
             </div>
         </div>

@@ -155,11 +155,16 @@ class RecruitmentController extends Controller
     public function edit($recruitment_id)
     {
         $recruitment = Recruitment::find($recruitment_id);
-        $user = $recruitment -> user;
-
+        $user = $recruitment->user;
+        $recruitment_tags = $recruitment->tags;
+        foreach($recruitment_tags as $recruitment_tag)
+        {
+            $tags[] = $recruitment_tag->tag;
+        }
         return view('recruitment.edit')->with([
             "recruitment" => $recruitment,
             "user" => $user,
+            "tags" => $tags,
         ]);
     }
 

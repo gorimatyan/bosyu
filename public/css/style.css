@@ -923,11 +923,12 @@ ol > .comment{
   font-weight: bold;
 }
 .label-selector li{
-  width: 64px;
+  box-sizing: border-box;
+  width: 100px;
   text-align: center;
 }
 .label-selector__item{
-  padding: 12px 24px 12px;
+  padding: 12px 5px 12px;
   margin-top: 3px;
   color: #979797;
   font-weight: bold;
@@ -1214,14 +1215,14 @@ ol > .comment{
   flex-direction: column;
   width: 95%;
   margin-right: 0px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   color:#686868;
   /* box-sizing: border-box; */
   border-radius: 0px;
   border:0px solid;
   border-color: #EB8117;
-  background-color: transparent;
-  padding: 0px 0px;
+  background-color: #fffaf6;
+  padding: 15px 12px;
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
 
@@ -1229,12 +1230,12 @@ ol > .comment{
   /* max-width: 95%; */
   width: 95%;
   min-width: 95%;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border-radius: 0px;
   border:0px solid;
   border-color: #EB8117;
-  background-color: transparent;
-  padding: 0px 0px;
+  background-color: #fffaf6;
+  padding: 15px 12px;
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
 }
@@ -1302,21 +1303,28 @@ ol > .comment{
   flex-direction: column;
   width: 95%;
   margin-right: 0px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   color:#686868;
   /* box-sizing: border-box; */
   border-radius: 0px;
   border:0px solid;
   border-color: #EB8117;
-  background-color: transparent;
-  padding: 0px 0px;
+  background-color: #fffaf6;
+  padding: 15px 12px;
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
 
 .user-show__right-container{
   /* max-width: 95%; */
   width: 95%;
-  box-sizing: border-box;
+  min-width: 95%;
+  /* box-sizing: border-box; */
+  border-radius: 0px;
+  border:0px solid;
+  border-color: #EB8117;
+  background-color: #fffaf6;
+  padding: 15px 12px;
+  box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
 
  }

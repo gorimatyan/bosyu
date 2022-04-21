@@ -1,4 +1,4 @@
-@extends('layouts.no_lists')
+@extends('layouts.no_list')
 
             <!-- <img src='http://localhost:8000/storage/{{ $user->image }}' alt='ユーザー画像' >
 
@@ -100,16 +100,16 @@
 
             <div class="user-show__right-container frame">
                 <ul class="label-selector">
-                    <li class="label-selector__item">募集</li>
-                    <li class="label-selector__item-active bg-color__brown">待ち人</li>
-                    <li class="label-selector__item">コメント</li>
+                    <a href=""><li class="label-selector__item">募集</li></a>
+                    <a href=""><li class="label-selector__item-active bg-color__brown">待ち人</li></a>
+                    <a href=""><li class="label-selector__item">コメント</li></a>
                 </ul>
 
                 <div class="border-line__brown__max mg-bt-8px"></div>
 
                 <ul class="label-selector">
-                    <li class="label-selector__item-active bg-color__orange">募集中</li>
-                    <li class="label-selector__item">締切済</li>
+                    <a href=""><li class="label-selector__item-active bg-color__orange">募集中</li></a>
+                    <a href=""><li class="label-selector__item">締切済</li></a>
                 </ul>
 
                 <div class="border-line__max__2px mg-bt-20px"></div>
