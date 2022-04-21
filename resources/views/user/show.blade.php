@@ -89,9 +89,9 @@
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>
                         <div class="user-profile__items">
-                        <!-- @foreach($recruitment->tags as $tags) -->
-                                <a href="#" class="fontsize-12px bold">＃{{ $tags->tag }}</a>&nbsp;
-                        <!-- @endforeach -->    
+                        @foreach($favorite_tags as $favorite_tag)
+                                <a href="#" class="fontsize-12px bold">＃{{ $favorite_tag->tag }}</a>&nbsp;
+                        @endforeach    
                         </div>
                     </section>
 

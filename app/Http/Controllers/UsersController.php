@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -56,10 +57,18 @@ class UsersController extends Controller
         // dd($user);
         $recruitments = $user->hasRecruitments;
         // dd($recruitments);
-        
+        $tags = $user->favoriteTags;
+        // dd($favorite_tags_id);
+        foreach($tags as $tag)
+        {   
+            $favorite_tag_id = $tag->pivot->tag_id;
+            $favorite_tags[] = Tag::find($favorite_tag_id);
+            
+        }
         return view('user.show',[
            "user" => $user,
            "recruitments" => $recruitments,
+           "favorite_tags" => $favorite_tags,
         ]);
     }
 

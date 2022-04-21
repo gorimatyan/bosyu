@@ -66,7 +66,9 @@ class User extends Authenticatable
         return $this->hasMany(NewNotice::class);
     }
 
-    public function favortiteTags(){
-        return $this->belongsToMany(Tag::class,'favorite_tag','user_id','tag_id');
+    public function favoriteTags(){
+        return $this->belongsToMany(Tag::class,'favorite_tags','user_id','tag_id')
+                    ->withPivot('tag_id')
+                    ->withTimestamps();
     }
 }

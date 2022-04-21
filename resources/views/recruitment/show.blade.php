@@ -50,7 +50,7 @@
                 
                 <div class="comments">
                     <div class="comments-title bold">{{ $count_comments }}件のコメント</div>
-                    <div class="border-line__max"></div>
+                    <div class="border-line__max mg-bt-16px"></div>
                     <ol>
                         @foreach($comments as $comment)
                             <li>

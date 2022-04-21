@@ -32,9 +32,10 @@ class RecruitmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('recruitment.create');
+    public function create(Request $request)
+    {   
+        $confirm_items = $request->items;
+        return view('recruitment.create',['confirm_items' => $confirm_items]);
     }
 
     /**
@@ -43,6 +44,23 @@ class RecruitmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function confirm(Request $request){
+        $user = Auth::user();
+
+        $confirm_items = [];
+        $confirm_items['title'] = $request->title; 
+        $confirm_items['body'] = $request->body;
+        $confirm_items['requirement'] = $request->requirement; 
+        $confirm_items['number_of_people'] = $request->number_of_people; 
+        $confirm_items['deadline'] = $request->deadline; 
+        $confirm_items['tag'] = $request->tag; 
+
+        return view('recruitment.confirm',[
+            "confirm_items" => $confirm_items,
+            "user" => $user,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $recruitment = new Recruitment;
@@ -308,8 +326,7 @@ class RecruitmentController extends Controller
         }else{
             echo '既に参加申請をしています';
         }
-        
-        
     }
+
 
 }
