@@ -8,29 +8,29 @@
                 <div class="fontsize-32px bold">募集の修正</div>
                 <div class="recruitment-create__border-line"></div>
                 <form action="{{ route('recruitment.update',['recruitment_id' => $recruitment -> id]) }}" method="POST">
-                @csrf
-                @method("PUT")
-                    <div class="recruitment-create__input">
+                    @csrf
+                    @method("PUT")
+                    <div class="input-box">
                         <p>募集名（100字以内）</p>
                         <input class="grayframe width-max" type="text" name="title" value="{{ $recruitment -> title }}">
                     </div>
-                    <div class="recruitment-create__input">
+                    <div class="input-box">
                         <p>本文（2000字以内）</p>
                         <textarea class="grayframe width-max" type="text" name="body">{{ $recruitment -> body }}</textarea>
                     </div>
-                    <div class="recruitment-create__input">
+                    <div class="input-box">
                         <p>条件（400字以内）</p>
                         <textarea class="grayframe width-max" name="requirement">{{ $recruitment -> requirement }}</textarea>
                     </div>
-                    <div class="recruitment-create__input">
+                    <div class="input-box">
                         <p>人数</p>
                         <input class="grayframe-small" type="text" name="number_of_people" value="{{ $recruitment -> number_of_people }}">
                     </div>
-                    <div class="recruitment-create__input">
+                    <div class="input-box">
                         <p>募集〆切日</p>
                         <input class="grayframe width-half" type="date" name="deadline" value="{{ $recruitment -> deadline }}">
                     </div>
-                    <div class="recruitment-create__input">
+                    <div class="input-box">
                         <p>タグ</p>
                         <input class="grayframe width-max" type="text" name="tag" value="{{ implode(' ',$tags) }}">
                     </div>

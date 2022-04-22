@@ -220,18 +220,18 @@ button, input, select, textarea {
   display: flex;
   justify-content: center;
 }
-.user-show__left-container{
+.row-container__left{
   display: flex;
   flex-direction: column;
   width: 356px;
   margin-right: 12px;
   color:#686868;
 }
-.user-show__right-container{
+.row-container__right{
   min-width: 346px;
   width: 65%;
 }
-.user-profile{
+.icon-heading{
   margin-bottom: 50px;
 }
 .user-profile__column{
@@ -239,26 +239,77 @@ button, input, select, textarea {
   flex-direction: column;
   align-items: center;
 }
-.user-profile__header{
+.profile-edit{
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  width: 180px;
+  background-color: #A25200;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.icon-heading__header{
   display: flex;
   margin-bottom: 5px;
 }
-.user-profile__header p{
+.icon-heading__header p{
   font-weight: bold;
   color: #686868;
   padding-top: 5px;
 }
-.user-profile__items{
+.icon-heading__items{
   padding: 2px 38px;
 }
-.user-profile__items__user-info{
+.icon-heading__items__user-info{
   display: flex;
   justify-content: space-between;
   color: #959595;
   margin-bottom: 10px;
-
 }
-
+        /* user/settingsMyPage.blade.php */
+.setting-menu{
+  display: flex;
+  flex-direction: column;
+}
+.setting-menu a{
+  /* box-sizing: border-box; */
+  width: 80%;
+  padding: 10px 50px 5px 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #cacaca;
+}
+.setting-menu > .active{
+  /* background-color: #ffe0badb; */
+  /* border-radius: 8px; */
+  border-bottom: 2px solid #E57300;
+  /* color: white; */
+  font-weight: bold;
+}
+.no-border-frame{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  color:#686868;
+  /* box-sizing: border-box; */
+  border-radius: 0px;
+  border:0px solid;
+  border-color: #EB8117;
+  background-color: #fffaf6;
+  padding: 15px 12px;
+  box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
+}
+.border-frame__content{
+  padding: 8px 10px;
+}
+.border-frame__header{
+  font-weight: bold;
+  margin-top: 12px;
+  font-size: 24px;
+  color: #686868;
+}
         /* recruitment/show.blade.php */
 .recrutiment-show__container{
   margin-bottom: 80px;
@@ -601,19 +652,19 @@ ol > .comment{
   margin-top: 12px;
   margin-bottom:24px;
 }
-.recruitment-create__input{
+.input-box{
   /* display: flex;
   flex-direction: column; */
   margin-bottom: 20px;
 }
-.recruitment-create__input p{
+.input-box p{
   font-size: 16px;
   font-weight: bold;
   color: #686868;
   margin-left: 6px;
   margin-bottom: 10px;
 }
-.recruitment-create__input textarea{
+.input-box textarea{
   height: 150px;
   padding: 16px;
   margin-bottom: 20px;
@@ -621,7 +672,7 @@ ol > .comment{
   font-size: 14px;
   outline: none;
 }
-.recruitment-create__input input{
+.input-box input{
   height: 80%;
   padding: 16px;
   margin-bottom: 20px;
@@ -975,6 +1026,12 @@ ol > .comment{
 .mg-top-12px{
   margin-top: 12px;
 }
+.mg-bt-70px{
+  margin-bottom: 70px;
+}
+.mg-bt-60px{
+  margin-bottom: 60px;
+}
 .mg-bt-50px{
   margin-bottom: 50px;
 }
@@ -1201,7 +1258,7 @@ ol > .comment{
   flex-direction: column;
   align-items: center;
 }
-.user-show__left-container{
+.row-container__left{
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -1210,7 +1267,7 @@ ol > .comment{
   color:#686868;
   /* box-sizing: border-box; */
 }
-.user-show__left-container.frame{
+.row-container__left.frame{
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -1226,7 +1283,7 @@ ol > .comment{
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
 
-.user-show__right-container{
+.row-container__right{
   /* max-width: 95%; */
   width: 95%;
   min-width: 95%;
@@ -1289,7 +1346,7 @@ ol > .comment{
   flex-direction: column;
   align-items: center;
 }
-.user-show__left-container{
+.row-container__left{
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -1298,7 +1355,7 @@ ol > .comment{
   color:#686868;
   /* box-sizing: border-box; */
 }
-.user-show__left-container.frame{
+.row-container__left.frame{
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -1314,7 +1371,7 @@ ol > .comment{
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
 
-.user-show__right-container{
+.row-container__right{
   /* max-width: 95%; */
   width: 95%;
   min-width: 95%;
@@ -1357,7 +1414,7 @@ ol > .comment{
   flex-direction: column;
   align-items: center;
 }
-.user-show__left-container{
+.row-container__left{
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -1365,7 +1422,7 @@ ol > .comment{
   margin-bottom: 12px;
   color:#686868;
 }
-.user-show__right-container{
+.row-container__right{
   min-width: 346px;
   width: 95%;
 }

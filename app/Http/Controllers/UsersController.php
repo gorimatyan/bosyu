@@ -105,33 +105,14 @@ class UsersController extends Controller
     {   
         // バリデーションは一旦後回し
         //$this->validator($request->all())->validate();
+        $login_user_id = Auth::user()->id;
+        $updated_user_id = $request->input('id');
+        $user = User::where('id' ,$login_user_id)->first();
 
-        $user = User::query()->where('id' ,"$id")->first();
-
-        // dd($user);
-            //Recruitmentsテーブルのuser_idを更新する処理
-        $user_hasRecruitments = $user->hasRecruitments;
-        foreach($user_hasRecruitments as $user_hasRecruitment)
-        {   
-            $user_hasRecruitment->user_id = $request->input('id');
-        };
-
-            // Commentsテーブルのuser_idを更新する処理
-        $user_ids_on_comment_table = $user->recruitments;
-        foreach($user_ids_on_comment_table as $user_id_on_comment_table)
-        {
-            $user_id_on_comment_table->pivot->user_id =  $request->input('id');
-            
-        };
-
-        $user->save();
-
-            //　そしてログイン中のユーザー情報を更新する。これで更新してもログイン状態が解除されない 
         $user->name = $request->input('name');
-        // $user->email = $request->input('email');
         $user->id = $request->input('id');
         $user->self_introduction = $request->input('self_introduction');
-        // dd(Auth::user()->id);
+        $user->email = $request->input('email');
         $user->save();
         
 
@@ -146,10 +127,14 @@ class UsersController extends Controller
         //     $filePath = 'storage/defaultUserImg.jpg';
         //     $user->image = str_replace('storage/','', $filePath);
         // };
-          
         //   $user->save();
 
-          return redirect()->route('user.show',['id' => $user->id ]);
+        $updated_user = User::where('id' ,$updated_user_id)->first();
+            // dd($updated_user);
+            return redirect()->route('user.settingsMyPage');
+        //   return view('user.settingsMyPage',[
+        //         "user" => $updated_user,
+        //     ]);
     }
 
     protected function validator(array $data)
@@ -183,15 +168,15 @@ class UsersController extends Controller
         return redirect()->route('login');
     }
 
-    public function showMyPage()
+    public function settingsMyPage()
     {   
-        // これはshowメソッドでええ
-        // showメソッドで返したviewの中で「 if(ログインユーザーID＝開いているマイページのユーザーID) ]で作れば問題なさそう。
-        $login_user = Auth::user();
+        // $login_user = Auth::user();
         
-        return view('showMyPage')->with([
-            "user" => $login_user,
-        ]);
+        return view('user.settingsMyPage')
+        // ->with([
+        //     "user" => $login_user,
+        // ])
+        ;
 
     }
 

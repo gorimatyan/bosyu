@@ -187,7 +187,7 @@ class RecruitmentController extends Controller
 
         $recruitment->save();
 
-        return redirect()->route('recruitment.show',[ "recruitment_id" => $recruitment -> id]);
+        return redirect()->route('recruitment.show',[ "recruitment_id" => $recruitment->id]);
     }
 
     /**

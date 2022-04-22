@@ -34,47 +34,53 @@
 <body>
     <div class='container'>
         <div class='user-show__container'>
-                <div class="user-show__left-container frame">
+                <div class="row-container__left frame">
 
-                    <div class="user-profile__column mg-bt-50px mg-top-12px">
+                    <div class="user-profile__column mg-bt-70px mg-top-12px">
                         <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="ユーザー画像" class="mg-bt-12px img-icon-size-medium">
                         <p class="mg-bt-8px fontsize-14px">＠{{ $user->id }}</p>
-                        <p class="bold">{{ $user->name }}</p>
+                        <p class="bold mg-bt-8px">{{ $user->name }}</p>
+
+                        @if(Auth::user()->id == $user->id)
+                        <a href="{{ route('user.settingsMyPage') }}" class="profile-edit">プロフィールを編集する</a>
+                        @endif
                     </div>
 
 
-                    <section class="user-profile">
-                        <div class="user-profile__header">
+
+
+                    <section class="icon-heading">
+                        <div class="icon-heading__header">
                             <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="タグアイコン" class="img-icon-size-mini">
                             <p>自己紹介</p>
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>
-                        <div class="user-profile__items">
+                        <div class="icon-heading__items">
                             <p class="color-gray">{{ $user->self_introduction }}</p>
                         </div>
                     </section>
 
 
-                    <section class="user-profile ">
-                        <div class="user-profile__header">
+                    <section class="icon-heading ">
+                        <div class="icon-heading__header">
                             <img src="http://localhost:8000/storage/Info-white.jpg" alt="タグアイコン" class="img-icon-size-mini">
                             <p>ユーザー情報</p>
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>
-                        <div class="user-profile__items">
-                            <div class="user-profile__items__user-info">
+                        <div class="icon-heading__items">
+                            <div class="icon-heading__items__user-info">
                                 <p>募集中</p>
                                 <p>1件</p>
                             </div>
-                            <div class="user-profile__items__user-info">
+                            <div class="icon-heading__items__user-info">
                                 <p>待ち人中</p>
                                 <p>2件</p>
                             </div>
-                            <div class="user-profile__items__user-info">
+                            <div class="icon-heading__items__user-info">
                                 <p>総ログイン日数</p>
                                 <p>100日</p>
                             </div>
-                            <div class="user-profile__items__user-info">
+                            <div class="icon-heading__items__user-info">
                                 <p>参加した募集</p>
                                 <p>5件</p>
                             </div>
@@ -82,13 +88,13 @@
                     </section>
 
 
-                    <section class="user-profile">
-                        <div class="user-profile__header">
+                    <section class="icon-heading">
+                        <div class="icon-heading__header">
                             <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="img-icon-size-mini">
                             <p>お気に入りタグ</p>
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>
-                        <div class="user-profile__items">
+                        <div class="icon-heading__items">
                         @foreach($favorite_tags as $favorite_tag)
                                 <a href="#" class="fontsize-12px bold">＃{{ $favorite_tag->tag }}</a>&nbsp;
                         @endforeach    
@@ -98,7 +104,7 @@
 
                 </div>
 
-            <div class="user-show__right-container frame">
+            <div class="row-container__right frame">
                 <ul class="label-selector">
                     <a href=""><li class="label-selector__item">募集</li></a>
                     <a href=""><li class="label-selector__item-active bg-color__brown">待ち人</li></a>
