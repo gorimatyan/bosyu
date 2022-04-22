@@ -64,9 +64,9 @@
                                 @enderror
 
                         <div class="register-form">
-                            <label for="id" class="textbox-password fontsize-16px bold">{{ __('ID') }}</label>
+                            <label for="id" class="textbox-password fontsize-16px bold">{{ __('ユーザーID') }}</label>
                                 <div class="textbox">
-                                    <input id="id" type="text" class="@error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
+                                    <input id="id" type="text" class="@error('id') is-invalid @enderror" name="user_name" value="{{ old('id') }}" required autocomplete="id" autofocus>
                                 </div>
                         </div>                     
                                 @error('password')

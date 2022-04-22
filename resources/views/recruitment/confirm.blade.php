@@ -10,8 +10,8 @@
                     <div class="recruitment-details__user-profile">
                         <img src="http://localhost:8000/storage/{{ $user->image }}" class="img-icon-size-small">
                         <div class="recruitment-details__user-profile__id">
-                                <p class="">＠{{ $user->id }}</p>
-                                <p class="">{{ $user->name }}</p>
+                                <p class="">＠{{ $user->user_name }}</p>
+                                <p class="">{{ $user->nickname }}</p>
                         </div>
                     </div>
 

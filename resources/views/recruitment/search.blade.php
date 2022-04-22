@@ -23,8 +23,8 @@
                 <div class="recruitments-col__lists frame">
                     <div class="recruitment-col__top">
                         <header class="recruitment-col__top__header">
-                            <a href="{{ route('user.show',['id' => $recruitment->user->id ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
-                            <a href="{{ route('user.show',['id' => $recruitment->user->id ]) }}">＠{{ $recruitment->user->id }}</a>
+                            <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
+                            <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}">＠{{ $recruitment->user->user_name }}</a>
                             <div class="recruitment-status bold">募集中</div>
                         </header>
                         <h1 class="recruitment-col__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>

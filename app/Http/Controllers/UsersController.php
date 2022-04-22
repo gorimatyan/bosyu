@@ -49,10 +49,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_name)
     {   
         $user = User::query()
-                ->where('id' , $id)
+                ->where('user_name' , $user_name)
                 ->first();
         $recruitments = $user->hasRecruitments;
         
@@ -101,7 +101,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_name)
     {   
         // バリデーションは一旦後回し
         //$this->validator($request->all())->validate();
@@ -109,8 +109,8 @@ class UsersController extends Controller
         $updated_user_id = $request->input('id');
         $user = User::where('id' ,$login_user_id)->first();
 
-        $user->name = $request->input('name');
-        $user->id = $request->input('id');
+        $user->nickname = $request->input('nickname');
+        $user->user_name = $request->input('user_name');
         $user->self_introduction = $request->input('self_introduction');
         $user->email = $request->input('email');
         $user->save();

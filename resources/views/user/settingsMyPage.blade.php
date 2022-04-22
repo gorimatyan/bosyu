@@ -28,16 +28,16 @@
                     <div class="border-line__max mg-top-12px"></div>
 
                     <div class="border-frame__items">                    
-                        <form action="{{ route('user.update',['id' => Auth::user()->id ]) }}" method="POST">
+                        <form action="{{ route('user.update',['user_name' => Auth::user()->user_name ]) }}" method="POST">
                             @csrf
                             @method("PUT")
                             <div class="input-box">
                                 <p>ユーザーID</p>
-                                <input class="grayframe width-max" type="text" name="id" value="{{ Auth::user()->id }}">
+                                <input class="grayframe width-max" type="text" name="user_name" value="{{ Auth::user()->user_name }}">
                             </div>
                             <div class="input-box">
                                 <p>ニックネーム</p>
-                                <textarea class="grayframe width-max" type="text" name="name">{{ Auth::user()->name }}</textarea>
+                                <textarea class="grayframe width-max" type="text" name="nickname">{{ Auth::user()->nickname }}</textarea>
                             </div>
                             <div class="input-box">
                                 <p>自己紹介（400字以内）</p>

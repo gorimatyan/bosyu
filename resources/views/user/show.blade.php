@@ -38,8 +38,8 @@
 
                     <div class="user-profile__column mg-bt-70px mg-top-12px">
                         <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="ユーザー画像" class="mg-bt-12px img-icon-size-medium">
-                        <p class="mg-bt-8px fontsize-14px">＠{{ $user->id }}</p>
-                        <p class="bold mg-bt-8px">{{ $user->name }}</p>
+                        <p class="mg-bt-8px fontsize-14px">＠{{ $user->user_name }}</p>
+                        <p class="bold mg-bt-8px">{{ $user->nickname }}</p>
 
                         @if(Auth::user()->id == $user->id)
                         <a href="{{ route('user.settingsMyPage') }}" class="profile-edit">プロフィールを編集する</a>
@@ -124,8 +124,8 @@
                         <div class="recruitments-col__lists">
                             <div class="recruitment-col__top">
                                 <header class="recruitment-col__top__header">
-                                    <a href="{{ route('user.show',['id' => $recruitment->user->id ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
-                                    <a href="{{ route('user.show',['id' => $recruitment->user->id ]) }}">＠{{ $recruitment->user->id }}</a>
+                                    <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
+                                    <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}">＠{{ $recruitment->user->user_name }}</a>
                                     <div class="recruitment-status bold">募集中</div>
                                 </header>
                                 <h1 class="recruitment-col__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>

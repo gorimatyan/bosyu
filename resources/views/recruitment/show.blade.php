@@ -9,8 +9,8 @@
                         <div class="recruitment-details__user-profile">
                             <img src="http://localhost:8000/storage/{{ $user->image }}" class="img-icon-size-small">
                             <div class="recruitment-details__user-profile__id">
-                                    <a href="#" class="">＠{{ $user->id }}</a>
-                                    <a href="#" class="">{{ $user->name }}</a>
+                                    <a href="#" class="">＠{{ $user->user_name }}</a>
+                                    <a href="#" class="">{{ $user->nickname }}</a>
                             </div>
                         </div>
 
@@ -56,7 +56,7 @@
                             <li>
                                 <div class="comment-user">
                                     <img src="http://localhost:8000/storage/{{ $user->image }}" alt="" class="img-icon-size-mini">
-                                    <a href="#">{{ $comment->pivot->user_id }}</a>
+                                    <a href="#">{{ $comment->user_name }}</a>
                                 </div>
                             </li>
                             

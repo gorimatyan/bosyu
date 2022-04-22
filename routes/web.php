@@ -92,8 +92,8 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::get('', [App\Http\Controllers\UsersController::class,'index'])->name('index'); // ユーザの一覧表示はいらんかも
     Route::post('', [App\Http\Controllers\UsersController::class,'store'])->name('store'); 
-    Route::put('/{id}', [App\Http\Controllers\UsersController::class,'update'])->name('update'); 
-    Route::get('/{id}', [App\Http\Controllers\UsersController::class,'show'])->name('show'); 
+    Route::put('/{user_name}', [App\Http\Controllers\UsersController::class,'update'])->name('update'); 
+    Route::get('/{user_name}', [App\Http\Controllers\UsersController::class,'show'])->name('show'); 
     Route::delete('/{id}', [App\Http\Controllers\UsersController::class,'destroy'])->name('destroy');
     Route::get('/create', [App\Http\Controllers\UsersController::class,'create'])->name('create'); 
     Route::get('/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('edit');
