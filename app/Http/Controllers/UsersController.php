@@ -169,11 +169,11 @@ class UsersController extends Controller
         return redirect()->route('login');
     }
 
-    public function settingsMyPage()
+    public function settingsProfile()
     {   
         // $login_user = Auth::user();
         
-        return view('user.settingsMyPage')
+        return view('user.settingsProfile')
         // ->with([
         //     "user" => $login_user,
         // ])

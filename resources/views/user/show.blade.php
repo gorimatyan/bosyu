@@ -42,7 +42,7 @@
                         <p class="bold mg-bt-8px">{{ $user->nickname }}</p>
 
                         @if(Auth::user()->id == $user->id)
-                        <a href="{{ route('user.settingsMyPage') }}" class="profile-edit">プロフィールを編集する</a>
+                        <a href="{{ route('user.settingsProfile') }}" class="profile-edit">プロフィールを編集する</a>
                         @endif
                     </div>
 
