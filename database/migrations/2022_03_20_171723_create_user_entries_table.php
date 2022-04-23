@@ -15,7 +15,7 @@ class CreateUserEntriesTable extends Migration
     {
         Schema::create('user_entries', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id',16);
+            $table->unsignedBigInteger('user_id');
             $table->string('recruitment_id',13);
             $table->string('message');
             $table->integer('status')->default(0);

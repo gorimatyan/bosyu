@@ -15,7 +15,7 @@ class CreateFavoriteTagsTable extends Migration
     {
         Schema::create('favorite_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id',16);
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
 

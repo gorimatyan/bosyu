@@ -26,8 +26,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id' => 'hogehoge',
-            'name' => 'gorimasan',
+            'id' => 1,
+            'user_name' => 'hogehoge',
+            'nickname' => 'gorimasan',
             'email' => 'test@test.com',
             'password' => Hash::make('hogehoge'),
             'self_introduction' => 'こんにちゃーすごりまでぇーす',
@@ -35,8 +36,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id' => 'gorimatyan',
-            'name' => 'ごりまちゃん',
+            'id' => 2,
+            'user_name' => 'gorimatyan',
+            'nickname' => 'ごりまちゃん',
             'email' => 'test@test.co.jp',
             'password' => Hash::make('hogehoge'),
             'self_introduction' => 'idがgorimatyanです',
@@ -44,8 +46,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id' => 'testtest',
-            'name' => 'テストテスト',
+            'id' => 3,
+            'user_name' => 'testtest',
+            'nickname' => 'テストテスト',
             'email' => 'test@test.ne.jp',
             'password' => Hash::make('hogehoge'),
             'self_introduction' => 'idがtesttestです',
@@ -56,7 +59,7 @@ class DatabaseSeeder extends Seeder
         [
             // 'id' => uniqid(),
             'id' => '1',
-            'user_id' => 'hogehoge',
+            'user_id' => 1,
             'title' => 'ゲームしよう',
             'body' => 'Among usしましょう',
             'status' => 0,
@@ -68,7 +71,7 @@ class DatabaseSeeder extends Seeder
         DB::table('recruitments')->insert(
         [   
             'id' => '2',
-            'user_id' => 'hogehoge',
+            'user_id' => 2,
             'title' => 'ZOOMで会議！',
             'body' => 'いっぱい案出してください。',
             'status' => 0,
@@ -80,7 +83,7 @@ class DatabaseSeeder extends Seeder
         DB::table('recruitments')->insert(
         [
             'id' => '3',
-            'user_id' => 'gorimatyan',
+            'user_id' => 2,
             'title' => 'idがgorimatyanの投稿だよ',
             'body' => 'ごりまです',
             'status' => 0,
@@ -141,7 +144,7 @@ class DatabaseSeeder extends Seeder
         DB::table('waiting_people')->insert(
             [
                 'id' => uniqid(),
-                'user_id' => 'gorimatyan',
+                'user_id' => 2,
                 'title' => '今宿で鬼ごっこしましょう',
                 'body' => '市営住宅で暴れまくりましょう。
                             柴田歯科前に集合しましょう。
@@ -154,7 +157,7 @@ class DatabaseSeeder extends Seeder
         DB::table('waiting_people')->insert(
             [
                 'id' => uniqid(),
-                'user_id' => 'hogehoge',
+                'user_id' => 1,
                 'title' => '誰か勉強しましょう',
                 'body' => '司法試験のお勉強しようぜー',
                 'status' => 0,
@@ -165,7 +168,7 @@ class DatabaseSeeder extends Seeder
         DB::table('waiting_people')->insert(
             [
                 'id' => uniqid(),
-                'user_id' => 'gorimatyan',
+                'user_id' => 2,
                 'title' => 'NBA観に行きましょう',
                 'body' => 'ハチ公前で一旦集合お願いシャス。とりあえずウォリアーズファン集まれ。',
                 'status' => 0,
@@ -185,7 +188,7 @@ class DatabaseSeeder extends Seeder
         DB::table('favorite_tags')->insert(
             [
                 'id' => 1,
-                'user_id' =>'hogehoge',
+                'user_id' => 1,
                 'tag_id' => 2,
                 'created_at' =>now(),
                 'updated_at' =>now(),
@@ -194,7 +197,7 @@ class DatabaseSeeder extends Seeder
         DB::table('favorite_tags')->insert(
             [
                 'id' => 2,
-                'user_id' =>'gorimatyan',
+                'user_id' => 2,
                 'tag_id' => 2,
                 'created_at' =>now(),
                 'updated_at' =>now(),

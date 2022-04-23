@@ -15,8 +15,8 @@ class CreateNewNoticesTable extends Migration
     {
         Schema::create('new_notices', function (Blueprint $table) {
             $table->id();
-            $table->string('from_user',16);
-            $table->string('to_user',16);
+            $table->unsignedBigInteger('from_user');
+            $table->unsignedBigInteger('to_user');
             $table->string('recruitment_id')->nullable();
             $table->string('waiting_people_id')->nullable();
             $table->integer('status')->default(0);
