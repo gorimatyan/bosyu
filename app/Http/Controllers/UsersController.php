@@ -113,6 +113,7 @@ class UsersController extends Controller
         $user->user_name = $request->input('user_name');
         $user->self_introduction = $request->input('self_introduction');
         $user->email = $request->input('email');
+        $user->email_status = $request->input('email_status');
         $user->save();
         
 

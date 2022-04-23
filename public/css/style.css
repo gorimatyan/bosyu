@@ -672,7 +672,7 @@ ol > .comment{
   font-size: 14px;
   outline: none;
 }
-.input-box input{
+.input-box > input{
   height: 80%;
   padding: 16px;
   margin-bottom: 20px;

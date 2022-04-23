@@ -25,7 +25,7 @@
                         公開プロフィール設定
                     </div>
 
-                    <div class="border-line__max mg-top-12px"></div>
+                    <div class="border-line__max mg-top-12px mg-bt-25px"></div>
 
                     <div class="border-frame__items">                    
                         <form action="{{ route('user.update',['user_name' => Auth::user()->user_name ]) }}" method="POST">
@@ -46,6 +46,14 @@
                             <div class="input-box">
                                 <p>メールアドレス</p>
                                 <input class="grayframe width-max" type="email" name="email" value="{{ Auth::user()->email }}">
+                                <div>
+                                    <input type="hidden" name="email_status" value="0">
+                                    @if( Auth::user()->email_status == 1 )
+                                    <input type="checkbox" name="email_status" id="email_status" value="1" checked="true"><label for="email_status">メールアドレスを公開する</label>
+                                    @else
+                                    <input type="checkbox" name="email_status" id="email_status" value="1"><label for="email_status">メールアドレスを公開する</label>
+                                    @endif
+                                </div>
                             </div>
                             <div class="recruitment-create__border-line"></div>
                             <input type="submit" class="submit-button__orange bold" value="更新">
