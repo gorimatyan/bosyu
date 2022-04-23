@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' =>now(),
         ]);
         
-        DB::table('recruitment_tags')->insert(
+        DB::table('recruitment_tag')->insert(
         [
             'id' => 1,
             'tag_id' => 1,
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
             'created_at' =>now(),
             'updated_at' =>now(),
         ]);
-        DB::table('recruitment_tags')->insert(
+        DB::table('recruitment_tag')->insert(
         [
             'id' => 2,
             'tag_id' => 2,
@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
             'created_at' =>now(),
             'updated_at' =>now(),
         ]);
-        DB::table('recruitment_tags')->insert(
+        DB::table('recruitment_tag')->insert(
         [
             'id' => 3,
             'tag_id' => 3,

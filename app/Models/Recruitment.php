@@ -41,7 +41,7 @@ class Recruitment extends Model
     }
 
     public function tags(){
-        return $this->belongsToMany(Tag::class,'recruitment_tags','recruitment_id','tag_id')
+        return $this->belongsToMany(Tag::class,'recruitment_tag','recruitment_id','tag_id')
                     ->withTimestamps();
     }
 }

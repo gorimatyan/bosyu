@@ -13,7 +13,7 @@ class CreateRecruitmentTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recruitment_tags', function (Blueprint $table) {
+        Schema::create('recruitment_tag', function (Blueprint $table) {
             $table->id();
             $table->string('recruitment_id',13);
             $table->unsignedBigInteger('tag_id');
@@ -31,6 +31,6 @@ class CreateRecruitmentTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recruitment_tags');
+        Schema::dropIfExists('recruitment_tag');
     }
 }

@@ -34,8 +34,8 @@
                     <div class="recruitmen-col__bottom">
                         <div class="recruitment-col__content-left">
                             <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
-                            @foreach($recruitment->tags as $tags)
-                            <a href="#" class="fontsize-14px bold">{{ $tags->tag }}</a>&nbsp;
+                            @foreach($recruitment->tags as $tag)
+                            <a href="{{ route('tag.show',['tag' => $tag->tag ]) }}" class="fontsize-14px bold">{{ $tag->tag }}</a>&nbsp;
                             @endforeach
                         </div>
                         <div class="recruitment-col__content-right fontsize-12px">

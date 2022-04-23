@@ -98,5 +98,11 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/create', [App\Http\Controllers\UsersController::class,'create'])->name('create'); 
     Route::get('/{id}/edit', [App\Http\Controllers\UsersController::class,'edit'])->name('edit');
     Route::get('settings/profile', [App\Http\Controllers\UsersController::class,'settingsProfile'])->name('settingsProfile');
+    Route::get('/settings/favoriteTags',[App\Http\Controllers\FavoriteTagController::class,'show'])->name('showFavoriteTags');
+    Route::post('/settings/favoriteTags',[App\Http\Controllers\FavoriteTagController::class,'register'])->name('registerFavoriteTags');
+    Route::put('/settings/favoriteTags',[App\Http\Controllers\FavoriteTagController::class,'update'])->name('updateFavoriteTags');
+});
 
+Route::prefix('tag')->name('tag.')->group(function(){
+    Route::get('/{tag}', [App\Http\Controllers\TagController::class,'show'])->name('show'); 
 });

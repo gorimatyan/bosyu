@@ -1,35 +1,4 @@
 @extends('layouts.no_list')
-
-            <!-- <img src='http://localhost:8000/storage/{{ $user->image }}' alt='ユーザー画像' >
-
-            <ul class='tag'>
-                <li></li>
-            </ul>
-
-            <div class='user_discription'>
-
-            </div>
-        <a href="{{ route('user.edit',['id' => $user->id ]) }}">
-            {{ $user->id }}
-            {{ $user->name }}
-        </a>
-        @if(Auth::user()->id === $user->id )
-        <a href="{{ route('user.edit',['id' => $user->id ]) }}">
-            編集
-        </a>
-        @endif
-        </div>
-        <h2>募集一覧</h2>
-        @foreach($recruitments as $recruitment)
-        {{ $recruitment->id }}
-        {{ $recruitment->title }}
-        {{ $recruitment->body }} <br>
-        @endforeach
-        <div class='right-container'>
-            <div class='recruitment'>
-                <h3></h3>
-                <p></p>
-            </div>     -->
 @section('content')
 <body>
     <div class='container'>
@@ -38,28 +7,9 @@
 
                     <div class="user-profile__column mg-bt-70px mg-top-12px">
                         <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="ユーザー画像" class="mg-bt-12px img-icon-size-medium">
-                        <p class="mg-bt-8px fontsize-14px">＠{{ $user->user_name }}</p>
-                        <p class="bold mg-bt-8px">{{ $user->nickname }}</p>
-
-                        @if(Auth::user()->id == $user->id)
-                        <a href="{{ route('user.settingsProfile') }}" class="profile-edit">プロフィールを編集する</a>
-                        @endif
+                        <p class="mg-bt-8px fontsize-14px">＠</p>
+                        <p class="bold mg-bt-8px">{{ $searched_tag->tag }}</p>
                     </div>
-
-
-
-
-                    <section class="icon-heading">
-                        <div class="icon-heading__header">
-                            <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="タグアイコン" class="img-icon-size-mini">
-                            <p>自己紹介</p>
-                        </div>
-                        <div class="border-line__max mg-bt-20px"></div>
-                        <div class="icon-heading__items">
-                            <p class="color-gray">{{ $user->self_introduction }}</p>
-                        </div>
-                    </section>
-
 
                     <section class="icon-heading ">
                         <div class="icon-heading__header">
@@ -88,27 +38,12 @@
                     </section>
 
 
-                    <section class="icon-heading">
-                        <div class="icon-heading__header">
-                            <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="img-icon-size-mini">
-                            <p>お気に入りタグ</p>
-                        </div>
-                        <div class="border-line__max mg-bt-20px"></div>
-                        <div class="icon-heading__items">
-                        @foreach($favorite_tags as $favorite_tag)
-                                <a href="#" class="fontsize-12px bold">＃{{ $favorite_tag->tag }}</a>&nbsp;
-                        @endforeach    
-                        </div>
-                    </section>
-
-
                 </div>
 
             <div class="row-container__right frame">
                 <ul class="label-selector">
                     <a href=""><li class="label-selector__item">募集</li></a>
                     <a href=""><li class="label-selector__item-active bg-color__brown">待ち人</li></a>
-                    <a href=""><li class="label-selector__item">コメント</li></a>
                 </ul>
 
                 <div class="border-line__brown__max mg-bt-8px"></div>
@@ -120,7 +55,7 @@
 
                 <div class="border-line__max__2px mg-bt-20px"></div>
                 <div class="user-show__recruitment-list__container">
-                    @foreach($recruitments as $recruitment)
+                    @foreach($searched_tag->recruitments as $recruitment)
                         <div class="recruitments-col__lists">
                             <div class="recruitment-col__top">
                                 <header class="recruitment-col__top__header">
@@ -132,7 +67,7 @@
                                 <h2 class="recruitment-col__body">{{ $recruitment->body }}</h2>
                             </div>
 
-                            <div class="recruitmen-col__bottom">
+                            <div class="recruitment-col__bottom">
                                 <div class="recruitment-col__content-left">
                                     <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
                                     @foreach($recruitment->tags as $tags)
@@ -153,4 +88,3 @@
     </div>
 </body>
 @endsection
-

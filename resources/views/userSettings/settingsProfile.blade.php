@@ -13,7 +13,7 @@
                     <div class="icon-heading__items">
                         <div class="setting-menu">
                             <a href="#" class="color-gray active">公開プロフィール</a>
-                            <a href="#" class="color-gray">お気に入りタグ</a>
+                            <a href="{{ route('user.showFavoriteTags') }}" class="color-gray">お気に入りタグ</a>
                             <a href="#" class="color-gray">パスワードの変更</a>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="input-box">
                                 <p>ニックネーム</p>
-                                <textarea class="grayframe width-max" type="text" name="nickname">{{ Auth::user()->nickname }}</textarea>
+                                <input class="grayframe width-max" type="text" name="nickname" value="{{ Auth::user()->nickname }}">
                             </div>
                             <div class="input-box">
                                 <p>自己紹介（400字以内）</p>
@@ -55,8 +55,14 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="recruitment-create__border-line"></div>
+                            <div class="border-line__max mg-top-12px mg-bt-25px"></div>
                             <input type="submit" class="submit-button__orange bold" value="更新">
+                        </form>
+                        <form action="{{ route('user.destroy',[ 'id' => Auth::user()->id ]) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            @csrf
+
+                            <button type="submit">アカウント削除</button>
                         </form>
                     </div>
                 </section>

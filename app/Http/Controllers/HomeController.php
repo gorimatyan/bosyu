@@ -48,11 +48,11 @@ class HomeController extends Controller
         //                  ->where('created_at', '<=', $next_month)
         //                  ->get();
         
-        $trend_tags = DB::table('recruitment_tags')
+        $trend_tags = DB::table('recruitment_tag')
                         ->select(DB::raw('tag, count(tag_id), tag_id'))
-                        ->join('tags','tags.id','=','recruitment_tags.tag_id')
-                        ->where('recruitment_tags.created_at', '>=', $this_month)
-                        ->where('recruitment_tags.created_at', '<=', $next_month)
+                        ->join('tags','tags.id','=','recruitment_tag.tag_id')
+                        ->where('recruitment_tag.created_at', '>=', $this_month)
+                        ->where('recruitment_tag.created_at', '<=', $next_month)
                         ->groupBy('tag', 'tag_id')
                         // ↑Laravelではgroupbyの引数はselectの全てを指定する必要がある（らしい）
                         ->orderBy('count(tag_id)','desc')

@@ -216,7 +216,7 @@ button, input, select, textarea {
   display: flex;
 }
 /* user/show.blade.php */
-.user-show__container{
+.row-container{
   display: flex;
   justify-content: center;
 }
@@ -267,23 +267,19 @@ button, input, select, textarea {
   color: #959595;
   margin-bottom: 10px;
 }
-        /* user/settingsMyPage.blade.php */
+        /* user/settingsProfile.blade.php */
 .setting-menu{
   display: flex;
   flex-direction: column;
 }
 .setting-menu a{
-  /* box-sizing: border-box; */
   width: 80%;
   padding: 10px 50px 5px 5px;
   margin-bottom: 10px;
   border-bottom: 1px solid #cacaca;
 }
 .setting-menu > .active{
-  /* background-color: #ffe0badb; */
-  /* border-radius: 8px; */
   border-bottom: 2px solid #E57300;
-  /* color: white; */
   font-weight: bold;
 }
 .no-border-frame{
@@ -293,7 +289,6 @@ button, input, select, textarea {
   margin-right: 20px;
   margin-bottom: 20px;
   color:#686868;
-  /* box-sizing: border-box; */
   border-radius: 0px;
   border:0px solid;
   border-color: #EB8117;
@@ -310,6 +305,10 @@ button, input, select, textarea {
   font-size: 24px;
   color: #686868;
 }
+/* user/settingsFavoriteTags.blade.php */
+/* .checkboxes{
+  display: flex;
+} */
         /* recruitment/show.blade.php */
 .recrutiment-show__container{
   margin-bottom: 80px;
@@ -559,7 +558,7 @@ ol > .comment{
   color: #959595;
   margin-bottom: 10px;
 }
-.recruitmen-col__bottom{
+.recruitment-col__bottom{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1253,7 +1252,7 @@ ol > .comment{
   width: 90%;
 }
 /* user/show.blade.php */
-.user-show__container{
+.row-container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1341,7 +1340,7 @@ ol > .comment{
   padding: 30px 16px;
 }
 /* user/show.blade.php */
-.user-show__container{
+.row-container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1409,7 +1408,7 @@ ol > .comment{
   display: none;
 }
 /* user/show.blade.php */
-.user-show__container{
+.row-container{
   display: flex;
   flex-direction: column;
   align-items: center;
