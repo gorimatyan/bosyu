@@ -31,7 +31,7 @@
                         <h2 class="recruitment-col__body">{{ $recruitment->body }}</h2>
                     </div>
 
-                    <div class="recruitmen-col__bottom">
+                    <div class="recruitment-col__bottom">
                         <div class="recruitment-col__content-left">
                             <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
                             @foreach($recruitment->tags as $tag)

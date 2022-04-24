@@ -1,4 +1,4 @@
-@extends('layouts.no_lists')
+@extends('layouts.no_list')
 @section('content')
 <div class="recruitment-details">
     <main class="recruitment-details__main">
