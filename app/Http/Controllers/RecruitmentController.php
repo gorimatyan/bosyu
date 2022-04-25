@@ -271,9 +271,9 @@ class RecruitmentController extends Controller
         }else{
             
             $recruitments = $recruitment_query->with('tags')->get();
-            // dd($recruitments);
+            
         }
-
+// dd($recruitments);
         return view('recruitment.search')->with([
             "recruitments" => $recruitments,
             "search" => $search,

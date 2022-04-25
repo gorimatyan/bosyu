@@ -20,7 +20,7 @@
                         <div class="icon-heading__items">
                             <div class="icon-heading__items__user-info">
                                 <p>募集中</p>
-                                <p>{{ count($active_recruitments) }}件</p>
+                                <p>{{ $active_recruitments->count() }}件</p>
                             </div>
                             <div class="icon-heading__items__user-info">
                                 <p>待ち人中</p>

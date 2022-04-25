@@ -28,16 +28,30 @@ class TagController extends Controller
                                 ->get()
                                 ;
 
-        foreach($active_recruitments_all_column as $active_recruitment )
-        {
-            $active_recruitments[] = Recruitment::find($active_recruitment->recruitment_id);
+        // foreach($active_recruitments_all_column as $active_recruitment )
+        // {
+        //     $active_recruitments[] = Recruitment::find($active_recruitment->recruitment_id);
             
-        }
-            // dd($active_recruitments);
-            // $active_recruitment->save();
-            // $recruitments
+        // }
+        // dd($active_recruitments_all_column);
+        $recruitment_query = Recruitment::query();
+        foreach($active_recruitments_all_column as $active_recruitment){ 
+            $active_recruitments = $recruitment_query
+                                    ->orWhere(function($query) use($active_recruitment)
+                                    {   
+                                        // dd($active_recruitment);
+                                        $query->where('id',$active_recruitment->recruitment_id);
+                                    })->get()
+                                    ;
+                                    
+                                    
+        };
+        // dd($recruitment_query->toSql());
+        // $active_recruitments->get();
+        // dd($active_recruitments);
+        
             
-                                // dd($recruitments);
+                                // dd($active_recruitments);
 
         return view('tag.show')->with([
             'searched_tag' => $searched_tag,
