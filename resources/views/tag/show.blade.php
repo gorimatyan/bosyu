@@ -20,7 +20,11 @@
                         <div class="icon-heading__items">
                             <div class="icon-heading__items__user-info">
                                 <p>募集中</p>
+                                @if(!empty($active_recruitments))
                                 <p>{{ $active_recruitments->count() }}件</p>
+                                @else
+                                <p>0件</p>
+                                @endif
                             </div>
                             <div class="icon-heading__items__user-info">
                                 <p>待ち人中</p>
@@ -55,6 +59,7 @@
 
                 <div class="border-line__max__2px mg-bt-20px"></div>
                 <div class="user-show__recruitment-list__container">
+                    @if(!empty($active_recruitments))
                     @foreach($active_recruitments as $recruitment)
                         <div class="recruitments-col__lists">
                             <div class="recruitment-col__top">
@@ -81,6 +86,9 @@
                         </div>
                     <div class="border-line__max__light mg-bt-20px"></div>
                     @endforeach
+                    @else
+                        <p>ありません</p>
+                    @endif
                 </div>
 
             </div>

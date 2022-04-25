@@ -35,7 +35,10 @@ class TagController extends Controller
         // }
         // dd($active_recruitments_all_column);
         $recruitment_query = Recruitment::query();
+        $active_recruitments = [];
+        if(!empty($active_recruitments_all_column)){
         foreach($active_recruitments_all_column as $active_recruitment){ 
+            echo 'うえ';
             $active_recruitments = $recruitment_query
                                     ->orWhere(function($query) use($active_recruitment)
                                     {   
@@ -43,15 +46,17 @@ class TagController extends Controller
                                         $query->where('id',$active_recruitment->recruitment_id);
                                     })->get()
                                     ;
-                                    
-                                    
-        };
+            };
+        }else{
+            
+            echo 'した';
+        }
         // dd($recruitment_query->toSql());
         // $active_recruitments->get();
-        // dd($active_recruitments);
+        // dd($all_recruitments);
         
             
-                                // dd($active_recruitments);
+                                // dd($active_recruitments_all_column->toSql());
 
         return view('tag.show')->with([
             'searched_tag' => $searched_tag,
