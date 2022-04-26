@@ -46,8 +46,8 @@
 
             <div class="row-container__right frame">
                 <ul class="label-selector">
-                    <a href=""><li class="label-selector__item">募集</li></a>
-                    <a href=""><li class="label-selector__item-active bg-color__brown">待ち人</li></a>
+                    <a href=""><li class="label-selector__item-active bg-color__brown">募集</li></a>
+                    <a href=""><li class="label-selector__item">待ち人</li></a>
                 </ul>
 
                 <div class="border-line__brown__max mg-bt-8px"></div>
@@ -66,7 +66,11 @@
                                 <header class="recruitment-col__top__header">
                                     <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
                                     <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}">＠{{ $recruitment->user->user_name }}</a>
-                                    <div class="recruitment-status bold">募集中</div>
+                                    @if($recruitment->status == 0)
+                                        <div class="recruitment-status__active bold">募集中</div>
+                                    @else
+                                        <div class="recruitment-status__inactive bold">締切</div>
+                                    @endif
                                 </header>
                                 <h1 class="recruitment-col__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>
                                 <h2 class="recruitment-col__body">{{ $recruitment->body }}</h2>
@@ -87,7 +91,7 @@
                     <div class="border-line__max__light mg-bt-20px"></div>
                     @endforeach
                     @else
-                        <p>ありません</p>
+                        <p class="bold font-color__gray mg-lf-8px">募集がありません</p>
                     @endif
                 </div>
 

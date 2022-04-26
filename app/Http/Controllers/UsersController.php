@@ -173,7 +173,7 @@ class UsersController extends Controller
     {   
         // $login_user = Auth::user();
         
-        return view('user.settingsProfile')
+        return view('userSettings.settingsProfile')
         // ->with([
         //     "user" => $login_user,
         // ])

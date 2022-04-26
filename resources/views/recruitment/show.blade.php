@@ -9,15 +9,22 @@
                         <div class="recruitment-details__user-profile">
                             <img src="http://localhost:8000/storage/{{ $user->image }}" class="img-icon-size-small">
                             <div class="recruitment-details__user-profile__id">
-                                    <a href="#" class="">＠{{ $user->user_name }}</a>
-                                    <a href="#" class="">{{ $user->nickname }}</a>
+                                    <a href="{{ route('user.show',['user_name' => $user->user_name ]) }}" class="">＠{{ $user->user_name }}</a>
+                                    <a href="{{ route('user.show',['user_name' => $user->user_name ]) }}" class="">{{ $user->nickname }}</a>
                             </div>
+                        </div>
+
+                        <div>
+                            募集中
+                            投稿：{{ \Carbon\Carbon::parse($recruitment->created_at)->format('Y/m/d') }}
                         </div>
 
                         <h1 class="recruitment-details__recruitment-title">{{ $recruitment->title }}</h1>
                         <div class="recruitment-details__tags">
                             <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="tag-icon-small">
-                            <a href="#" class="fontsize-14px bold">タグ名</a>
+                            @foreach($recruitment->tags as $tag)
+                            <a href="{{ route('tag.show',['tag' => $tag->tag]) }} " class="fontsize-14px bold">{{ $tag->tag }}</a>&nbsp;
+                            @endforeach
                         </div>
                     </header>
 

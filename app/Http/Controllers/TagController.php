@@ -38,18 +38,14 @@ class TagController extends Controller
         $active_recruitments = [];
         if(!empty($active_recruitments_all_column)){
         foreach($active_recruitments_all_column as $active_recruitment){ 
-            echo 'うえ';
+
             $active_recruitments = $recruitment_query
                                     ->orWhere(function($query) use($active_recruitment)
                                     {   
                                         // dd($active_recruitment);
                                         $query->where('id',$active_recruitment->recruitment_id);
-                                    })->get()
-                                    ;
+                                    })->get();
             };
-        }else{
-            
-            echo 'した';
         }
         // dd($recruitment_query->toSql());
         // $active_recruitments->get();

@@ -2,7 +2,7 @@
 @section('content')
 <body>
     <div class='container'>
-        <div class='user-show__container'>
+        <div class='row-container'>
             <div class="row-container__left no-border-frame">
                 <section class="icon-heading">
                     <div class="icon-heading__header">

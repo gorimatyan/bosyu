@@ -898,6 +898,9 @@ ol > .comment{
 .bold{
   font-weight: bold;
 }
+.font-color__gray{
+  color: #686868;
+}
 /* 内容の中央ぞろえ */
 .content-center{
   display: flex;
@@ -1022,6 +1025,12 @@ ol > .comment{
   background-color: #FF9F3E;
 }
 /* margin */
+.mg-top-30px{
+  margin-top: 30px;
+}
+.mg-top-20px{
+  margin-top: 20px;
+}
 .mg-top-12px{
   margin-top: 12px;
 }
@@ -1048,6 +1057,9 @@ ol > .comment{
 }
 .mg-bt-8px{
   margin-bottom: 8px;
+}
+.mg-lf-8px{
+  margin-left: 8px;
 }
 /* 文字色 */
 .color-gray{
@@ -1082,17 +1094,32 @@ ol > .comment{
   font-size: 12px;
 }
 /* 募集状態 募集中 */
-.recruitment-status{
+.recruitment-status__active{
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  border:solid 1px #A25200;
+  border:solid 1px #50a7ff;
   border-radius: 14px 14px;
   height: 20px;
   width: 50px;
-  padding: 4px 3px 3px 3px;
-  background-color: #FF9F3E;
+  padding: 4px 3px 2px 3px;
+  background-color: #3e9eff;
+  color: white;
+  margin-left: 15px;
+}
+/* 募集状態 募集中 */
+.recruitment-status__inactive{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border:solid 1px #fc4b4b;
+  border-radius: 14px 14px;
+  height: 20px;
+  width: 50px;
+  padding: 4px 3px 2px 3px;
+  background-color: #ff3e48;
   color: white;
   margin-left: 15px;
 }

@@ -126,7 +126,11 @@
                                 <header class="recruitment-col__top__header">
                                     <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>
                                     <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}">＠{{ $recruitment->user->user_name }}</a>
-                                    <div class="recruitment-status bold">募集中</div>
+                                    @if($recruitment->status == 0)
+                                    <div class="recruitment-status__active bold">募集中</div>
+                                    @else
+                                    <div class="recruitment-status__inactive bold">締切</div>
+                                    @endif
                                 </header>
                                 <h1 class="recruitment-col__title bold"><a href="{{ route('recruitment.show', ['recruitment_id' => $recruitment->id]) }}">{{ $recruitment->title }}</a></h1>
                                 <h2 class="recruitment-col__body">{{ $recruitment->body }}</h2>
