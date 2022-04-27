@@ -61,7 +61,7 @@
                 <div class="user-show__recruitment-list__container">
                     @if(!empty($active_recruitments))
                     @foreach($active_recruitments as $recruitment)
-                        <div class="recruitments-col__lists">
+                        <div class="recruitments-col__list">
                             <div class="recruitment-col__top">
                                 <header class="recruitment-col__top__header">
                                     <a href="{{ route('user.show',['user_name' => $recruitment->user->user_name ]) }}"><img src="http://localhost:8000/storage/{{ $recruitment->user->image }}" alt="ユーザーアイコン" class="img-icon-size-mini"></a>

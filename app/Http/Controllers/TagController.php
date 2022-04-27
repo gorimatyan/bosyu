@@ -16,7 +16,7 @@ class TagController extends Controller
                                 ->join('recruitments','recruitment_tag.recruitment_id','=','recruitments.id')
                                 ->where('recruitment_tag.tag_id',$searched_tag->id)
                                 ->where('recruitments.delete_flag',0)
-                                ->get()
+                                // ->get()
                                 ;
 
         $active_recruitments_all_column = DB::table('recruitment_tag')
@@ -33,7 +33,7 @@ class TagController extends Controller
         //     $active_recruitments[] = Recruitment::find($active_recruitment->recruitment_id);
             
         // }
-        // dd($active_recruitments_all_column);
+        // dd($all_recruitments->toSql());
         $recruitment_query = Recruitment::query();
         $active_recruitments = [];
         if(!empty($active_recruitments_all_column)){
