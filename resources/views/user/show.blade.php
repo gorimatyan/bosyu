@@ -90,7 +90,7 @@
 
                     <section class="icon-heading">
                         <div class="icon-heading__header">
-                            <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="img-icon-size-mini">
+                            <img src="http://localhost:8000/storage/Tag.png" alt="タグアイコン" class="img-icon-size-mini__square">
                             <p>お気に入りタグ</p>
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>

@@ -228,7 +228,7 @@ button, input, select, textarea {
   border-radius: 0px;
   border:0px solid;
   border-color: #EB8117;
-  background-color: #fffaf6;
+  /* background-color: #fffaf6; */
   padding: 15px 12px;
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
@@ -247,12 +247,42 @@ button, input, select, textarea {
   width: 60%;
   margin: 16px;
 }
+.notice-for-user__home{
+  padding: 12px 26px;
+  margin-bottom: 36px;
+}
+a.hover__underline:hover{
+  /* font-weight: bold; */
+  border-bottom: 1px solid #686868;
+  }
+.notice-for-user__home > a::before{
+  content: "⇒";
+}
+.tag-ranking__content{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0px;
+  font-size: 14px;
+}
+.tag-ranking__left{
+  display: flex;
+  font-size: 16px;
+}
+.tag-ranking__left > p{
+  margin-left: 8px;
+  font-size: 14px;
+}
 .icon-heading__items__column{
   display: flex;
   flex-direction: column;
 }
 .icon-heading__items__column > li{
   font-size: 16px;
+  /* display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box; */
 }
 .icon-heading__header h2{
   font-weight: bold;
@@ -271,7 +301,7 @@ button, input, select, textarea {
   border-radius: 0px;
   border:0px solid;
   border-color: #EB8117;
-  background-color: #dadada;
+  background-color: #fffaf6;
   padding: 15px 12px;
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
 }
@@ -285,6 +315,10 @@ button, input, select, textarea {
   background-color: #fffaf6;
   padding: 15px 12px;
   box-shadow: 0px 0px 0px rgb(195, 195, 195) ;
+}
+.icon-heading__items__small{
+  padding: 2px 8px;
+  color: #686868;
 }
 /* user/show.blade.php */
 .row-container{
@@ -904,6 +938,11 @@ ol > .comment{
   margin-left: auto;
   margin-right: auto;
 }
+.img-icon-size-mini__square{
+  width: 25px;
+  margin-right: 8px;
+  margin-left: 4px;
+}
 /* ユーザー極小アイコン */
 .img-icon-size-mini{
   width: 25px;
@@ -930,8 +969,9 @@ ol > .comment{
 }
 /* タグアイコン */
 .tag-icon-small{
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
 }
 /* サービス名　logo */
 #service-logo{
@@ -1095,6 +1135,11 @@ ol > .comment{
   border: 1px solid;
   border-color: #b3b3b3;
 }
+.border-line__max__light-gray{
+  width: 100%;
+  border: 1px solid;
+  border-color: #dfdfdf;
+}
 /* 背景色 */
 .bg-color__brown{
   background-color: #A25200;
@@ -1138,6 +1183,9 @@ ol > .comment{
 }
 .mg-bt-8px{
   margin-bottom: 8px;
+}
+.mg-bt-4px{
+  margin-bottom: 4px;
 }
 .mg-lf-8px{
   margin-left: 8px;

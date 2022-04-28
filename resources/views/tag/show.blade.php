@@ -13,7 +13,7 @@
 
                     <section class="icon-heading ">
                         <div class="icon-heading__header">
-                            <img src="http://localhost:8000/storage/Info-white.jpg" alt="タグアイコン" class="img-icon-size-mini">
+                            <img src="http://localhost:8000/storage/Info-white.jpg" alt="タグアイコン" class="img-icon-size-mini__square">
                             <p>タグ情報</p>
                         </div>
                         <div class="border-line__max mg-bt-20px"></div>

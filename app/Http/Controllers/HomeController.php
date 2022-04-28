@@ -69,7 +69,6 @@ class HomeController extends Controller
                         ->where('recruitments.delete_flag',0);
             })->get();
         }
-        // dd($recruitments);  
 
         return view('home',[
             "users" => $users,
