@@ -132,7 +132,7 @@ class UsersController extends Controller
 
         $updated_user = User::where('id' ,$updated_user_id)->first();
             // dd($updated_user);
-            return redirect()->route('user.settingsMyPage');
+            return redirect()->route('user.settingsProfile');
         //   return view('user.settingsMyPage',[
         //         "user" => $updated_user,
         //     ]);

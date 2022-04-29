@@ -9,7 +9,7 @@ class FavoriteTagController extends Controller
 {
     public function show(){
         $tags = Auth::user()->favoriteTags;
-        return view('user.settingFavoriteTags')->with([
+        return view('userSettings.settingFavoriteTags')->with([
             'tags' => $tags,
         ]);
     }
