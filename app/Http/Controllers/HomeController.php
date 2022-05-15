@@ -77,6 +77,8 @@ class HomeController extends Controller
             "count_new_notices" => $request->count_new_notices,
             "management_notices" => $request->management_notices,
             "recruitments" => $recruitments,
+            "this_month" => $this_month,
+            "end_this_month" => $end_this_month,
         ]);
     }
 }

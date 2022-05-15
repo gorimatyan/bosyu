@@ -95,7 +95,13 @@
                                     <span>{{ $i }}位</span>
                                     <p>#{{ $trend_tag->tag }}</p>
                                 </div> 
-                                <div>{{ app\Models\Tag::find($trend_tag->tag_id)->recruitments()->where('recruitments.delete_flag' , 0)->count() }}投稿</div>
+                                <div>{{ app\Models\Tag::find($trend_tag->tag_id)->recruitments()
+                                        ->where('recruitments.delete_flag' , 0)
+                                        ->where('recruitment_tag.created_at', '>=', $this_month)
+                                        ->where('recruitment_tag.created_at', '<=', $end_this_month)
+                                        ->count() 
+                                    }}投稿
+                                </div>
                             </div>
                         </a>
                     
