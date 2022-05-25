@@ -7,12 +7,23 @@
 
                     <div class="user-profile__column mg-bt-70px mg-top-12px">
                         <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="ユーザー画像" class="mg-bt-12px img-icon-size-medium">
-                        <p class="mg-bt-8px fontsize-14px">＠</p>
+                        <p class="mg-bt-8px fontsize-14px"></p>
                         <p class="bold mg-bt-8px">{{ $searched_tag->tag }}</p>
                         <div class="register-fav-tag">
-
-                                <button id="register-fav-tag-btn" type="submit" >お気に入りのタグにする</button>
-
+                            
+                           
+                            @if(empty(Auth::user()->favoriteTags()->where('tag',$searched_tag->tag)->first()))
+                                <button id="register-fav-tag-btn" class="register-fav-tag-btn" type="submit" >
+                                    <div id="tag-heart" class="heart"></div>
+                                    <p>お気に入りのタグにする</p> 
+                                </button>
+                            @else
+                                <button id="register-fav-tag-btn" class="register-fav-tag-btn active" type="submit" >
+                                    <div id="tag-heart" class="heart active"></div>
+                                    <p>お気に入り登録済み</p> 
+                                </button>
+                            @endif
+                            
                             <script>
                                 const tag_btn = document.getElementById('register-fav-tag-btn');
                                 tag_btn.addEventListener('click',()=>{
@@ -26,10 +37,24 @@
                                         headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}, //Laravelの場合これが必要
                                     })
                                     .then((Response)=>{
-                                        return console.log('成功しました');
-                                    })
-                                    .catch((error)=>{
-                                        return console.log('失敗しました');
+                                        if(Response.status == 200){
+                                            console.log('成功しました');
+                                            tag_btn.classList.toggle('active');
+                                            const btn_child = tag_btn.lastElementChild
+                                            if(btn_child.innerText === 'お気に入りのタグにする'){
+                                                const new_child = document.createElement('p');
+                                                new_child.innerText = 'お気に入り登録済み';
+                                                tag_btn.replaceChild(new_child,btn_child);
+                                            }else if(btn_child.innerText === 'お気に入り登録済み'){
+                                                const new_child = document.createElement('p');
+                                                new_child.innerText = 'お気に入りのタグにする';
+                                                tag_btn.replaceChild(new_child,btn_child);
+                                            };
+                                            const tag_heart = document.getElementById('tag-heart');
+                                            tag_heart.classList.toggle('active');
+                                        }else{
+                                            return console.log('失敗しました');
+                                        };
                                     })
                                 })
                             </script>

@@ -1267,6 +1267,114 @@ ol > .comment{
   font-size: 16px;
   cursor: pointer;
 }
+/* ハート */
+/* .heart {
+  position: relative;
+  margin: 0px;
+  left: -8px;
+  top: 1px;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 2px solid #FF4040;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  transform: rotate(45deg);
+}
+.heart:before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: -2px;
+  width: 6px;
+  height: 4px;
+  border: 2px solid #FF4040;
+  border-bottom: 1px solid transparent;
+  border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+}
+.heart:after {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: -2px;
+  width: 4px;
+  height: 6px;
+  border: 2px solid #FF4040;
+  border-right: 1px solid transparent;
+  border-radius: 80% 0 0 80% / 50% 0 0 50%;
+} */
+.heart.active {
+  position: relative;
+  margin: 0px;
+  left: -8px;
+  top: 7px;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 2px solid #FF4040;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  transform: rotate(45deg);
+  background-color: #FF4040;
+}
+.heart.active:before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: -2px;
+  width: 6px;
+  height: 4px;
+  border: 2px solid #FF4040;
+  border-bottom: 1px solid transparent;
+  border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+  background-color: #FF4040;
+}
+.heart.active:after {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: -2px;
+  width: 4px;
+  height: 6px;
+  border: 2px solid #FF4040;
+  border-right: 1px solid transparent;
+  border-radius: 80% 0 0 80% / 50% 0 0 50%;
+  background-color: #FF4040;
+}
+.register-fav-tag-btn{
+  display: flex;
+  font-family: inherit;
+  justify-content: center;
+  padding: 10px 12px;
+  color: #FFEEDC;
+  font-size: 14px;
+  width: 220px;
+  background-color: #FF4040;
+  border: #FF4040 solid 1px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: 0.1ms;
+}
+.register-fav-tag-btn > p{
+  font-weight: bold;
+}
+.register-fav-tag-btn.active{
+  padding: 10px 3px 10px 10px;
+  color: #FF4040;
+  font-size: 14px;
+  width: 220px;
+  background-color: #FFEEDC;
+  border: #FF4040 solid 1px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+}
+
 
 .invalid-feedback {
   width: 100%;
