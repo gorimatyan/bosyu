@@ -43,7 +43,7 @@
     <div class="home__main">
         <div class="notice-for-user__home grayframe fontsize-16px">
             <p class="mg-bt-12px">おすすめではお気に入りに登録したタグが付いた投稿が表示されます。</p>
-            <a href="" class="hover__underline bold">お気に入りタグを設定する</a>
+            <a href="{{ route('user.showFavoriteTags') }}" class="hover__underline bold">お気に入りタグを設定する</a>
         </div>
     @foreach($recruitments as $recruitment)
                 <div class="recruitments-col__list frame">

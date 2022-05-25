@@ -50,9 +50,7 @@ class TagController extends Controller
         // dd($recruitment_query->toSql());
         // $active_recruitments->get();
         // dd($all_recruitments);
-        
-            
-                                // dd($active_recruitments_all_column->toSql());
+
 
         return view('tag.show')->with([
             'searched_tag' => $searched_tag,

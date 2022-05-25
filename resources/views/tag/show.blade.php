@@ -9,6 +9,31 @@
                         <img src="http://localhost:8000/storage/defaultUserImg.jpg" alt="ユーザー画像" class="mg-bt-12px img-icon-size-medium">
                         <p class="mg-bt-8px fontsize-14px">＠</p>
                         <p class="bold mg-bt-8px">{{ $searched_tag->tag }}</p>
+                        <div class="register-fav-tag">
+
+                                <button id="register-fav-tag-btn" type="submit" >お気に入りのタグにする</button>
+
+                            <script>
+                                const tag_btn = document.getElementById('register-fav-tag-btn');
+                                tag_btn.addEventListener('click',()=>{
+                                    
+                                    const formData = new FormData();
+                                    formData.append('tag',"{{ $searched_tag->tag }}")
+                                    console.log(formData.get('tag'));
+                                    fetch("{{ route('user.registerFavoriteTags') }}",{
+                                        method: 'POST',
+                                        body: formData,
+                                        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}, //Laravelの場合これが必要
+                                    })
+                                    .then((Response)=>{
+                                        return console.log('成功しました');
+                                    })
+                                    .catch((error)=>{
+                                        return console.log('失敗しました');
+                                    })
+                                })
+                            </script>
+                        </div>
                     </div>
 
                     <section class="icon-heading ">
@@ -16,6 +41,7 @@
                             <img src="http://localhost:8000/storage/Info-white.jpg" alt="タグアイコン" class="img-icon-size-mini__square">
                             <p>タグ情報</p>
                         </div>
+
                         <div class="border-line__max mg-bt-20px"></div>
                         <div class="icon-heading__items">
                             <div class="icon-heading__items__user-info">

@@ -62,6 +62,7 @@ class HomeController extends Controller
                         ->get();
         // dd($trend_tags);
         $favorite_tags = Auth::user()->favoriteTags;
+        $recruitments = [];
         foreach($favorite_tags as $favorite_tag)
         {
             $recruitments = Recruitment::whereHas('tags',function($query) use($favorite_tag){
