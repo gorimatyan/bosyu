@@ -62,14 +62,28 @@ class HomeController extends Controller
                         ->get();
         // dd($trend_tags);
         $favorite_tags = Auth::user()->favoriteTags;
-        $recruitments = [];
+        $all_recruitments = [];
         foreach($favorite_tags as $favorite_tag)
         {
-            $recruitments = Recruitment::whereHas('tags',function($query) use($favorite_tag){
-                $query->where('tags.id',$favorite_tag->id)
-                        ->where('recruitments.delete_flag',0);
-            })->get();
+            $recruitments = Recruitment::query()
+                            ->whereHas('tags',function($query) use($favorite_tag){
+                                $query->where('tags.id',$favorite_tag->id)
+                                      ->where('recruitments.delete_flag',0);
+                            }
+            )->get();
+
+            foreach($recruitments as $recruitment){
+                $all_recruitments[] = $recruitment;
+            };
         }
+            $recruitment_collection = collect($all_recruitments)->unique();
+            // $recruitments = Recruitment::whereHas('tags',function($query) use($favorite_tag){
+            //     $query->where('tags.id',$favorite_tag->id)
+            //             
+            // })->get();
+            // dd($recruitment_collection);
+        
+        
 
         return view('home',[
             "users" => $users,
@@ -77,7 +91,7 @@ class HomeController extends Controller
             "new_notices" => $request->new_notices,
             "count_new_notices" => $request->count_new_notices,
             "management_notices" => $request->management_notices,
-            "recruitments" => $recruitments,
+            "recruitments" => $recruitment_collection,
             "this_month" => $this_month,
             "end_this_month" => $end_this_month,
         ]);

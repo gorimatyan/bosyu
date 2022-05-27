@@ -1356,7 +1356,7 @@ ol > .comment{
   text-align: center;
   cursor: pointer;
   border: none;
-  transition: 0.1ms;
+  transition: 0.5s;
 }
 .register-fav-tag-btn > p{
   font-weight: bold;

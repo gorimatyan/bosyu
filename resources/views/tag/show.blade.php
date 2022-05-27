@@ -26,11 +26,24 @@
                             
                             <script>
                                 const tag_btn = document.getElementById('register-fav-tag-btn');
+                                const formData = new FormData();
+                                formData.append('tag',"{{ $searched_tag->tag }}")
                                 tag_btn.addEventListener('click',()=>{
-                                    
-                                    const formData = new FormData();
-                                    formData.append('tag',"{{ $searched_tag->tag }}")
-                                    console.log(formData.get('tag'));
+                                    // console.log(formData.get('tag'));
+                                    tag_btn.classList.toggle('active');
+                                    const btn_child = tag_btn.lastElementChild
+                                    if(btn_child.innerText === 'お気に入りのタグにする'){
+                                        const new_child = document.createElement('p');
+                                        new_child.innerText = 'お気に入り登録済み';
+                                        tag_btn.replaceChild(new_child,btn_child);
+                                    }else if(btn_child.innerText === 'お気に入り登録済み'){
+                                        const new_child = document.createElement('p');
+                                        new_child.innerText = 'お気に入りのタグにする';
+                                        tag_btn.replaceChild(new_child,btn_child);
+                                    };
+                                    const tag_heart = document.getElementById('tag-heart');
+                                    tag_heart.classList.toggle('active');
+
                                     fetch("{{ route('user.registerFavoriteTags') }}",{
                                         method: 'POST',
                                         body: formData,
@@ -39,6 +52,8 @@
                                     .then((Response)=>{
                                         if(Response.status == 200){
                                             console.log('成功しました');
+                                        }else{
+                                            console.log('失敗しました');
                                             tag_btn.classList.toggle('active');
                                             const btn_child = tag_btn.lastElementChild
                                             if(btn_child.innerText === 'お気に入りのタグにする'){
@@ -52,8 +67,6 @@
                                             };
                                             const tag_heart = document.getElementById('tag-heart');
                                             tag_heart.classList.toggle('active');
-                                        }else{
-                                            return console.log('失敗しました');
                                         };
                                     })
                                 })
