@@ -68,6 +68,7 @@ class HomeController extends Controller
             $recruitments = Recruitment::query()
                             ->whereHas('tags',function($query) use($favorite_tag){
                                 $query->where('tags.id',$favorite_tag->id)
+                                      ->where('recruitments.status',0)
                                       ->where('recruitments.delete_flag',0);
                             }
             )->get();

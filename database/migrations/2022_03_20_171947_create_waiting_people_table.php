@@ -16,8 +16,9 @@ class CreateWaitingPeopleTable extends Migration
         Schema::create('waiting_people', function (Blueprint $table) {
             $table->string('id',13);
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('body');
+            $table->string('title',100);
+            $table->string('body',2000);
+            $table->string('requirement',400)->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
 
