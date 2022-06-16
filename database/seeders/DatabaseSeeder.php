@@ -152,6 +152,7 @@ class DatabaseSeeder extends Seeder
                 'body' => '市営住宅で暴れまくりましょう。
                             柴田歯科前に集合しましょう。
                             あああああああああああああああああああああああ',
+                'requirement' => '足が速い人だけ',
                 'status' => 0,
                 'created_at' =>now(),
                 'updated_at' =>now(),
@@ -163,6 +164,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
                 'title' => '誰か勉強しましょう',
                 'body' => '司法試験のお勉強しようぜー',
+                'requirement' => '東京在住の人は誘ってください',
                 'status' => 0,
                 'created_at' =>now(),
                 'updated_at' =>now(),
@@ -172,8 +174,9 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => uniqid(),
                 'user_id' => 2,
-                'title' => 'NBA観に行きましょう',
-                'body' => 'ハチ公前で一旦集合お願いシャス。とりあえずウォリアーズファン集まれ。',
+                'title' => 'NBA観に行く企画する人を探しています',
+                'body' => 'どの試合でもいいです',
+                'requirement' => 'できれば英語喋れる方誘ってください',
                 'status' => 0,
                 'created_at' =>now(),
                 'updated_at' =>now(),

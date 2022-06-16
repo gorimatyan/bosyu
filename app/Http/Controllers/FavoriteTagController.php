@@ -18,7 +18,7 @@ class FavoriteTagController extends Controller
     }
 
     public function register(Request $request){
-        // {{ route('user.registerFavoriteTags') }}
+
         $user = Auth::user();
         $user_tags = Auth::user()->favoriteTags;
         $register_tag = Tag::where('tag',$request->tag)->first();
@@ -28,7 +28,6 @@ class FavoriteTagController extends Controller
         }else{
             $user->favoriteTags()->detach($detach_tag->id);
         }
-        dd($register_tag);
 
     }
 
